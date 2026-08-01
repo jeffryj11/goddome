@@ -6,6 +6,11 @@ fragment StoriesParts on Stories {
   date
   readTime
   image
+  hebrew_scripture
+  christian_scripture
+  themes
+  summary
   excerpt
+  draft
   body
 }

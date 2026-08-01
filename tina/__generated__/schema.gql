@@ -94,7 +94,12 @@ type Stories implements Node & Document {
   date: String
   readTime: String
   image: String
+  hebrew_scripture: String
+  christian_scripture: String
+  themes: [String]
+  summary: String
   excerpt: String
+  draft: Boolean
   body: JSON
   id: ID!
   _sys: SystemInfo!
@@ -123,6 +128,11 @@ input ImageFilter {
   in: [String]
 }
 
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
 input RichTextFilter {
   startsWith: String
   eq: String
@@ -136,7 +146,12 @@ input StoriesFilter {
   date: DatetimeFilter
   readTime: StringFilter
   image: ImageFilter
+  hebrew_scripture: StringFilter
+  christian_scripture: StringFilter
+  themes: StringFilter
+  summary: StringFilter
   excerpt: StringFilter
+  draft: BooleanFilter
   body: RichTextFilter
 }
 
@@ -177,7 +192,12 @@ input StoriesMutation {
   date: String
   readTime: String
   image: String
+  hebrew_scripture: String
+  christian_scripture: String
+  themes: [String]
+  summary: String
   excerpt: String
+  draft: Boolean
   body: JSON
 }
 

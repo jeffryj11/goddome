@@ -14,7 +14,12 @@ export const StoriesPartsFragmentDoc = gql`
   date
   readTime
   image
+  hebrew_scripture
+  christian_scripture
+  themes
+  summary
   excerpt
+  draft
   body
 }
     `;

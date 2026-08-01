@@ -32,27 +32,60 @@ var config_default = defineConfig({
           {
             type: "string",
             name: "category",
-            label: "Category"
+            label: "Category",
+            required: false
           },
           {
             type: "string",
             name: "author",
-            label: "Author"
+            label: "Author",
+            required: false
           },
           {
             type: "datetime",
             name: "date",
-            label: "Date"
+            label: "Date",
+            required: false
           },
           {
             type: "string",
             name: "readTime",
-            label: "Read Time"
+            label: "Read Time",
+            required: false
           },
           {
             type: "image",
             name: "image",
-            label: "Featured Image"
+            label: "Featured Image",
+            required: false
+          },
+          {
+            type: "string",
+            name: "hebrew_scripture",
+            label: "Hebrew Scripture",
+            required: false
+          },
+          {
+            type: "string",
+            name: "christian_scripture",
+            label: "Christian Scripture",
+            required: false
+          },
+          {
+            type: "string",
+            name: "themes",
+            label: "Themes",
+            list: true,
+            required: false
+          },
+          {
+            type: "string",
+            name: "summary",
+            label: "Summary",
+            ui: {
+              component: "textarea"
+            },
+            required: false
           },
           {
             type: "string",
@@ -60,13 +93,21 @@ var config_default = defineConfig({
             label: "Excerpt",
             ui: {
               component: "textarea"
-            }
+            },
+            required: false
+          },
+          {
+            type: "boolean",
+            name: "draft",
+            label: "Draft Status",
+            required: false
           },
           {
             type: "rich-text",
             name: "body",
             label: "Body",
-            isBody: true
+            isBody: true,
+            required: false
           }
         ]
       }
