@@ -26,7 +26,7 @@ export default function Hero() {
         </div>
 
         <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-md">
-          Porch-Side Devotionals & Stories
+          Fireside Devotionals & Stories
         </h1>
 
         <p className="text-lg sm:text-xl text-[#FAF6F0]/95 max-w-2xl mx-auto font-light leading-relaxed mb-8 drop-shadow">

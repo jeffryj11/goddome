@@ -8,14 +8,14 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#FAF6F0] text-[#2C221E] flex flex-col font-sans">
-      {/* Campfire / Porch-side Hero Visual */}
+      {/* Campfire / Fireside Hero Visual */}
       <Hero />
 
       {/* Main Stories Grid Section */}
       <section id="stories" className="max-w-6xl mx-auto px-6 py-16 w-full">
         <div className="text-center mb-14">
           <span className="text-xs font-bold text-[#D99B26] uppercase tracking-widest">
-            Porch-Side Devotionals
+            Fireside Devotionals
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2C221E] mt-2 mb-3">
             Writings by Jeanna’ Mead
