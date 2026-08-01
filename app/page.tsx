@@ -1,13 +1,18 @@
+import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import StoryCard from '@/components/StoryCard';
 import FaithAssistant from '@/components/FaithAssistant';
 import { getSortedStoriesData } from '@/lib/stories';
+import Link from 'next/link';
 
 export default function Home() {
   const allStories = getSortedStoriesData();
 
   return (
     <main className="min-h-screen bg-[#FAF6F0] text-[#2C221E] flex flex-col font-sans">
+      {/* Navigation Header */}
+      <Navbar />
+
       {/* Campfire / Fireside Hero Visual */}
       <Hero />
 
@@ -39,16 +44,24 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-[#2C221E]/15 py-10 px-6 mt-auto bg-[#FAF6F0]">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#2C221E]/60">
-          <div className="flex items-center space-x-2">
-            <span className="text-[#A83226] font-bold">GodDome</span>
+      <footer className="border-t border-[#2C221E]/15 py-12 px-6 mt-auto bg-[#FAF6F0]">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-[#2C221E]/70">
+          <div className="flex items-center space-x-3">
+            <img
+              src="/images/logo.png"
+              alt="GodDome Badge"
+              className="w-8 h-8 rounded-lg border border-[#D99B26]/30 shadow-xs"
+            />
+            <span className="font-serif font-bold text-[#2C221E] text-sm">GodDome</span>
             <span>—</span>
             <span>Faithful Words: Christian Stories by Jeanna’ Mead</span>
           </div>
 
-          <div>
-            <p>&copy; 2026 GodDome — Faithful Words: Christian Stories by Jeanna’ Mead. All rights reserved.</p>
+          <div className="flex items-center space-x-6">
+            <Link href="/admin" className="hover:text-[#A83226] font-semibold">
+              Admin CMS
+            </Link>
+            <p>&copy; 2026 GodDome — All rights reserved.</p>
           </div>
         </div>
       </footer>

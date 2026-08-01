@@ -13,8 +13,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GodDome — Faithful Words: Christian Stories by J.M.",
-  description: "Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by J.M. Powered by GodDome AI.",
+  title: "GodDome — Faithful Words: Christian Stories by Jeanna’ Mead",
+  description: "Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.",
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -25,9 +30,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#090b10] text-slate-100">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#FAF6F0] text-[#2C221E]">{children}</body>
     </html>
   );
 }
