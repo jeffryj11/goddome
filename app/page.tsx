@@ -31,11 +31,28 @@ export default function Home() {
         </div>
 
         {/* Responsive Grid of Stories */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {allStories.map((story) => (
-            <StoryCard key={story.id} story={story} />
-          ))}
-        </div>
+        {allStories.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {allStories.map((story) => (
+              <StoryCard key={story.id} story={story} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12 px-6 bg-white/50 border border-[#2C221E]/10 rounded-2xl max-w-md mx-auto">
+            <h3 className="font-serif text-xl font-bold text-[#2C221E] mb-2">
+              Sanctuary Sanctuary Opening Soon
+            </h3>
+            <p className="text-sm text-[#2C221E]/70 mb-6 font-light">
+              Jeanna’ Mead is preparing new devotionals and Christian stories. Check back soon or access the admin portal to publish content.
+            </p>
+            <Link
+              href="/admin"
+              className="inline-block px-6 py-2.5 bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] text-xs font-bold uppercase tracking-wider rounded-full transition-colors"
+            >
+              Open TinaCMS Admin
+            </Link>
+          </div>
+        )}
       </section>
 
       {/* Interactive Faith & Reflection Assistant */}
