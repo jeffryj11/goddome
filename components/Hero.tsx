@@ -3,8 +3,8 @@ import Image from 'next/image';
 export default function Hero() {
   return (
     <section className="relative w-full min-h-[600px] bg-gradient-to-b from-[#1E1715] via-[#2C221E] to-[#FAF6F0] text-[#FAF6F0] pt-24 pb-20 px-6 sm:px-12 text-center overflow-hidden flex flex-col justify-center items-center">
-      {/* Background Hero Image */}
-      <div className="absolute inset-0 z-0 opacity-30 overflow-hidden">
+      {/* Background Hero Image with Soft Overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="/images/hero-boots-fire.jpg"
           alt="Campfire view with warm coffee mug"
@@ -12,7 +12,7 @@ export default function Hero() {
           priority
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1E1715]/80 via-[#2C221E]/90 to-[#FAF6F0]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#FAF6F0]" />
       </div>
 
       {/* Soft glowing ambient lighting */}
@@ -29,7 +29,7 @@ export default function Hero() {
           Porch-Side Devotionals & Stories
         </h1>
 
-        <p className="text-lg sm:text-xl text-[#FAF6F0]/90 max-w-2xl mx-auto font-light leading-relaxed mb-8 drop-shadow">
+        <p className="text-lg sm:text-xl text-[#FAF6F0]/95 max-w-2xl mx-auto font-light leading-relaxed mb-8 drop-shadow">
           Take a moment to pause and pull up a chair with warm, encouraging writings authored by <strong className="text-[#D99B26] font-semibold">Jeanna’ Mead</strong>.
         </p>
 
