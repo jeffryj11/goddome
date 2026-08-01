@@ -19,17 +19,11 @@ content/stories/find-jesus-brighter-days.md
 It will publish automatically at:
 /stories/find-jesus-brighter-days
 
-✅ find-jesus-brighter-days.md
 draft: true
 author: "Jeanna’ Mead"
 
 
 If you want, I can also:
-✅ Add a cover image
-✅ Add scripture references
-✅ Add discussion questions
-✅ Add a “Jeanna’ Soul Notes” section
-✅ Bundle all stories so far into a zip for upload
 Just tell me “yes, do it”.
 You said:
 Published using Google Docs Report abuseLearn more

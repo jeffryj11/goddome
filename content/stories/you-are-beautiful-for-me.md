@@ -26,5 +26,3 @@ Here is your full, clean, publication-ready Markdown story for your site — per
 content/stories/find-jesus-brighter-days.md
 It will publish automatically at:
 /stories/find-jesus-brighter-days
-
-✅ find-jesus-brighter-days.md

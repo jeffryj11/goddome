@@ -36,5 +36,3 @@ Place it here:
 content/stories/a-beautiful-gate.md
 It will automatically appear on:
 /stories/a-beautiful-gate
-
-✅ a-beautiful-gate.md
