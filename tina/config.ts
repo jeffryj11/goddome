@@ -73,13 +73,6 @@ export default defineConfig({
             ui: {
               component: "textarea",
             },
-            required: false,
-          },
-          {
-            type: "boolean",
-            name: "draft",
-            label: "Draft Status",
-            required: false,
           },
           {
             type: "boolean",
