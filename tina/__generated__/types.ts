@@ -168,16 +168,12 @@ export type DocumentNode = Stories | Folder;
 export type Stories = Node & Document & {
   __typename?: 'Stories';
   title: Scalars['String']['output'];
-  category?: Maybe<Scalars['String']['output']>;
   author?: Maybe<Scalars['String']['output']>;
   date?: Maybe<Scalars['String']['output']>;
-  readTime?: Maybe<Scalars['String']['output']>;
-  image?: Maybe<Scalars['String']['output']>;
   hebrew_scripture?: Maybe<Scalars['String']['output']>;
   christian_scripture?: Maybe<Scalars['String']['output']>;
   themes?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   summary?: Maybe<Scalars['String']['output']>;
-  excerpt?: Maybe<Scalars['String']['output']>;
   draft?: Maybe<Scalars['Boolean']['output']>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
@@ -186,21 +182,6 @@ export type Stories = Node & Document & {
 };
 
 export type StringFilter = {
-  startsWith?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type DatetimeFilter = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  before?: InputMaybe<Scalars['String']['input']>;
-  eq?: InputMaybe<Scalars['String']['input']>;
-  exists?: InputMaybe<Scalars['Boolean']['input']>;
-  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type ImageFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
   eq?: InputMaybe<Scalars['String']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -220,16 +201,12 @@ export type RichTextFilter = {
 
 export type StoriesFilter = {
   title?: InputMaybe<StringFilter>;
-  category?: InputMaybe<StringFilter>;
   author?: InputMaybe<StringFilter>;
-  date?: InputMaybe<DatetimeFilter>;
-  readTime?: InputMaybe<StringFilter>;
-  image?: InputMaybe<ImageFilter>;
+  date?: InputMaybe<StringFilter>;
   hebrew_scripture?: InputMaybe<StringFilter>;
   christian_scripture?: InputMaybe<StringFilter>;
   themes?: InputMaybe<StringFilter>;
   summary?: InputMaybe<StringFilter>;
-  excerpt?: InputMaybe<StringFilter>;
   draft?: InputMaybe<BooleanFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
@@ -314,28 +291,24 @@ export type DocumentMutation = {
 
 export type StoriesMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
-  category?: InputMaybe<Scalars['String']['input']>;
   author?: InputMaybe<Scalars['String']['input']>;
   date?: InputMaybe<Scalars['String']['input']>;
-  readTime?: InputMaybe<Scalars['String']['input']>;
-  image?: InputMaybe<Scalars['String']['input']>;
   hebrew_scripture?: InputMaybe<Scalars['String']['input']>;
   christian_scripture?: InputMaybe<Scalars['String']['input']>;
   themes?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   summary?: InputMaybe<Scalars['String']['input']>;
-  excerpt?: InputMaybe<Scalars['String']['input']>;
   draft?: InputMaybe<Scalars['Boolean']['input']>;
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type StoriesPartsFragment = { __typename: 'Stories', title: string, category?: string | null, author?: string | null, date?: string | null, readTime?: string | null, image?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, excerpt?: string | null, draft?: boolean | null, body?: any | null };
+export type StoriesPartsFragment = { __typename: 'Stories', title: string, author?: string | null, date?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, draft?: boolean | null, body?: any | null };
 
 export type StoriesQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type StoriesQuery = { __typename?: 'Query', stories: { __typename: 'Stories', id: string, title: string, category?: string | null, author?: string | null, date?: string | null, readTime?: string | null, image?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, excerpt?: string | null, draft?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type StoriesQuery = { __typename?: 'Query', stories: { __typename: 'Stories', id: string, title: string, author?: string | null, date?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, draft?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type StoriesConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -347,22 +320,18 @@ export type StoriesConnectionQueryVariables = Exact<{
 }>;
 
 
-export type StoriesConnectionQuery = { __typename?: 'Query', storiesConnection: { __typename?: 'StoriesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'StoriesConnectionEdges', cursor: string, node?: { __typename: 'Stories', id: string, title: string, category?: string | null, author?: string | null, date?: string | null, readTime?: string | null, image?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, excerpt?: string | null, draft?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type StoriesConnectionQuery = { __typename?: 'Query', storiesConnection: { __typename?: 'StoriesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'StoriesConnectionEdges', cursor: string, node?: { __typename: 'Stories', id: string, title: string, author?: string | null, date?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, draft?: boolean | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const StoriesPartsFragmentDoc = gql`
     fragment StoriesParts on Stories {
   __typename
   title
-  category
   author
   date
-  readTime
-  image
   hebrew_scripture
   christian_scripture
   themes
   summary
-  excerpt
   draft
   body
 }

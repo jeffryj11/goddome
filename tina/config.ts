@@ -69,16 +69,9 @@ export default defineConfig({
             type: "string",
             name: "summary",
             label: "Summary / Excerpt",
-            required: false,
             ui: {
               component: "textarea",
             },
-            required: false,
-          },
-          {
-            type: "boolean",
-            name: "draft",
-            label: "Draft Status",
             required: false,
           },
           {

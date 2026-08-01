@@ -89,16 +89,12 @@ union DocumentNode = Stories | Folder
 
 type Stories implements Node & Document {
   title: String!
-  category: String
   author: String
   date: String
-  readTime: String
-  image: String
   hebrew_scripture: String
   christian_scripture: String
   themes: [String]
   summary: String
-  excerpt: String
   draft: Boolean
   body: JSON
   id: ID!
@@ -107,21 +103,6 @@ type Stories implements Node & Document {
 }
 
 input StringFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input DatetimeFilter {
-  after: String
-  before: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input ImageFilter {
   startsWith: String
   eq: String
   exists: Boolean
@@ -141,16 +122,12 @@ input RichTextFilter {
 
 input StoriesFilter {
   title: StringFilter
-  category: StringFilter
   author: StringFilter
-  date: DatetimeFilter
-  readTime: StringFilter
-  image: ImageFilter
+  date: StringFilter
   hebrew_scripture: StringFilter
   christian_scripture: StringFilter
   themes: StringFilter
   summary: StringFilter
-  excerpt: StringFilter
   draft: BooleanFilter
   body: RichTextFilter
 }
@@ -187,16 +164,12 @@ input DocumentMutation {
 
 input StoriesMutation {
   title: String
-  category: String
   author: String
   date: String
-  readTime: String
-  image: String
   hebrew_scripture: String
   christian_scripture: String
   themes: [String]
   summary: String
-  excerpt: String
   draft: Boolean
   body: JSON
 }

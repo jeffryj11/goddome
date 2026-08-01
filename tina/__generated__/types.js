@@ -9,16 +9,12 @@ export const StoriesPartsFragmentDoc = gql`
     fragment StoriesParts on Stories {
   __typename
   title
-  category
   author
   date
-  readTime
-  image
   hebrew_scripture
   christian_scripture
   themes
   summary
-  excerpt
   draft
   body
 }
