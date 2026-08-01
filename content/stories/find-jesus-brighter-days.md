@@ -19,8 +19,3 @@ draft: false
 
 If you want, I can also:
 Just tell me “yes, do it”.
-You said:
-Published using Google Docs Report abuseLearn more Soften Your Heart Updated automatically every 5 minutes By Jeanna’ Mead July 26, 2025 There is a song that I often find myself singing in my head while I go about my day and it goes like this Change my heart,oh God May I be like You You are the Potter I am the clay Mold me and make me This is what I pray Change my heart, Oh God As I sing these words, I think of how He has such a soft heart for us, such a deep,compassionate love for each of us and I am in awe and a little ashamed,too, because the truth is that my heart is not always soft, and has at times been hard as a rock and unyielding to His love and the love of others. That is why I spend time each morning in prayer and reading scripture because that is the only way I can become His clay and let Him be the Potter and soften and shape my heart into one that becomes more and more like His every day. It means that I choose what I place into my heart, and guard my heart from anything that keeps me from becoming what He created me to be which is soft like clay. Just imagine how it could be if we all softened our hearts towards each other and to the One who created us, just like He promised. Ezekiel 38:26 “And I will give you a new heart and I will put a new spirit in you, I will take out your stony,stubborn heart and give you a tender,responsive heart.” 
-
-content/stories/soften-your-heart.md
-If you'd like, I can add it to your ZIP bundle with all the other stories as well.

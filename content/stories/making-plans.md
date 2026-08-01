@@ -17,15 +17,3 @@ Making Plans… anyways By Jeanna’ Mead A few days ago, I heard this song that
 > “Making Plans… Anyways”
 By Jeanna’ Mead
 This one is raw, timely, emotional, and beautifully centered on God’s sovereignty — I preserved the natural rhythm and voice exactly as Jeanna’ wrote it.
-Place the file here:
-content/stories/making-plans-anyways.md
-It will appear automatically at:
-/stories/making-plans-anyways
-
-draft: true
-author: "Jeanna’ Mead"
-
-
-Whenever you're ready, send the next story — I will continue turning each into clean, beautiful Markdown for your GodDome site.
-You said:
-By Jeanna’ Mead A continuation of words written by another.. sometimes what I read inspires me in such a way that I feel I must write my thoughts, too. This is what I read in a Youversion devotional.

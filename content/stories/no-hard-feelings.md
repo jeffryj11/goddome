@@ -26,11 +26,3 @@ Sweet Tea
 Common Ground
 No Hard Feelings
 Just say “Zip all stories.”
-You said:
-
-Here is your fully formatted Markdown story for:
-> “Biscuits and Gravy”
-April 27, 2018 — Jeanna’ Soul
-This one is short, poetic, and powerful — so I preserved the formatting, spacing, and emotional rhythm exactly as Jeanna’ wrote it.
-Place this file into:
-content/stories/biscuits-and-gravy.md

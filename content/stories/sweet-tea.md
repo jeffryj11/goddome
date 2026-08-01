@@ -22,8 +22,6 @@ Ready to drop into:
 content/stories/
 
 📄 sweet-tea-embracing-everybody.md
-draft: true
-author: "Jeanna’ Mead"
 
 
 Just drop this file into:

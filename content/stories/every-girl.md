@@ -22,11 +22,3 @@ Place this file here:
 content/stories/you-are-beautiful-for-me.md
 It will publish automatically at:
 /stories/you-are-beautiful-for-me
-
-draft: true
-author: "Jeanna’ Mead"
-
-
-If you have more, send them — I’ll continue formatting each story perfectly for your GodDome site.
-You said:
-By Jeanna’ Mead
