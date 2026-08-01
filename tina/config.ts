@@ -36,11 +36,6 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "category",
-            label: "Category",
-          },
-          {
-            type: "string",
             name: "author",
             label: "Author",
           },
@@ -51,21 +46,32 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "readTime",
-            label: "Read Time",
-          },
-          {
-            type: "image",
-            name: "image",
-            label: "Featured Image",
+            name: "hebrew_scripture",
+            label: "Hebrew Scripture",
           },
           {
             type: "string",
-            name: "excerpt",
-            label: "Excerpt",
+            name: "christian_scripture",
+            label: "Christian Scripture",
+          },
+          {
+            type: "string",
+            name: "themes",
+            label: "Themes",
+            list: true, // handles arrays like ["Healing", "Faith"]
+          },
+          {
+            type: "string",
+            name: "summary",
+            label: "Summary / Excerpt",
             ui: {
               component: "textarea",
             },
+          },
+          {
+            type: "boolean",
+            name: "draft",
+            label: "Draft Status",
           },
           {
             type: "rich-text",
