@@ -58,7 +58,7 @@ export default defineConfig({
             type: "string",
             name: "themes",
             label: "Themes",
-            list: true, // handles arrays like ["Healing", "Faith"]
+            list: true,
           },
           {
             type: "string",
