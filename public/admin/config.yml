@@ -3,8 +3,10 @@ backend:
   repo: jeffryj11/goddome
   branch: main
 
-media_folder: "public/images"
-public_folder: "/images"
+local_backend: true
+
+media_folder: "public/images/stories"
+public_folder: "/images/stories"
 
 collections:
   - name: "stories"
