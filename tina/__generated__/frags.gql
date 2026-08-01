@@ -1,0 +1,11 @@
+fragment StoriesParts on Stories {
+  __typename
+  title
+  category
+  author
+  date
+  readTime
+  image
+  excerpt
+  body
+}
