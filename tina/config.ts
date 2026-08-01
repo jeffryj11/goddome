@@ -5,8 +5,8 @@ export default defineConfig({
     process.env.NEXT_PUBLIC_TINA_BRANCH ||
     process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
     "main",
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-  token: process.env.TINA_TOKEN,
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "",
+  token: process.env.TINA_TOKEN || "",
 
   build: {
     outputFolder: "admin",
@@ -38,32 +38,38 @@ export default defineConfig({
             type: "string",
             name: "author",
             label: "Author",
+            required: false,
           },
           {
-            type: "datetime",
+            type: "string",
             name: "date",
             label: "Date",
+            required: false,
           },
           {
             type: "string",
             name: "hebrew_scripture",
             label: "Hebrew Scripture",
+            required: false,
           },
           {
             type: "string",
             name: "christian_scripture",
             label: "Christian Scripture",
+            required: false,
           },
           {
             type: "string",
             name: "themes",
             label: "Themes",
             list: true,
+            required: false,
           },
           {
             type: "string",
             name: "summary",
             label: "Summary / Excerpt",
+            required: false,
             ui: {
               component: "textarea",
             },
@@ -72,12 +78,14 @@ export default defineConfig({
             type: "boolean",
             name: "draft",
             label: "Draft Status",
+            required: false,
           },
           {
             type: "rich-text",
             name: "body",
             label: "Body",
             isBody: true,
+            required: false,
           },
         ],
       },
