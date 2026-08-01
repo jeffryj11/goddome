@@ -95,7 +95,6 @@ type Stories implements Node & Document {
   christian_scripture: String
   themes: [String]
   summary: String
-  draft: Boolean
   body: JSON
   id: ID!
   _sys: SystemInfo!
@@ -107,11 +106,6 @@ input StringFilter {
   eq: String
   exists: Boolean
   in: [String]
-}
-
-input BooleanFilter {
-  eq: Boolean
-  exists: Boolean
 }
 
 input RichTextFilter {
@@ -128,7 +122,6 @@ input StoriesFilter {
   christian_scripture: StringFilter
   themes: StringFilter
   summary: StringFilter
-  draft: BooleanFilter
   body: RichTextFilter
 }
 
@@ -170,7 +163,6 @@ input StoriesMutation {
   christian_scripture: String
   themes: [String]
   summary: String
-  draft: Boolean
   body: JSON
 }
 

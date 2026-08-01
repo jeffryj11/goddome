@@ -7,6 +7,5 @@ fragment StoriesParts on Stories {
   christian_scripture
   themes
   summary
-  draft
   body
 }

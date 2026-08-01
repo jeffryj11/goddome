@@ -1,18 +1,19 @@
 ---
 title: Biscuits and Gravy
-slug: biscuits-and-gravy
+author: Jeanna’ Mead
 date: '2018-04-27'
-summary: >-
-  A short, tender memory of Mema, love, and the comfort of biscuits and gravy —
-  hot as fire and piled high.
-tags:
+hebrew_scripture: ''
+christian_scripture: 'Acts 3:2'
+themes:
   - memory
   - family
   - mema
   - nostalgia
   - love
-author: Jeanna’ Soul
-draft: true
+summary: >-
+  A short, tender memory of Mema, love, and the comfort of biscuits and gravy —
+  hot as fire and piled high.
+draft: false
 ---
 I remember way back when **biscuits and gravy** were part of my everyday hot as fire piled high on my plate it’s been years and years since I’ve sat down to biscuits and gravy hot as fire piled high on my plate but I remember well **how good love tasted** 💗 *Mema on my mind* *Jeanna’ Mead* 7:16 a.m. — 4/26/18 http://www.jeannasoul.com 
 

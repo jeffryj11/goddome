@@ -15,7 +15,6 @@ export const StoriesPartsFragmentDoc = gql`
   christian_scripture
   themes
   summary
-  draft
   body
 }
     `;
