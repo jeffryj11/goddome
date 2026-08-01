@@ -5,8 +5,8 @@ export default defineConfig({
     process.env.NEXT_PUBLIC_TINA_BRANCH ||
     process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_REF ||
     "main",
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID,
-  token: process.env.TINA_TOKEN,
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "",
+  token: process.env.TINA_TOKEN || "",
 
   build: {
     outputFolder: "admin",
@@ -36,32 +36,14 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "category",
-            label: "Category",
-            required: false,
-          },
-          {
-            type: "string",
             name: "author",
             label: "Author",
             required: false,
           },
           {
-            type: "datetime",
+            type: "string",
             name: "date",
             label: "Date",
-            required: false,
-          },
-          {
-            type: "string",
-            name: "readTime",
-            label: "Read Time",
-            required: false,
-          },
-          {
-            type: "image",
-            name: "image",
-            label: "Featured Image",
             required: false,
           },
           {
@@ -86,19 +68,17 @@ export default defineConfig({
           {
             type: "string",
             name: "summary",
-            label: "Summary",
+            label: "Summary / Excerpt",
+            required: false,
             ui: {
               component: "textarea",
             },
             required: false,
           },
           {
-            type: "string",
-            name: "excerpt",
-            label: "Excerpt",
-            ui: {
-              component: "textarea",
-            },
+            type: "boolean",
+            name: "draft",
+            label: "Draft Status",
             required: false,
           },
           {
