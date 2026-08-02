@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { FaithAssistantProvider } from "@/components/FaithAssistantContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,11 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FAF6F0] text-[#2C221E]">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#FAF6F0] text-[#2C221E]">
+        <FaithAssistantProvider>
+          {children}
+        </FaithAssistantProvider>
+      </body>
     </html>
   );
 }

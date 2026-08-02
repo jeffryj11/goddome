@@ -1,7 +1,11 @@
+'use client';
+
 import Link from 'next/link';
+import { useFaithAssistant } from './FaithAssistantContext';
 
 export default function Navbar() {
   const paypalUrl = process.env.NEXT_PUBLIC_PAYPAL_DONATE_URL || 'https://www.paypal.com/ncp/payment/3L3XFTP7UATMJ';
+  const { openAssistant } = useFaithAssistant();
 
   return (
     <nav className="sticky top-0 z-40 bg-[#FAF6F0]/90 backdrop-blur-md border-b border-[#2C221E]/10 shadow-sm">
@@ -39,9 +43,13 @@ export default function Navbar() {
           <Link href="/prayer" className="hover:text-[#A83226] transition-colors">
             Prayer Requests
           </Link>
-          <Link href="/#assistant" className="hover:text-[#A83226] transition-colors">
-            Faith Assistant
-          </Link>
+          <button 
+            onClick={() => openAssistant()} 
+            className="hover:text-[#A83226] transition-colors cursor-pointer inline-flex items-center gap-1"
+          >
+            <span>Faith Assistant</span>
+            <span className="text-xs">✨</span>
+          </button>
           <Link href="/admin" className="hover:text-[#A83226] transition-colors text-xs font-bold uppercase tracking-wider text-[#D99B26]">
             CMS Admin
           </Link>
@@ -61,12 +69,13 @@ export default function Navbar() {
             </svg>
             Donate
           </a>
-          <Link
-            href="/prayer"
-            className="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-sm transition-all transform hover:-translate-y-0.5"
+          <button
+            onClick={() => openAssistant()}
+            className="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-sm transition-all transform hover:-translate-y-0.5 cursor-pointer gap-1"
           >
-            Request Prayer
-          </Link>
+            <span>Reflect Now</span>
+            <span>✨</span>
+          </button>
         </div>
       </div>
     </nav>
