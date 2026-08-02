@@ -5,7 +5,7 @@ const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY || '',
 });
 
-const MODELS_TO_TRY = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-2.5-flash'];
+const MODELS_TO_TRY = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
 
 export async function POST(req: Request) {
   try {
