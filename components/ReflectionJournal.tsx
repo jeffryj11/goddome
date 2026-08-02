@@ -1,118 +1,116 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 interface ReflectionJournalProps {
-  storyId?: string;
   storySlug?: string;
+  storyId?: string;
   storyTitle?: string;
 }
 
-export default function ReflectionJournal({ storyId, storySlug, storyTitle }: ReflectionJournalProps) {
-  const id = storyId || storySlug || 'default';
-  const [note, setNote] = useState('');
-  const [savedTime, setSavedTime] = useState<string | null>(null);
-
+export default function ReflectionJournal({
+  storySlug,
+  storyId,
+  storyTitle = "this story",
+}: ReflectionJournalProps) {
+  const id = storySlug || storyId || "default";
   const storageKey = `goddome_reflection_${id}`;
+  const [reflection, setReflection] = useState<string>("");
+  const [saved, setSaved] = useState<boolean>(false);
+  const [copied, setCopied] = useState<boolean>(false);
 
+  // Load existing entry from localStorage on mount or slug change
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const savedNote = localStorage.getItem(storageKey);
       if (savedNote) {
-        setNote(savedNote);
-      }
-      const time = localStorage.getItem(`${storageKey}_time`);
-      if (time) {
-        setSavedTime(time);
+        setReflection(savedNote);
+      } else {
+        setReflection("");
       }
     }
   }, [storageKey]);
 
+  // Handle saving to localStorage
   const handleSave = () => {
-    if (typeof window !== 'undefined') {
-      localStorage.setItem(storageKey, note);
-      const now = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      localStorage.setItem(`${storageKey}_time`, now);
-      setSavedTime(now);
+    if (typeof window !== "undefined") {
+      localStorage.setItem(storageKey, reflection);
+      setSaved(true);
+      setTimeout(() => setSaved(false), 3000);
     }
   };
 
+  // Handle clearing the saved note
   const handleClear = () => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       if (confirm('Are you sure you want to clear your reflection note for this devotional?')) {
         localStorage.removeItem(storageKey);
-        localStorage.removeItem(`${storageKey}_time`);
-        setNote('');
-        setSavedTime(null);
+        setReflection("");
       }
     }
   };
 
-  return (
-    <section className="my-12 bg-white border border-[#2C221E]/10 rounded-3xl p-8 sm:p-10 shadow-sm relative overflow-hidden">
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-[#D99B26]/15 text-[#D99B26] flex items-center justify-center shadow-xs">
-            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-            </svg>
-          </div>
-          <div>
-            <h3 className="font-serif text-2xl font-bold text-[#2C221E] flex items-center gap-2">
-              Quiet Reflection Journal
-            </h3>
-            {storyTitle && (
-              <p className="text-xs text-[#2C221E]/60 font-light">
-                Reflecting on "{storyTitle}"
-              </p>
-            )}
-          </div>
-        </div>
+  // Copy entry to clipboard
+  const handleCopy = () => {
+    navigator.clipboard.writeText(reflection);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
 
-        <span className="text-[11px] font-semibold text-[#D99B26] bg-[#D99B26]/10 px-3 py-1 rounded-full border border-[#D99B26]/20">
-          🔒 100% Private (Saved on your device)
-        </span>
+  return (
+    <section className="mt-12 p-6 md:p-8 bg-amber-50/60 border border-amber-200/80 rounded-2xl shadow-sm">
+      <div className="flex items-center justify-between mb-4">
+        <div>
+          <h3 className="text-xl font-serif font-semibold text-slate-900 flex items-center gap-2">
+            <span>✍️</span> Private Reflection Journal
+          </h3>
+          <p className="text-xs text-amber-800/80 mt-1">
+            🔒 <strong>100% Private:</strong> Your notes are saved only in your browser and never sent to our servers.
+          </p>
+        </div>
       </div>
 
-      <p className="text-xs text-[#2C221E]/70 mb-4 leading-relaxed font-light">
-        Take a quiet moment to pause. What message or Scripture stood out to you today? Write down your thoughts, prayers, or commitments below.
-      </p>
+      <div className="mb-4">
+        <label htmlFor="reflection-textarea" className="block text-sm font-medium text-slate-700 mb-2">
+          How is God speaking to you through <span className="italic font-serif">"{storyTitle}"</span>?
+        </label>
+        <textarea
+          id="reflection-textarea"
+          rows={5}
+          value={reflection}
+          onChange={(e) => setReflection(e.target.value)}
+          placeholder="Write your prayers, reflections, or action steps here..."
+          className="w-full p-4 rounded-xl border border-amber-200 focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-white/90 text-slate-800 text-sm placeholder-slate-400 focus:outline-none transition font-serif leading-relaxed"
+        />
+      </div>
 
-      <label htmlFor="reflection-textarea" className="sr-only">Personal Reflection Input</label>
-      <textarea
-        id="reflection-textarea"
-        rows={4}
-        value={note}
-        onChange={(e) => setNote(e.target.value)}
-        placeholder="What did God whisper to your heart while reading this story? Record your reflection here..."
-        className="w-full p-4 bg-[#FAF6F0] border border-[#2C221E]/15 rounded-2xl text-[#2C221E] text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D99B26] transition-colors resize-none font-serif leading-relaxed mb-4 shadow-inner"
-        aria-label="Personal Reflection Input"
-      />
-
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-[#2C221E]/60 italic font-light">
-          {savedTime ? `✓ Saved locally at ${savedTime}` : 'Private & saved in your browser'}
-        </span>
-
-        <div className="flex items-center space-x-3">
-          {note && (
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleSave}
+            className="px-5 py-2.5 bg-amber-700 hover:bg-amber-800 text-white text-xs font-medium rounded-xl transition shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-amber-600 cursor-pointer"
+          >
+            {saved ? "✓ Saved to Device" : "Save Note"}
+          </button>
+          
+          {reflection && (
             <button
-              type="button"
-              onClick={handleClear}
-              className="text-[#2C221E]/50 hover:text-[#A83226] font-semibold transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
+              onClick={handleCopy}
+              className="px-4 py-2.5 bg-white border border-amber-200 hover:bg-amber-100/50 text-slate-700 text-xs font-medium rounded-xl transition cursor-pointer"
             >
-              Clear Note
+              {copied ? "✓ Copied" : "Copy"}
             </button>
           )}
-
-          <button
-            type="button"
-            onClick={handleSave}
-            className="px-6 py-2.5 bg-[#D99B26] hover:bg-[#c28a21] text-[#2C221E] font-bold text-xs rounded-full shadow-xs transition-all transform hover:-translate-y-0.5 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
-          >
-            Save Reflection
-          </button>
         </div>
+
+        {reflection && (
+          <button
+            onClick={handleClear}
+            className="text-xs text-slate-400 hover:text-red-600 transition underline cursor-pointer"
+          >
+            Clear note
+          </button>
+        )}
       </div>
     </section>
   );

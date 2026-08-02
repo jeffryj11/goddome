@@ -230,7 +230,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
         />
 
         {/* Quiet Reflection Journal Component */}
-        <ReflectionJournal storyId={story.id} storyTitle={story.title} />
+        <ReflectionJournal storySlug={story.id} storyId={story.id} storyTitle={story.title} />
 
         {/* Newsletter Subscription Box */}
         <NewsletterSignup />
