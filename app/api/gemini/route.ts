@@ -7,6 +7,8 @@ const ai = new GoogleGenAI({
 
 const MODELS_TO_TRY = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
 
+const SYSTEM_PROMPT = `You are the GodDome Faith & Reflection Assistant, a warm, compassionate, and biblically grounded spiritual companion for readers of GodDome (authored by Jeanna’ Mead). Your mission is to provide gentle encouragement, relevant scripture references, and thoughtful reflection points to help individuals find peace and grace. Keep your tone quiet, uplifting, and formatted in clean, readable Markdown with clear headings or bullet points where helpful.`;
+
 export async function POST(req: Request) {
   try {
     const { prompt } = await req.json();
@@ -25,13 +27,14 @@ export async function POST(req: Request) {
       );
     }
 
+    const fullPrompt = `${SYSTEM_PROMPT}\n\nUser Question/Reflection Topic: ${prompt}`;
     let lastError: any = null;
 
     for (const model of MODELS_TO_TRY) {
       try {
         const response = await ai.models.generateContent({
           model,
-          contents: prompt,
+          contents: fullPrompt,
         });
 
         if (response?.text) {
@@ -42,7 +45,6 @@ export async function POST(req: Request) {
         lastError = err;
         const errString = String(err?.message || err);
         
-        // If 429 quota error or 404, fallback to next model
         if (
           err?.status === 429 ||
           errString.includes('429') ||
@@ -56,7 +58,6 @@ export async function POST(req: Request) {
       }
     }
 
-    // Handle 429 rate limit or quota exhaust with a friendly message
     const lastErrString = String(lastError?.message || lastError);
     if (
       lastError?.status === 429 ||

@@ -26,11 +26,22 @@ export default function AudioPlayer({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const cacheKey = storyId ? `goddome_audio_cache_${storyId}` : null;
+
   useEffect(() => {
     if (src) {
       setAudioSrc(src);
+      return;
     }
-  }, [src]);
+
+    // Check client-side sessionStorage cache for pre-synthesized audio
+    if (cacheKey && typeof window !== 'undefined') {
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) {
+        setAudioSrc(cached);
+      }
+    }
+  }, [src, cacheKey]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -53,6 +64,22 @@ export default function AudioPlayer({
 
   const handleGenerateAudio = async () => {
     if (!storyText) return;
+
+    // Use cached audio if available
+    if (cacheKey && typeof window !== 'undefined') {
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) {
+        setAudioSrc(cached);
+        setTimeout(() => {
+          if (audioRef.current) {
+            audioRef.current.play();
+            setIsPlaying(true);
+          }
+        }, 150);
+        return;
+      }
+    }
+
     setLoading(true);
     setError(null);
 
@@ -72,6 +99,20 @@ export default function AudioPlayer({
       const objectUrl = URL.createObjectURL(blob);
       setAudioSrc(objectUrl);
 
+      // Save to sessionStorage cache if under limit
+      if (cacheKey && typeof window !== 'undefined') {
+        try {
+          const reader = new FileReader();
+          reader.readAsDataURL(blob);
+          reader.onloadend = () => {
+            const base64data = reader.result as string;
+            sessionStorage.setItem(cacheKey, base64data);
+          };
+        } catch {
+          // Ignore cache quota errors silently
+        }
+      }
+
       setTimeout(() => {
         if (audioRef.current) {
           audioRef.current.play();
@@ -80,7 +121,7 @@ export default function AudioPlayer({
       }, 300);
     } catch (err: any) {
       console.error(err);
-      setError(err.message || 'ElevenLabs API key not configured yet.');
+      setError(err.message || 'ElevenLabs API key not configured in Vercel settings yet.');
     } finally {
       setLoading(false);
     }
@@ -113,7 +154,7 @@ export default function AudioPlayer({
   };
 
   const toggleSpeed = () => {
-    const speeds = [1, 1.25, 1.5, 2];
+    const speeds = [1, 1.25, 1.5];
     const nextIndex = (speeds.indexOf(playbackRate) + 1) % speeds.length;
     const newRate = speeds[nextIndex];
     setPlaybackRate(newRate);
@@ -129,8 +170,10 @@ export default function AudioPlayer({
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
+  const timeRemaining = duration > currentTime ? duration - currentTime : 0;
+
   return (
-    <div className="my-8 bg-gradient-to-r from-[#2C221E] to-[#3D2F2A] text-[#FAF6F0] rounded-2xl p-6 shadow-md border border-[#D99B26]/30 relative overflow-hidden">
+    <div className="my-8 bg-gradient-to-r from-[#2C221E] via-[#3D2F2A] to-[#2C221E] text-[#FAF6F0] rounded-2xl p-6 shadow-md border border-[#D99B26]/30 relative overflow-hidden">
       {audioSrc && <audio ref={audioRef} src={audioSrc} preload="metadata" />}
 
       {/* Header Info */}
@@ -143,7 +186,7 @@ export default function AudioPlayer({
           </div>
           <div>
             <span className="text-[11px] uppercase tracking-wider font-bold text-[#D99B26]">
-              ElevenLabs AI Voice
+              ElevenLabs AI Voice Narration
             </span>
             <h4 className="font-serif text-lg font-bold text-[#FAF6F0] leading-tight">
               {title}
@@ -196,7 +239,7 @@ export default function AudioPlayer({
             />
             <div className="flex justify-between text-[11px] text-[#FAF6F0]/70 font-mono">
               <span>{formatTime(currentTime)}</span>
-              <span>{formatTime(duration)}</span>
+              <span>-{formatTime(timeRemaining)}</span>
             </div>
           </div>
         </div>
@@ -216,10 +259,12 @@ export default function AudioPlayer({
         </div>
       )}
 
+      {/* Styled Helper Error Banner */}
       {error && (
-        <p className="text-xs text-[#A83226] bg-[#A83226]/10 p-2.5 rounded-lg mt-3 font-semibold">
-          {error}
-        </p>
+        <div className="mt-3 p-3 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-center gap-2" role="alert">
+          <span aria-hidden="true">🙏</span>
+          <span>{error}</span>
+        </div>
       )}
     </div>
   );

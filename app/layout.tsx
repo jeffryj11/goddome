@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FaithAssistantProvider } from "@/components/FaithAssistantContext";
@@ -13,10 +13,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: "#A83226",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://goddome.org'),
   title: "GodDome — Faithful Words: Christian Stories by Jeanna’ Mead",
   description: "Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.",
+  manifest: "/manifest.json",
   icons: {
     icon: [
       { url: '/favicon.ico' },
