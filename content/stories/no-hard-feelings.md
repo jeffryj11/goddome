@@ -3,7 +3,7 @@ title: No Hard Feelings
 author: Jeanna’ Mead
 date: '2025-07-15'
 hebrew_scripture: ''
-christian_scripture: Romans 12:10
+christian_scripture: 'Romans 12:10'
 themes:
   - Forgiveness
   - Love
@@ -14,7 +14,6 @@ summary: >-
   this world with no hard feelings — only love.
 draft: false
 ---
-
 There’s lyrics to this song that hit the soul in a way that makes you stop and think about what *really* matters at the end: **love**.
 
 > *“When my body won’t hold me anymore*  

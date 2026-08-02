@@ -14,7 +14,6 @@ summary: >-
   lived out radical hospitality over glasses of sweet iced tea.
 draft: false
 ---
-
 It’s Sunday morning and, as I eat my oatmeal at my kitchen table, I’m thinking about this devotional I read yesterday morning. When something stays on my mind, I have to write about it in order to make sense of it, somehow. The devotional is called **“Embracing Everyone”**, and I’m going to paste it here and add my thoughts, like I always do.
 
 > “Across the world, the tradition of sharing a cup of tea is important. These occasions give us time to relax, engage and get to know each other. Taking the time to enjoy tea together also creates an opportunity to share sacred space...  

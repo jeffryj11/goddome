@@ -3,7 +3,7 @@ title: Why I Stayed on My Knees for 2 Hours Straight
 author: Jeanna’ Mead
 date: '2025-10-21'
 hebrew_scripture: ''
-christian_scripture: Galatians 6:2
+christian_scripture: 'Galatians 6:2'
 themes:
   - Prayer
   - Intercession
@@ -15,10 +15,7 @@ summary: >-
   when God holds us on our knees for the sake of someone else’s breakthrough.
 draft: false
 ---
-
 A reminder of the sacred power of **intercessory prayer**, of loving someone so deeply that we kneel before God on their behalf.
-
----
 
 ## **Why I Stayed on My Knees for 2 Hours Straight**
 
@@ -39,8 +36,6 @@ The next day, I checked on my friend. She told me she’d had her life-changing 
 > **“Knowing you were praying for me gave me the strength I needed to stay strong.”**
 
 When we love people enough to pray for them, who knows how God will move?
-
----
 
 ## **The Power of Intercession**
 
@@ -69,8 +64,6 @@ George Müller recorded over **50,000 answered prayers** in his lifetime— **30
 
 God still answers prayer. Even now. Even in the hardest circumstances.
 
----
-
 ## **What Can We Do With This?**
 
 If this message hits home, here are steps you can take:
@@ -78,8 +71,6 @@ If this message hits home, here are steps you can take:
 2. Pray for them as an act of love.
 3. Remember that your limits are real, but God’s limits do not exist.
 4. Trust that prayer is not the least you can do—it is often the most.
-
----
 
 ## **Jeanna’s Reflection**
 

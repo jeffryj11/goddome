@@ -18,8 +18,3 @@ By Jeanna’ Mead A continuation of words written by another.. sometimes what I 
 
 > “The Whispering Spot”
 By Jeanna’ Mead
-This one is rich, layered, and deeply spiritual. I kept the devotional excerpt just as you shared it, followed by your reflection, exactly in your voice.
-Place this file at:
-content/stories/the-whispering-spot.md
-It will publish automatically at:
-/stories/the-whispering-spot

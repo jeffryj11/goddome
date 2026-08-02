@@ -16,13 +16,3 @@ Every girl, young and old, has to face her own reflection Twirl around and stare
 
 > “You Are Beautiful for Me”
 By Jeanna’ Mead
-This is a powerful devotional about identity, beauty, and God’s loving eyes.
-I preserved the emotion, flow, and poetic rhythm exactly as written.
-Place this file here:
-content/stories/you-are-beautiful-for-me.md
-It will publish automatically at:
-/stories/you-are-beautiful-for-me
-
-
-
-By Jeanna’ Mead
