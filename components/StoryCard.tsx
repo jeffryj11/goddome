@@ -9,7 +9,7 @@ export default function StoryCard({ story }: StoryCardProps) {
   return (
     <Link
       href={`/stories/${story.id}`}
-      className="group block bg-white border border-[#2C221E]/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 cursor-pointer h-full"
+      className="group relative flex flex-col justify-between h-full w-full bg-white border border-[#2C221E]/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 cursor-pointer"
     >
       <div>
         {/* Story Cover Image */}
@@ -20,7 +20,7 @@ export default function StoryCard({ story }: StoryCardProps) {
               alt={story.title}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute top-3 left-3">
+            <div className="absolute top-3 left-3 z-10">
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#2C221E]/80 text-[#FAF6F0] backdrop-blur-md shadow-xs">
                 {story.category || 'Devotional'}
               </span>
@@ -51,7 +51,7 @@ export default function StoryCard({ story }: StoryCardProps) {
 
       <div className="p-6 pt-0 mt-auto">
         <span className="inline-flex items-center text-sm font-semibold text-[#A83226] group-hover:text-[#8f2a20] transition-colors">
-          Read Devotional 
+          Read Devotional
           <span className="ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-200">→</span>
         </span>
       </div>
