@@ -31,7 +31,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
     notFound();
   }
 
-  const paypalUrl = process.env.NEXT_PUBLIC_PAYPAL_DONATE_URL || 'https://www.paypal.com/donate';
+  const paypalUrl = process.env.NEXT_PUBLIC_PAYPAL_DONATE_URL || 'https://www.paypal.com/ncp/payment/3L3XFTP7UATMJ';
 
   return (
     <article className="min-h-screen bg-[#FAF6F0] text-[#2C221E] py-16 px-6 sm:px-12">
