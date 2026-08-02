@@ -4,6 +4,7 @@ fragment StoriesParts on Stories {
   seoTitle
   seoDescription
   featuredImage
+  tags
   metaTitle
   metaDescription
   ogImage

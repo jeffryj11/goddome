@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     const title = story.seoTitle || story.metaTitle || story.title;
     const fullTitle = `${title} | GodDome`;
     const description = story.seoDescription || story.metaDescription || story.excerpt || story.summary || "A spiritual journey and devotional reflection on GodDome.";
-    const image = story.featuredImage || story.ogImage || story.image || '/images/logo.png';
+    const image = story.featuredImage || story.ogImage || story.image || '/images/image_ef9498.jpg';
     const url = `https://goddome.org/stories/${resolvedParams.id}`;
 
     return {
@@ -94,6 +94,20 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
           <p className="text-[#2C221E]/70 italic text-base sm:text-lg">
             By Jeanna’ Mead
           </p>
+
+          {/* Topic Tags Badges if available */}
+          {story.tags && story.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {story.tags.map((tag: string, index: number) => (
+                <span 
+                  key={index}
+                  className="px-3 py-1 bg-[#2C221E]/5 text-[#2C221E]/80 text-xs font-semibold rounded-full border border-[#2C221E]/10"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
         </header>
 
         {/* Story Body (Rendered HTML from Markdown) */}

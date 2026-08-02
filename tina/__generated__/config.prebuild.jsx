@@ -52,6 +52,20 @@ var config_default = defineConfig({
           },
           {
             type: "string",
+            name: "tags",
+            label: "Topics / Tags",
+            list: true,
+            options: [
+              "Faith & Trust",
+              "Comfort & Healing",
+              "Encouragement",
+              "Everyday Grace",
+              "Scripture Reflection",
+              "Poetry"
+            ]
+          },
+          {
+            type: "string",
             name: "metaTitle",
             label: "Meta Title",
             required: false

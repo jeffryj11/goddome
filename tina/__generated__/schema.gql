@@ -92,6 +92,7 @@ type Stories implements Node & Document {
   seoTitle: String
   seoDescription: String
   featuredImage: String
+  tags: [String]
   metaTitle: String
   metaDescription: String
   ogImage: String
@@ -132,6 +133,7 @@ input StoriesFilter {
   seoTitle: StringFilter
   seoDescription: StringFilter
   featuredImage: ImageFilter
+  tags: StringFilter
   metaTitle: StringFilter
   metaDescription: StringFilter
   ogImage: ImageFilter
@@ -179,6 +181,7 @@ input StoriesMutation {
   seoTitle: String
   seoDescription: String
   featuredImage: String
+  tags: [String]
   metaTitle: String
   metaDescription: String
   ogImage: String

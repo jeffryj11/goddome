@@ -12,6 +12,7 @@ export const StoriesPartsFragmentDoc = gql`
   seoTitle
   seoDescription
   featuredImage
+  tags
   metaTitle
   metaDescription
   ogImage
