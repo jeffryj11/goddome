@@ -91,6 +91,7 @@ type Stories implements Node & Document {
   title: String!
   date: String
   scripture: String
+  featuredQuote: String
   topics: [String]
   excerpt: String
   author: String
@@ -136,6 +137,7 @@ input StoriesFilter {
   title: StringFilter
   date: StringFilter
   scripture: StringFilter
+  featuredQuote: StringFilter
   topics: StringFilter
   excerpt: StringFilter
   author: StringFilter
@@ -188,6 +190,7 @@ input StoriesMutation {
   title: String
   date: String
   scripture: String
+  featuredQuote: String
   topics: [String]
   excerpt: String
   author: String

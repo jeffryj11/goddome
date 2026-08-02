@@ -3,6 +3,7 @@ fragment StoriesParts on Stories {
   title
   date
   scripture
+  featuredQuote
   topics
   excerpt
   author

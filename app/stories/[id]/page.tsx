@@ -2,6 +2,8 @@ import { getStoryData, getSortedStoriesData } from '@/lib/stories';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import ShareableQuote from '@/components/ShareableQuote';
+import ReflectionJournal from '@/components/ReflectionJournal';
 
 export async function generateStaticParams() {
   const stories = getSortedStoriesData();
@@ -18,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     const title = story.seoTitle || story.metaTitle || story.title;
     const fullTitle = `${title} | GodDome`;
     const defaultDesc = "Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.";
-    const description = story.excerpt || story.seoDescription || story.metaDescription || story.summary || defaultDesc;
+    const description = story.featuredQuote || story.excerpt || story.seoDescription || story.metaDescription || story.summary || defaultDesc;
     const image = story.heroImage || story.featuredImage || story.ogImage || story.image || '/images/image_ef9498.jpg';
     const url = `https://goddome.org/stories/${resolvedParams.id}`;
 
@@ -79,12 +81,18 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
 
         {/* Story Header */}
         <header className="border-b border-[#2C221E]/15 pb-8 mb-10">
-          <div className="flex items-center gap-3 text-sm font-semibold text-[#D99B26] uppercase tracking-wider mb-3">
-            <span>{story.category || "Devotional"}</span>
+          <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-[#D99B26] tracking-wider mb-3">
+            <span className="uppercase">{story.category || "Devotional"}</span>
             {story.date && (
               <>
                 <span>•</span>
                 <time>{story.date}</time>
+              </>
+            )}
+            {story.readTime && (
+              <>
+                <span>•</span>
+                <span className="text-[#2C221E]/60 font-normal">{story.readTime}</span>
               </>
             )}
           </div>
@@ -94,23 +102,40 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
           </h1>
 
           <p className="text-[#2C221E]/70 italic text-base sm:text-lg">
-            By Jeanna’ Mead
+            By {story.author || 'Jeanna’ Mead'}
           </p>
+
+          {/* Scripture Reference Tag */}
+          {story.scripture && (
+            <p className="text-sm font-serif italic text-[#D99B26] mt-3">
+              📖 Scripture: {story.scripture}
+            </p>
+          )}
 
           {/* Topic Tags Badges */}
           {story.tags && story.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-4">
               {story.tags.map((tag: string, index: number) => (
-                <span 
+                <Link
                   key={index}
-                  className="px-3 py-1 bg-[#2C221E]/5 text-[#2C221E]/80 text-xs font-semibold rounded-full border border-[#2C221E]/10"
+                  href={`/topics/${tag.toLowerCase().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-')}`}
+                  className="px-3 py-1 bg-[#2C221E]/5 hover:bg-[#D99B26]/20 text-[#2C221E]/80 text-xs font-semibold rounded-full border border-[#2C221E]/10 transition-colors"
                 >
                   {tag}
-                </span>
+                </Link>
               ))}
             </div>
           )}
         </header>
+
+        {/* Featured Pull-Quote Component if present in frontmatter */}
+        {story.featuredQuote && (
+          <ShareableQuote 
+            quote={story.featuredQuote} 
+            author={story.author || 'Jeanna’ Mead'} 
+            storyTitle={story.title} 
+          />
+        )}
 
         {/* Story Body (Rendered HTML from Markdown) */}
         <div 
@@ -122,6 +147,9 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
                      prose-a:text-[#A83226] prose-a:underline hover:prose-a:text-[#8f2a20]"
           dangerouslySetInnerHTML={{ __html: story.contentHtml }}
         />
+
+        {/* Quiet Reflection Journal Component */}
+        <ReflectionJournal storyId={story.id} storyTitle={story.title} />
 
         {/* Newsletter Subscription Box */}
         <NewsletterSignup />

@@ -48,6 +48,15 @@ export default defineConfig({
           },
           {
             type: "string",
+            name: "featuredQuote",
+            label: "Featured Quote (for social sharing & pull-quotes)",
+            required: false,
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "string",
             name: "topics",
             label: "Topics",
             list: true,

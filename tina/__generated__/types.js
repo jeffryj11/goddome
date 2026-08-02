@@ -11,6 +11,7 @@ export const StoriesPartsFragmentDoc = gql`
   title
   date
   scripture
+  featuredQuote
   topics
   excerpt
   author
