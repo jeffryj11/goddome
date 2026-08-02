@@ -13,9 +13,33 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   try {
     const resolvedParams = await Promise.resolve(params);
     const story = await getStoryData(resolvedParams.id);
+    
+    const title = story.metaTitle || `${story.title} | GodDome`;
+    const description = story.metaDescription || story.excerpt || story.summary || `Read ${story.title} by Jeanna’ Mead on GodDome.`;
+    const image = story.ogImage || story.image || '/images/logo.png';
+
     return {
-      title: `${story.title} | GodDome`,
-      description: story.excerpt || `Read ${story.title} by Jeanna’ Mead on GodDome.`,
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        type: 'article',
+        publishedTime: story.date,
+        authors: [story.author || 'Jeanna’ Mead'],
+        images: [
+          {
+            url: image,
+            alt: story.title,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: [image],
+      },
     };
   } catch {
     return { title: 'Story Not Found | GodDome' };

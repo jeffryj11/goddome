@@ -9,6 +9,9 @@ export const StoriesPartsFragmentDoc = gql`
     fragment StoriesParts on Stories {
   __typename
   title
+  metaTitle
+  metaDescription
+  ogImage
   author
   date
   hebrew_scripture

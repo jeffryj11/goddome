@@ -31,6 +31,27 @@ var config_default = defineConfig({
           },
           {
             type: "string",
+            name: "metaTitle",
+            label: "SEO Meta Title",
+            required: false
+          },
+          {
+            type: "string",
+            name: "metaDescription",
+            label: "SEO Meta Description (150 chars)",
+            required: false,
+            ui: {
+              component: "textarea"
+            }
+          },
+          {
+            type: "image",
+            name: "ogImage",
+            label: "OG Image / Social Thumbnail",
+            required: false
+          },
+          {
+            type: "string",
             name: "author",
             label: "Author",
             required: false
@@ -64,6 +85,7 @@ var config_default = defineConfig({
             type: "string",
             name: "summary",
             label: "Summary / Excerpt",
+            required: false,
             ui: {
               component: "textarea"
             }

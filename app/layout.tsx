@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://goddome.org'),
   title: "GodDome — Faithful Words: Christian Stories by Jeanna’ Mead",
   description: "Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.",
   icons: {
