@@ -30,18 +30,18 @@ export default function Navbar() {
           <Link href="/" className="hover:text-[#A83226] transition-colors">
             Home
           </Link>
-          <a href="#stories" className="hover:text-[#A83226] transition-colors">
+          <Link href="/#stories" className="hover:text-[#A83226] transition-colors">
             Devotionals
-          </a>
+          </Link>
           <Link href="/topics" className="hover:text-[#A83226] transition-colors">
             Topics
           </Link>
           <Link href="/prayer" className="hover:text-[#A83226] transition-colors">
             Prayer Requests
           </Link>
-          <a href="#assistant" className="hover:text-[#A83226] transition-colors">
+          <Link href="/#assistant" className="hover:text-[#A83226] transition-colors">
             Faith Assistant
-          </a>
+          </Link>
           <Link href="/admin" className="hover:text-[#A83226] transition-colors text-xs font-bold uppercase tracking-wider text-[#D99B26]">
             CMS Admin
           </Link>
