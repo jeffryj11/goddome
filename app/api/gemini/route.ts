@@ -1,15 +1,10 @@
 import { GoogleGenAI } from '@google/genai';
 import { NextResponse } from 'next/server';
 
-const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY || '',
-});
-
-const MODELS_TO_TRY = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
-
-const SYSTEM_PROMPT = `You are the GodDome Faith & Reflection Assistant, a warm, compassionate, and biblically grounded spiritual companion for readers of GodDome (authored by Jeanna’ Mead). Your mission is to provide gentle encouragement, relevant scripture references, and thoughtful reflection points to help individuals find peace and grace. Keep your tone quiet, uplifting, and formatted in clean, readable Markdown with clear headings or bullet points where helpful.`;
-
 export async function POST(req: Request) {
+  console.log('Gemini API Key exists:', !!process.env.GEMINI_API_KEY);
+  console.log('Gemini API Key length:', process.env.GEMINI_API_KEY ? process.env.GEMINI_API_KEY.length : 0);
+
   try {
     const { prompt } = await req.json();
 
@@ -22,26 +17,35 @@ export async function POST(req: Request) {
 
     if (!process.env.GEMINI_API_KEY) {
       return NextResponse.json(
-        { error: 'Faith Assistant is warming up. Please set GEMINI_API_KEY in Vercel environment variables.' },
+        { error: 'GEMINI_API_KEY environment variable is not set in Vercel. Please add GEMINI_API_KEY to your Vercel Environment Variables.' },
         { status: 503 }
       );
     }
+
+    const ai = new GoogleGenAI({
+      apiKey: process.env.GEMINI_API_KEY,
+    });
+
+    const MODELS_TO_TRY = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+    const SYSTEM_PROMPT = `You are the GodDome Faith & Reflection Assistant, a warm, compassionate, and biblically grounded spiritual companion for readers of GodDome (authored by Jeanna’ Mead). Your mission is to provide gentle encouragement, relevant scripture references, and thoughtful reflection points to help individuals find peace and grace. Keep your tone quiet, uplifting, and formatted in clean, readable Markdown with clear headings or bullet points where helpful.`;
 
     const fullPrompt = `${SYSTEM_PROMPT}\n\nUser Question/Reflection Topic: ${prompt}`;
     let lastError: any = null;
 
     for (const model of MODELS_TO_TRY) {
       try {
+        console.log(`Attempting Gemini API call with model: ${model}`);
         const response = await ai.models.generateContent({
           model,
           contents: fullPrompt,
         });
 
         if (response?.text) {
+          console.log(`Gemini API call succeeded with model: ${model}`);
           return NextResponse.json({ text: response.text });
         }
       } catch (err: any) {
-        console.error(`Gemini API error with model ${model}:`, err);
+        console.error(`Gemini API error with model ${model}:`, err?.message || err);
         lastError = err;
         const errString = String(err?.message || err);
         
@@ -58,27 +62,17 @@ export async function POST(req: Request) {
       }
     }
 
-    const lastErrString = String(lastError?.message || lastError);
-    if (
-      lastError?.status === 429 ||
-      lastErrString.includes('429') ||
-      lastErrString.includes('RESOURCE_EXHAUSTED') ||
-      lastErrString.includes('Quota')
-    ) {
-      return NextResponse.json(
-        { error: 'Our Faith Assistant is currently receiving high volume. Please wait a moment and try again.' },
-        { status: 429 }
-      );
-    }
+    const lastErrMessage = lastError?.message || String(lastError || 'Unknown Gemini API error');
+    console.error('All Gemini models failed. Last error:', lastErrMessage);
 
     return NextResponse.json(
-      { error: 'Unable to connect to Faith Assistant right now. Please try again in a few moments.' },
-      { status: 500 }
+      { error: `Gemini API Error: ${lastErrMessage}` },
+      { status: lastError?.status || 500 }
     );
   } catch (error: any) {
-    console.error('Error generating reflection with Gemini API:', error);
+    console.error('Error in Gemini API Route handler:', error);
     return NextResponse.json(
-      { error: 'Unable to connect to Faith Assistant right now. Please try again in a few moments.' },
+      { error: `Server Error: ${error?.message || String(error)}` },
       { status: 500 }
     );
   }
