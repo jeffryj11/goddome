@@ -20,13 +20,13 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-40 bg-[#FAF6F0]/95 backdrop-blur-md border-b border-[#2C221E]/10 shadow-sm">
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* 1. Brand Logo & Title (Home: /) */}
+        {/* 1. Brand Logo & Title with Praying Hands Emblem */}
         <Link href="/" onClick={closeMobileMenu} className="flex items-center space-x-3 group">
-          <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#D99B26]/30 shadow-sm transition-transform group-hover:scale-105">
+          <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#D99B26]/40 bg-[#2C221E] p-1 shadow-sm transition-transform group-hover:scale-105 flex items-center justify-center">
             <img
-              src="/images/logo.png"
-              alt="GodDome Emblem"
-              className="w-full h-full object-cover"
+              src="/praying-hands.svg"
+              alt="GodDome Praying Hands Logo"
+              className="w-full h-full object-contain"
             />
           </div>
           <div>

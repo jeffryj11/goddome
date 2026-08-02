@@ -23,12 +23,9 @@ export const metadata: Metadata = {
   description: "Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.",
   manifest: "/manifest.json",
   icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/images/logo.png', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
-    apple: '/images/logo.png',
+    icon: "/praying-hands.svg",
+    shortcut: "/praying-hands.svg",
+    apple: "/praying-hands.svg",
   },
 };
 

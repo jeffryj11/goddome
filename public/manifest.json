@@ -8,15 +8,9 @@
   "theme_color": "#A83226",
   "icons": [
     {
-      "src": "/images/logo.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/images/logo.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "/praying-hands.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]
