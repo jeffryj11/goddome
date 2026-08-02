@@ -3,13 +3,10 @@ title: Find Jesus — Brighter Days
 author: Jeanna’ Mead
 date: '2025-03-07'
 hebrew_scripture: ''
-christian_scripture: 'Ezekiel 38:26'
+christian_scripture: ''
 themes:
-  - faith
-  - healing
-  - hope
-  - Jesus
-  - devotional
+  - Faith
+  - Devotional
 summary: >-
   Jeanna’ writes about songs, hurt, healing, faith, and the gentle ways God uses
   lyrics, night skies, and everyday moments to whisper hope.
@@ -19,3 +16,6 @@ draft: false
 
 If you want, I can also:
 Just tell me “yes, do it”.
+
+content/stories/soften-your-heart.md
+If you'd like, I can add it to your ZIP bundle with all the other stories as well.

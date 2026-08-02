@@ -5,11 +5,8 @@ date: '2025-02-26'
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
-  - unity
-  - faith
-  - love
-  - humility
-  - community
+  - Faith
+  - Devotional
 summary: >-
   Jeanna’ reflects on how every soul is made in God’s image, every heart is
   infected by sin, and every person is invited into Jesus’ love — even in a

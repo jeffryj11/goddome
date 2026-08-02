@@ -5,10 +5,8 @@ date: '2024-07-21'
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
-  - hospitality
-  - faith
-  - community
-  - inclusion
+  - Faith
+  - Devotional
 summary: >-
   Jeanna’ reflects on the devotional 'Embracing Everyone' and the way her Mema
   lived out radical hospitality over glasses of sweet iced tea.

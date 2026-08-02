@@ -3,7 +3,7 @@ title: You Are Beautiful for Me
 author: Jeanna’ Mead
 date: '2026-07-31'
 hebrew_scripture: ''
-christian_scripture: '1 Peter 3:4'
+christian_scripture: ''
 themes:
   - Faith
   - Devotional
@@ -22,3 +22,7 @@ Place this file here:
 content/stories/you-are-beautiful-for-me.md
 It will publish automatically at:
 /stories/you-are-beautiful-for-me
+
+
+
+By Jeanna’ Mead

@@ -5,11 +5,8 @@ date: '2025-07-28'
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
-  - faith
-  - heaven
-  - grief
-  - hope
-  - devotional
+  - Faith
+  - Devotional
 summary: >-
   Jeanna’ writes about heaven’s tears, family watching from glory, God’s gentle
   wiping-away, and the eternal perspective that shapes how we love on earth.
