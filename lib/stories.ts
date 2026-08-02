@@ -19,12 +19,23 @@ export interface StoryMeta {
   heroImage?: string;
   featuredImage?: string;
   ogImage?: string;
+  scripture?: string;
+  hebrew_scripture?: string;
+  christian_scripture?: string;
   tags?: string[];
+  topics?: string[];
   [key: string]: any;
 }
 
 export interface StoryData extends StoryMeta {
   contentHtml: string;
+}
+
+export function calculateReadTime(text: string): string {
+  if (!text) return '3 min read';
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  const minutes = Math.max(1, Math.ceil(words / 200));
+  return `${minutes} min read`;
 }
 
 export function getSortedStoriesData(): StoryMeta[] {
@@ -43,18 +54,25 @@ export function getSortedStoriesData(): StoryMeta[] {
 
       const excerpt = matterResult.data.excerpt || matterResult.data.summary || '';
       const image = matterResult.data.heroImage || matterResult.data.featuredImage || matterResult.data.ogImage || matterResult.data.image || '/images/image_ef9498.jpg';
+      const readTime = calculateReadTime(matterResult.content || excerpt);
+      const scripture = matterResult.data.scripture || matterResult.data.christian_scripture || matterResult.data.hebrew_scripture || '';
+
+      const rawTopics = matterResult.data.topics || matterResult.data.tags || matterResult.data.themes || [];
+      const topics = Array.isArray(rawTopics) ? rawTopics : [rawTopics];
 
       return {
         id,
         title: matterResult.data.title || id,
-        category: matterResult.data.category || (matterResult.data.tags && matterResult.data.tags[0]) || 'Devotional',
+        category: matterResult.data.category || (topics[0] ? topics[0] : 'Devotional'),
         date: matterResult.data.date || '',
-        readTime: matterResult.data.readTime || '8 min read',
+        readTime,
         author: matterResult.data.author || 'Jeanna’ Mead',
         excerpt,
         summary: excerpt,
         image,
-        tags: matterResult.data.tags || matterResult.data.themes || [],
+        scripture,
+        tags: topics,
+        topics,
         ...matterResult.data,
       };
     });
@@ -84,19 +102,26 @@ export async function getStoryData(id: string): Promise<StoryData> {
   const contentHtml = processedContent.toString();
   const excerpt = matterResult.data.excerpt || matterResult.data.summary || '';
   const image = matterResult.data.heroImage || matterResult.data.featuredImage || matterResult.data.ogImage || matterResult.data.image || '/images/image_ef9498.jpg';
+  const readTime = calculateReadTime(matterResult.content || excerpt);
+  const scripture = matterResult.data.scripture || matterResult.data.christian_scripture || matterResult.data.hebrew_scripture || '';
+
+  const rawTopics = matterResult.data.topics || matterResult.data.tags || matterResult.data.themes || [];
+  const topics = Array.isArray(rawTopics) ? rawTopics : [rawTopics];
 
   return {
     id,
     contentHtml,
     title: matterResult.data.title || id,
-    category: matterResult.data.category || (matterResult.data.tags && matterResult.data.tags[0]) || 'Devotional',
+    category: matterResult.data.category || (topics[0] ? topics[0] : 'Devotional'),
     date: matterResult.data.date || '',
-    readTime: matterResult.data.readTime || '8 min read',
+    readTime,
     author: matterResult.data.author || 'Jeanna’ Mead',
     excerpt,
     summary: excerpt,
     image,
-    tags: matterResult.data.tags || matterResult.data.themes || [],
+    scripture,
+    tags: topics,
+    topics,
     ...matterResult.data,
   };
 }

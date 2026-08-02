@@ -10,6 +10,8 @@ export const StoriesPartsFragmentDoc = gql`
   __typename
   title
   date
+  scripture
+  topics
   excerpt
   author
   heroImage

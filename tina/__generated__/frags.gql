@@ -2,6 +2,8 @@ fragment StoriesParts on Stories {
   __typename
   title
   date
+  scripture
+  topics
   excerpt
   author
   heroImage

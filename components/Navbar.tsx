@@ -33,6 +33,9 @@ export default function Navbar() {
           <a href="#stories" className="hover:text-[#A83226] transition-colors">
             Devotionals
           </a>
+          <Link href="/topics" className="hover:text-[#A83226] transition-colors">
+            Topics
+          </Link>
           <Link href="/prayer" className="hover:text-[#A83226] transition-colors">
             Prayer Requests
           </Link>

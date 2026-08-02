@@ -37,6 +37,19 @@ var config_default = defineConfig({
           },
           {
             type: "string",
+            name: "scripture",
+            label: "Scripture Reference (e.g. 1 Peter 3:4)",
+            required: false
+          },
+          {
+            type: "string",
+            name: "topics",
+            label: "Topics",
+            list: true,
+            required: false
+          },
+          {
+            type: "string",
             name: "excerpt",
             label: "Excerpt / Short Summary",
             required: false,

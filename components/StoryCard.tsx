@@ -26,23 +26,29 @@ export default function StoryCard({ story }: StoryCardProps) {
         )}
 
         <div className="p-6">
-          <div className="flex items-center gap-2 text-xs font-medium text-[#2C221E]/60 mb-2">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-[#2C221E]/60 mb-2">
             <span>By {story.author || 'Jeanna’ Mead'}</span>
             {story.readTime && (
-              <>
-                <span>•</span>
-                <span>{story.readTime}</span>
-              </>
+              <span className="bg-[#FAF6F0] px-2 py-0.5 rounded-md border border-[#2C221E]/10 text-[11px] font-semibold text-[#D99B26]">
+                {story.readTime}
+              </span>
             )}
           </div>
 
           {/* Title with stretch overlay link covering entire card area */}
-          <h3 className="font-serif text-xl font-bold text-[#2C221E] group-hover:text-[#A83226] transition-colors mb-3 leading-snug">
+          <h3 className="font-serif text-xl font-bold text-[#2C221E] group-hover:text-[#A83226] transition-colors mb-2 leading-snug">
             <Link href={`/stories/${story.id}`}>
               <span className="absolute inset-0 z-0" aria-hidden="true" />
               {story.title}
             </Link>
           </h3>
+
+          {/* Scripture Reference Tag if present */}
+          {story.scripture && (
+            <p className="text-xs font-serif italic text-[#D99B26] mb-3">
+              📖 {story.scripture}
+            </p>
+          )}
 
           <p className="text-[#2C221E]/75 text-sm leading-relaxed line-clamp-3 font-light">
             {story.excerpt}
