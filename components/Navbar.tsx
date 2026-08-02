@@ -33,6 +33,9 @@ export default function Navbar() {
           <a href="#stories" className="hover:text-[#A83226] transition-colors">
             Devotionals
           </a>
+          <Link href="/prayer" className="hover:text-[#A83226] transition-colors">
+            Prayer Requests
+          </Link>
           <a href="#assistant" className="hover:text-[#A83226] transition-colors">
             Faith Assistant
           </a>
@@ -55,12 +58,12 @@ export default function Navbar() {
             </svg>
             Donate
           </a>
-          <a
-            href="#assistant"
+          <Link
+            href="/prayer"
             className="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-sm transition-all transform hover:-translate-y-0.5"
           >
-            Reflect Now
-          </a>
+            Request Prayer
+          </Link>
         </div>
       </div>
     </nav>
