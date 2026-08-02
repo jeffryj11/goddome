@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import ShareableQuote from '@/components/ShareableQuote';
 import ReflectionJournal from '@/components/ReflectionJournal';
+import AudioPlayer from '@/components/AudioPlayer';
 
 export async function generateStaticParams() {
   const stories = getSortedStoriesData();
@@ -127,6 +128,15 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
             </div>
           )}
         </header>
+
+        {/* Audio Devotional Player (Conditionally Rendered when audioUrl is present) */}
+        {story.audioUrl && (
+          <AudioPlayer 
+            src={story.audioUrl} 
+            title={story.title} 
+            author={story.author || 'Jeanna’ Mead'} 
+          />
+        )}
 
         {/* Featured Pull-Quote Component if present in frontmatter */}
         {story.featuredQuote && (

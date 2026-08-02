@@ -42,6 +42,12 @@ export default defineConfig({
           },
           {
             type: "string",
+            name: "audioUrl",
+            label: "Audio Devotional URL (MP3 file link)",
+            required: false,
+          },
+          {
+            type: "string",
             name: "scripture",
             label: "Scripture Reference (e.g. 1 Peter 3:4)",
             required: false,

@@ -90,6 +90,7 @@ union DocumentNode = Stories | Folder
 type Stories implements Node & Document {
   title: String!
   date: String
+  audioUrl: String
   scripture: String
   featuredQuote: String
   topics: [String]
@@ -136,6 +137,7 @@ input RichTextFilter {
 input StoriesFilter {
   title: StringFilter
   date: StringFilter
+  audioUrl: StringFilter
   scripture: StringFilter
   featuredQuote: StringFilter
   topics: StringFilter
@@ -189,6 +191,7 @@ input DocumentMutation {
 input StoriesMutation {
   title: String
   date: String
+  audioUrl: String
   scripture: String
   featuredQuote: String
   topics: [String]
