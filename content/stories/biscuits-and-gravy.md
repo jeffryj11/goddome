@@ -14,7 +14,6 @@ summary: >-
   hot as fire and piled high.
 draft: false
 ---
-
 **April 27, 2018 — Jeanna’ Mead**
 
 I remember way back when biscuits and gravy were part of my everyday, hot as fire, piled high on my plate.
@@ -25,5 +24,5 @@ But I remember well how good love tasted. 💗
 
 ---
 
-*Mema on my mind*  
+*Mema on my mind*
 *Jeanna’ Mead — 7:16 a.m. 4-26-18*

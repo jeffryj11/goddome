@@ -53,7 +53,7 @@ But we *can* pray. We pray to tell God we love them. We pray to admit our limits
 
 Paul wrote:
 
-> **“Carry each other’s burdens, and in this way you will fulfill the law of Christ.”**  
+> **“Carry each other’s burdens, and in this way you will fulfill the law of Christ.”**
 > *(Galatians 6:2)*
 
 Sometimes the most powerful way to carry a burden is to kneel under it on someone else’s behalf.
