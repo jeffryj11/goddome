@@ -7,7 +7,10 @@ interface StoryCardProps {
 
 export default function StoryCard({ story }: StoryCardProps) {
   return (
-    <div className="group bg-white border border-[#2C221E]/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between hover:-translate-y-1">
+    <Link
+      href={`/stories/${story.id}`}
+      className="group block bg-white border border-[#2C221E]/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 cursor-pointer h-full"
+    >
       <div>
         {/* Story Cover Image */}
         {story.image && (
@@ -18,7 +21,7 @@ export default function StoryCard({ story }: StoryCardProps) {
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute top-3 left-3">
-              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#2C221E]/80 text-[#FAF6F0] backdrop-blur-md">
+              <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#2C221E]/80 text-[#FAF6F0] backdrop-blur-md shadow-xs">
                 {story.category || 'Devotional'}
               </span>
             </div>
@@ -46,14 +49,12 @@ export default function StoryCard({ story }: StoryCardProps) {
         </div>
       </div>
 
-      <div className="p-6 pt-0">
-        <Link
-          href={`/stories/${story.id}`}
-          className="inline-flex items-center text-sm font-semibold text-[#A83226] hover:text-[#8f2a20] transition-colors group-hover:translate-x-1 duration-200"
-        >
-          Read Devotional <span className="ml-1.5">→</span>
-        </Link>
+      <div className="p-6 pt-0 mt-auto">
+        <span className="inline-flex items-center text-sm font-semibold text-[#A83226] group-hover:text-[#8f2a20] transition-colors">
+          Read Devotional 
+          <span className="ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-200">→</span>
+        </span>
       </div>
-    </div>
+    </Link>
   );
 }
