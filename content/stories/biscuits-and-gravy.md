@@ -10,19 +10,25 @@ themes:
   - Love
   - Faith
 summary: >-
-  A short, tender memory of Mema, love, and the comfort of biscuits and gravy —
+  A short, tender poem remembering Mema, love, and the comfort of biscuits and gravy —
   hot as fire and piled high.
 draft: false
 ---
-**April 27, 2018 — Jeanna’ Mead**
 
-I remember way back when biscuits and gravy were part of my everyday, hot as fire, piled high on my plate.
+I remember way back when  
+biscuits and gravy  
+were part of my everyday  
+hot as fire  
+piled high on my plate  
 
-It’s been years and years since I’ve sat down to biscuits and gravy, hot as fire, piled high on my plate.
+it’s been years and years  
+since I’ve sat down  
+to biscuits and gravy  
+hot as fire  
+piled high on my plate  
 
-But I remember well how good love tasted. 💗
+but I remember well  
+how good love tasted  
 
----
-
-*Mema on my mind*
+💗 *Mema on my mind*  
 *Jeanna’ Mead — 7:16 a.m. 4-26-18*
