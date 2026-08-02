@@ -1,6 +1,7 @@
 import { getStoryData, getSortedStoriesData } from '@/lib/stories';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 export async function generateStaticParams() {
   const stories = getSortedStoriesData();
@@ -122,8 +123,11 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
           dangerouslySetInnerHTML={{ __html: story.contentHtml }}
         />
 
+        {/* Newsletter Subscription Box */}
+        <NewsletterSignup />
+
         {/* Story Footer Sign-off & Donation Callout */}
-        <footer className="mt-16 pt-8 border-t border-[#2C221E]/15 text-center">
+        <footer className="mt-12 pt-8 border-t border-[#2C221E]/15 text-center">
           <div className="bg-[#FAF6F0] border border-[#2C221E]/10 rounded-2xl p-8 shadow-sm">
             <h3 className="font-serif text-2xl font-bold text-[#2C221E] mb-2">
               Thank you for resting a while at GodDome

@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import StoryGridWithFilter from '@/components/StoryGridWithFilter';
 import FaithAssistant from '@/components/FaithAssistant';
+import NewsletterSignup from '@/components/NewsletterSignup';
 import { getSortedStoriesData } from '@/lib/stories';
 import Link from 'next/link';
 
@@ -32,6 +33,11 @@ export default function Home() {
 
         {/* Responsive Grid with Interactive Taxonomy Tag Filters */}
         <StoryGridWithFilter stories={allStories} />
+      </section>
+
+      {/* Newsletter Subscription Box */}
+      <section className="max-w-6xl mx-auto px-6 w-full">
+        <NewsletterSignup />
       </section>
 
       {/* Interactive Faith & Reflection Assistant */}
