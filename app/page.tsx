@@ -6,11 +6,69 @@ import NewsletterSignup from '@/components/NewsletterSignup';
 import { getSortedStoriesData } from '@/lib/stories';
 import Link from 'next/link';
 
+export const metadata = {
+  title: 'GodDome — Faithful Words: Christian Stories by Jeanna’ Mead',
+  description: 'Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.',
+  alternates: {
+    canonical: 'https://goddome.org',
+  },
+  openGraph: {
+    title: 'GodDome — Faithful Words: Christian Stories by Jeanna’ Mead',
+    description: 'Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.',
+    url: 'https://goddome.org',
+    siteName: 'GodDome',
+    type: 'website',
+    images: [
+      {
+        url: 'https://goddome.org/images/logo.png',
+        width: 800,
+        height: 800,
+        alt: 'GodDome Logo',
+      },
+    ],
+  },
+};
+
 export default function Home() {
   const allStories = getSortedStoriesData();
 
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'GodDome',
+    url: 'https://goddome.org',
+    description: 'Faithful Words: Christian Stories by Jeanna’ Mead.',
+    publisher: {
+      '@type': 'Organization',
+      name: 'GodDome Ministry',
+      logo: 'https://goddome.org/images/logo.png',
+    },
+  };
+
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NonprofitOrganization',
+    name: 'GodDome Ministry',
+    url: 'https://goddome.org',
+    logo: 'https://goddome.org/images/logo.png',
+    founder: {
+      '@type': 'Person',
+      name: 'Jeanna’ Mead',
+    },
+    sameAs: ['https://www.paypal.com/ncp/payment/3L3XFTP7UATMJ'],
+  };
+
   return (
     <main id="main-content" className="min-h-screen bg-[#FAF6F0] text-[#2C221E] flex flex-col font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+
       {/* Navigation Header */}
       <Navbar />
 

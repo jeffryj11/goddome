@@ -20,20 +20,24 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     const resolvedParams = await Promise.resolve(params);
     const story = await getStoryData(resolvedParams.id);
     
-    const title = story.seoTitle || story.metaTitle || story.title;
-    const fullTitle = `${title} | GodDome`;
+    const category = story.category || 'Faith';
+    const rawTitle = story.seoTitle || story.metaTitle || story.title;
+    const fullTitle = `${rawTitle} — Daily Devotional on ${category} | GodDome`;
     const defaultDesc = "Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.";
     const description = story.featuredQuote || story.excerpt || story.seoDescription || story.metaDescription || story.summary || defaultDesc;
     const image = story.heroImage || story.featuredImage || story.ogImage || story.image || '/images/image_ef9498.jpg';
-    const url = `https://goddome.org/stories/${resolvedParams.id}`;
+    const canonicalUrl = `https://goddome.org/stories/${resolvedParams.id}`;
 
     return {
       title: fullTitle,
       description,
+      alternates: {
+        canonical: canonicalUrl,
+      },
       openGraph: {
         title: fullTitle,
         description,
-        url,
+        url: canonicalUrl,
         siteName: 'GodDome',
         type: 'article',
         publishedTime: story.date,
@@ -43,7 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
             url: image,
             width: 1200,
             height: 630,
-            alt: title,
+            alt: rawTitle,
           },
         ],
       },
@@ -69,9 +73,66 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
   }
 
   const paypalUrl = process.env.NEXT_PUBLIC_PAYPAL_DONATE_URL || 'https://www.paypal.com/ncp/payment/3L3XFTP7UATMJ';
+  const canonicalUrl = `https://goddome.org/stories/${story.id}`;
+
+  // Article & BlogPosting Schema (JSON-LD)
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: story.title,
+    description: story.excerpt || story.summary,
+    url: canonicalUrl,
+    datePublished: story.date || '2026-01-01',
+    author: {
+      '@type': 'Person',
+      name: story.author || 'Jeanna’ Mead',
+      url: 'https://goddome.org',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'GodDome',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://goddome.org/images/logo.png',
+      },
+    },
+    image: story.image ? `https://goddome.org${story.image}` : 'https://goddome.org/images/image_ef9498.jpg',
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalUrl,
+    },
+  };
+
+  // Audio Object Schema (JSON-LD)
+  const audioJsonLd = story.audioUrl
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'AudioObject',
+        name: `${story.title} Audio Devotional`,
+        description: `Narrated devotional by Jeanna’ Mead: ${story.title}`,
+        contentUrl: story.audioUrl.startsWith('http') ? story.audioUrl : `https://goddome.org${story.audioUrl}`,
+        encodingFormat: 'audio/mpeg',
+        author: {
+          '@type': 'Person',
+          name: story.author || 'Jeanna’ Mead',
+        },
+      }
+    : null;
 
   return (
     <article className="min-h-screen bg-[#FAF6F0] text-[#2C221E] py-16 px-6 sm:px-12">
+      {/* Schema.org Structured Data Scripts */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      {audioJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(audioJsonLd) }}
+        />
+      )}
+
       <div className="max-w-3xl mx-auto">
         {/* Top Header Navigation & Reading Streak Widget */}
         <div className="flex items-center justify-between gap-4 mb-10">
@@ -93,7 +154,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
             {story.date && (
               <>
                 <span>•</span>
-                <time>{story.date}</time>
+                <time dateTime={story.date}>{story.date}</time>
               </>
             )}
             {story.readTime && (

@@ -39,9 +39,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     });
   });
 
+  const fullTitle = `${matchedTopicName} — Daily Devotional on ${matchedTopicName} | GodDome`;
+  const description = `Read uplifting Christian devotionals and spiritual reflections on ${matchedTopicName} by Jeanna’ Mead on GodDome.`;
+  const canonicalUrl = `https://goddome.org/topics/${rawSlug}`;
+
   return {
-    title: `${matchedTopicName} Devotionals | GodDome`,
-    description: `Read Christian devotionals and stories on ${matchedTopicName} by Jeanna’ Mead on GodDome.`,
+    title: fullTitle,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: fullTitle,
+      description,
+      url: canonicalUrl,
+      siteName: 'GodDome',
+      type: 'website',
+    },
   };
 }
 
@@ -66,16 +80,39 @@ export default async function TopicSlugPage({ params }: { params: Promise<{ slug
     notFound();
   }
 
+  const canonicalUrl = `https://goddome.org/topics/${targetSlug}`;
+
+  const collectionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: `${matchedTopicName} Devotionals`,
+    description: `Collection of Christian devotionals on ${matchedTopicName} by Jeanna’ Mead.`,
+    url: canonicalUrl,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: filteredStories.map((story, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: story.title,
+        url: `https://goddome.org/stories/${story.id}`,
+      })),
+    },
+  };
+
   return (
-    <main className="min-h-screen bg-[#FAF6F0] text-[#2C221E] flex flex-col font-sans">
+    <main id="main-content" className="min-h-screen bg-[#FAF6F0] text-[#2C221E] flex flex-col font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
       <Navbar />
 
       <section className="max-w-6xl mx-auto px-6 py-16 w-full flex-grow">
         <Link 
           href="/topics" 
-          className="inline-flex items-center text-sm font-semibold text-[#A83226] hover:text-[#8f2a20] transition-colors mb-8 group"
+          className="inline-flex items-center text-sm font-semibold text-[#A83226] hover:text-[#8f2a20] transition-colors mb-8 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
         >
-          <span className="transform group-hover:-translate-x-1 transition-transform mr-2">←</span> 
+          <span className="transform group-hover:-translate-x-1 transition-transform mr-2" aria-hidden="true">←</span> 
           Back to All Topics
         </Link>
 

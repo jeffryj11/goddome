@@ -4,7 +4,17 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Devotional Topics & Scripture Index | GodDome',
-  description: 'Explore Christian devotionals and stories by Jeanna’ Mead organized by topic and scripture reflection.',
+  description: 'Explore Christian devotionals and stories by Jeanna’ Mead organized by topic, spiritual themes, and scripture reflection.',
+  alternates: {
+    canonical: 'https://goddome.org/topics',
+  },
+  openGraph: {
+    title: 'Devotional Topics & Scripture Index | GodDome',
+    description: 'Explore Christian devotionals and stories by Jeanna’ Mead organized by topic, spiritual themes, and scripture reflection.',
+    url: 'https://goddome.org/topics',
+    siteName: 'GodDome',
+    type: 'website',
+  },
 };
 
 function slugify(text: string): string {
@@ -34,8 +44,25 @@ export default function TopicsPage() {
 
   const topicList = Object.values(topicMap).sort((a, b) => b.count - a.count);
 
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Devotional Topics & Themes',
+    description: 'Index of Christian devotional topics and scripture themes by Jeanna’ Mead.',
+    itemListElement: topicList.map((topic, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: topic.name,
+      url: `https://goddome.org/topics/${topic.slug}`,
+    })),
+  };
+
   return (
-    <main className="min-h-screen bg-[#FAF6F0] text-[#2C221E] flex flex-col font-sans">
+    <main id="main-content" className="min-h-screen bg-[#FAF6F0] text-[#2C221E] flex flex-col font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       <Navbar />
 
       <section className="max-w-5xl mx-auto px-6 py-16 w-full flex-grow">
@@ -56,7 +83,7 @@ export default function TopicsPage() {
             <Link
               key={topic.slug}
               href={`/topics/${topic.slug}`}
-              className="group bg-white border border-[#2C221E]/10 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[#D99B26]/40 transition-all transform hover:-translate-y-1"
+              className="group bg-white border border-[#2C221E]/10 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[#D99B26]/40 transition-all transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
             >
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs font-bold uppercase tracking-wider text-[#A83226] group-hover:text-[#8f2a20] transition-colors">
