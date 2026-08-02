@@ -1,23 +1,27 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useFaithAssistant } from './FaithAssistantContext';
 
 export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const paypalUrl = process.env.NEXT_PUBLIC_PAYPAL_DONATE_URL || 'https://www.paypal.com/ncp/payment/3L3XFTP7UATMJ';
   const { openAssistant } = useFaithAssistant();
 
   const isHome = pathname === '/';
   const isTopics = pathname.startsWith('/topics');
-  const isPrayer = pathname === '/prayer';
+  const isPrayer = pathname === '/prayer' || pathname === '/prayer-requests';
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <nav className="sticky top-0 z-40 bg-[#FAF6F0]/90 backdrop-blur-md border-b border-[#2C221E]/10 shadow-sm">
+    <nav className="sticky top-0 z-40 bg-[#FAF6F0]/95 backdrop-blur-md border-b border-[#2C221E]/10 shadow-sm">
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* 1. Brand Logo & Title (Home: /) */}
-        <Link href="/" className="flex items-center space-x-3 group">
+        <Link href="/" onClick={closeMobileMenu} className="flex items-center space-x-3 group">
           <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#D99B26]/30 shadow-sm transition-transform group-hover:scale-105">
             <img
               src="/images/logo.png"
@@ -35,7 +39,7 @@ export default function Navbar() {
           </div>
         </Link>
 
-        {/* Navigation Links */}
+        {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center space-x-8 text-sm font-semibold text-[#2C221E]/80">
           {/* 1. Home */}
           <Link 
@@ -85,7 +89,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Action Buttons */}
+        {/* Desktop & Mobile Action Buttons + Hamburger Toggle */}
         <div className="flex items-center space-x-3">
           {/* 7. DONATE (PayPal Link) */}
           <a
@@ -108,8 +112,87 @@ export default function Navbar() {
           >
             Request Prayer
           </Link>
+
+          {/* Mobile Hamburger Toggle Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-xl text-[#2C221E] hover:bg-[#2C221E]/5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
+            aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            {mobileMenuOpen ? (
+              <svg className="w-6 h-6 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Mobile Navigation Drawer Sync */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-[#FAF6F0] border-b border-[#2C221E]/15 px-6 py-6 space-y-4 animate-fade-in shadow-xl">
+          <Link
+            href="/"
+            onClick={closeMobileMenu}
+            className={`block text-base font-serif font-bold ${isHome ? 'text-[#A83226]' : 'text-[#2C221E]'}`}
+          >
+            Home
+          </Link>
+          <Link
+            href="/#stories"
+            onClick={closeMobileMenu}
+            className="block text-base font-serif font-bold text-[#2C221E] hover:text-[#A83226]"
+          >
+            Devotionals
+          </Link>
+          <Link
+            href="/topics"
+            onClick={closeMobileMenu}
+            className={`block text-base font-serif font-bold ${isTopics ? 'text-[#A83226]' : 'text-[#2C221E]'}`}
+          >
+            Topics Index
+          </Link>
+          <Link
+            href="/prayer"
+            onClick={closeMobileMenu}
+            className={`block text-base font-serif font-bold ${isPrayer ? 'text-[#A83226]' : 'text-[#2C221E]'}`}
+          >
+            Prayer Requests
+          </Link>
+          <button
+            onClick={() => {
+              closeMobileMenu();
+              openAssistant();
+            }}
+            className="w-full text-left font-serif font-bold text-base text-[#2C221E] hover:text-[#A83226] flex items-center justify-between py-1"
+          >
+            <span>Faith Assistant</span>
+            <span className="text-xs">✨ AI Assistant</span>
+          </button>
+          <Link
+            href="/admin"
+            onClick={closeMobileMenu}
+            className="block text-sm font-bold uppercase tracking-wider text-[#D99B26]"
+          >
+            CMS Admin
+          </Link>
+
+          <div className="pt-4 border-t border-[#2C221E]/10 flex flex-col gap-3">
+            <Link
+              href="/prayer"
+              onClick={closeMobileMenu}
+              className="w-full text-center py-3 rounded-xl bg-[#A83226] text-[#FAF6F0] font-bold text-xs uppercase tracking-wider"
+            >
+              Request Prayer
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
