@@ -5,6 +5,8 @@ import NewsletterSignup from '@/components/NewsletterSignup';
 import ShareableQuote from '@/components/ShareableQuote';
 import ReflectionJournal from '@/components/ReflectionJournal';
 import AudioPlayer from '@/components/AudioPlayer';
+import ReadingStreak from '@/components/ReadingStreak';
+import PrayerCounter from '@/components/PrayerCounter';
 
 export async function generateStaticParams() {
   const stories = getSortedStoriesData();
@@ -71,14 +73,18 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
   return (
     <article className="min-h-screen bg-[#FAF6F0] text-[#2C221E] py-16 px-6 sm:px-12">
       <div className="max-w-3xl mx-auto">
-        {/* Navigation Back Link */}
-        <Link 
-          href="/" 
-          className="inline-flex items-center text-sm font-semibold text-[#A83226] hover:text-[#8f2a20] transition-colors mb-10 group"
-        >
-          <span className="transform group-hover:-translate-x-1 transition-transform mr-2">←</span> 
-          Back to Stories
-        </Link>
+        {/* Top Header Navigation & Reading Streak Widget */}
+        <div className="flex items-center justify-between gap-4 mb-10">
+          <Link 
+            href="/" 
+            className="inline-flex items-center text-sm font-semibold text-[#A83226] hover:text-[#8f2a20] transition-colors group"
+          >
+            <span className="transform group-hover:-translate-x-1 transition-transform mr-2">←</span> 
+            Back to Stories
+          </Link>
+
+          <ReadingStreak />
+        </div>
 
         {/* Story Header */}
         <header className="border-b border-[#2C221E]/15 pb-8 mb-10">
@@ -102,13 +108,17 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
             {story.title}
           </h1>
 
-          <p className="text-[#2C221E]/70 italic text-base sm:text-lg">
-            By {story.author || 'Jeanna’ Mead'}
-          </p>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <p className="text-[#2C221E]/70 italic text-base sm:text-lg">
+              By {story.author || 'Jeanna’ Mead'}
+            </p>
+
+            <PrayerCounter itemId={story.id} initialCount={28} label="Prayers Offered" />
+          </div>
 
           {/* Scripture Reference Tag */}
           {story.scripture && (
-            <p className="text-sm font-serif italic text-[#D99B26] mt-3">
+            <p className="text-sm font-serif italic text-[#D99B26] mt-4">
               📖 Scripture: {story.scripture}
             </p>
           )}
@@ -173,6 +183,11 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
             <p className="text-sm text-[#2C221E]/70 mb-6 max-w-md mx-auto">
               If this message encouraged you today, feel free to share it with someone who might need a quiet word of grace, or support our non-profit ministry.
             </p>
+
+            <div className="mb-6 flex justify-center">
+              <PrayerCounter itemId={`${story.id}_footer`} initialCount={45} label="Joined in Prayer" />
+            </div>
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/"

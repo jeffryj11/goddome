@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import PrayerRequestForm from '@/components/PrayerRequestForm';
+import PrayerCounter from '@/components/PrayerCounter';
 import Link from 'next/link';
 
 export const metadata = {
@@ -13,13 +14,17 @@ export default function PrayerPage() {
       <Navbar />
 
       <section className="max-w-4xl mx-auto px-6 py-16 w-full flex-grow">
-        <Link 
-          href="/" 
-          className="inline-flex items-center text-sm font-semibold text-[#A83226] hover:text-[#8f2a20] transition-colors mb-8 group"
-        >
-          <span className="transform group-hover:-translate-x-1 transition-transform mr-2">←</span> 
-          Back to Stories
-        </Link>
+        <div className="flex items-center justify-between gap-4 mb-8">
+          <Link 
+            href="/" 
+            className="inline-flex items-center text-sm font-semibold text-[#A83226] hover:text-[#8f2a20] transition-colors group"
+          >
+            <span className="transform group-hover:-translate-x-1 transition-transform mr-2">←</span> 
+            Back to Stories
+          </Link>
+
+          <PrayerCounter itemId="prayer_page_community" initialCount={128} label="Community Prayers Offered" />
+        </div>
 
         <PrayerRequestForm />
       </section>
