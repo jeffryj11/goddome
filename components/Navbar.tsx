@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-40 bg-[#FAF6F0]/90 backdrop-blur-md border-b border-[#2C221E]/10 shadow-sm">
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Brand Logo & Title */}
+        {/* 1. Brand Logo & Title (Home: /) */}
         <Link href="/" className="flex items-center space-x-3 group">
           <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#D99B26]/30 shadow-sm transition-transform group-hover:scale-105">
             <img
@@ -31,25 +31,37 @@ export default function Navbar() {
 
         {/* Navigation Links */}
         <div className="hidden md:flex items-center space-x-8 text-sm font-semibold text-[#2C221E]/80">
+          {/* 1. Home */}
           <Link href="/" className="hover:text-[#A83226] transition-colors">
             Home
           </Link>
+
+          {/* 2. Devotionals */}
           <Link href="/#stories" className="hover:text-[#A83226] transition-colors">
             Devotionals
           </Link>
+
+          {/* 3. Topics */}
           <Link href="/topics" className="hover:text-[#A83226] transition-colors">
             Topics
           </Link>
+
+          {/* 4. Prayer Requests */}
           <Link href="/prayer" className="hover:text-[#A83226] transition-colors">
             Prayer Requests
           </Link>
+
+          {/* 5. Faith Assistant (Triggers Global Modal Drawer) */}
           <button 
             onClick={() => openAssistant()} 
             className="hover:text-[#A83226] transition-colors cursor-pointer inline-flex items-center gap-1"
+            title="Open AI Faith & Reflection Assistant"
           >
             <span>Faith Assistant</span>
             <span className="text-xs">✨</span>
           </button>
+
+          {/* 6. CMS Admin */}
           <Link href="/admin" className="hover:text-[#A83226] transition-colors text-xs font-bold uppercase tracking-wider text-[#D99B26]">
             CMS Admin
           </Link>
@@ -57,6 +69,7 @@ export default function Navbar() {
 
         {/* Action Buttons */}
         <div className="flex items-center space-x-3">
+          {/* 7. DONATE (PayPal Link) */}
           <a
             href={paypalUrl}
             target="_blank"
@@ -69,13 +82,14 @@ export default function Navbar() {
             </svg>
             Donate
           </a>
-          <button
-            onClick={() => openAssistant()}
-            className="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-sm transition-all transform hover:-translate-y-0.5 cursor-pointer gap-1"
+
+          {/* 8. REQUEST PRAYER (CTA Button: /prayer) */}
+          <Link
+            href="/prayer"
+            className="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-sm transition-all transform hover:-translate-y-0.5"
           >
-            <span>Reflect Now</span>
-            <span>✨</span>
-          </button>
+            Request Prayer
+          </Link>
         </div>
       </div>
     </nav>
