@@ -10,7 +10,7 @@ export default function Home() {
   const allStories = getSortedStoriesData();
 
   return (
-    <main className="min-h-screen bg-[#FAF6F0] text-[#2C221E] flex flex-col font-sans">
+    <main id="main-content" className="min-h-screen bg-[#FAF6F0] text-[#2C221E] flex flex-col font-sans">
       {/* Navigation Header */}
       <Navbar />
 

@@ -6,15 +6,17 @@ interface StoryCardProps {
 }
 
 export default function StoryCard({ story }: StoryCardProps) {
+  const altText = story.title ? `${story.title} devotional cover` : 'GodDome devotional cover image';
+
   return (
-    <div className="group relative flex flex-col justify-between h-full w-full overflow-hidden rounded-2xl border border-[#2C221E]/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl cursor-pointer">
+    <div className="group relative flex flex-col justify-between h-full w-full overflow-hidden rounded-2xl border border-[#2C221E]/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl cursor-pointer focus-within:ring-2 focus-within:ring-[#A83226]">
       <div>
         {/* Story Cover Image */}
         {story.image && (
           <div className="relative h-48 w-full overflow-hidden bg-slate-900">
             <img
               src={story.image}
-              alt={story.title}
+              alt={altText}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute top-3 left-3 z-10">
@@ -37,7 +39,7 @@ export default function StoryCard({ story }: StoryCardProps) {
 
           {/* Title with stretch overlay link covering entire card area */}
           <h3 className="font-serif text-xl font-bold text-[#2C221E] group-hover:text-[#A83226] transition-colors mb-2 leading-snug">
-            <Link href={`/stories/${story.id}`}>
+            <Link href={`/stories/${story.id}`} className="focus:outline-none">
               <span className="absolute inset-0 z-0" aria-hidden="true" />
               {story.title}
             </Link>
@@ -60,7 +62,7 @@ export default function StoryCard({ story }: StoryCardProps) {
       <div className="p-6 pt-0 mt-auto">
         <span className="inline-flex items-center text-sm font-semibold text-[#A83226] group-hover:text-[#8f2a20] transition-colors">
           Read Devotional 
-          <span className="ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-200">→</span>
+          <span className="ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-200" aria-hidden="true">→</span>
         </span>
       </div>
     </div>

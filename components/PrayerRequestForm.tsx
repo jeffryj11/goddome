@@ -62,9 +62,9 @@ export default function PrayerRequestForm() {
         </p>
 
         {status === 'success' ? (
-          <div className="bg-[#FAF6F0] border border-[#D99B26] rounded-2xl p-8 text-center animate-fade-in">
+          <div className="bg-[#FAF6F0] border border-[#D99B26] rounded-2xl p-8 text-center animate-fade-in" role="status">
             <div className="w-12 h-12 bg-[#D99B26]/20 text-[#D99B26] rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
               </svg>
             </div>
@@ -76,52 +76,56 @@ export default function PrayerRequestForm() {
             </p>
             <button
               onClick={() => setStatus('idle')}
-              className="mt-6 text-xs font-semibold text-[#A83226] hover:underline"
+              className="mt-6 text-xs font-semibold text-[#A83226] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
             >
               Submit another prayer request →
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="text-left space-y-4 max-w-lg mx-auto">
+          <form onSubmit={handleSubmit} className="text-left space-y-4 max-w-lg mx-auto" aria-label="Prayer Request Form">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-[#2C221E]/70 mb-1">
+                <label htmlFor="prayer-name" className="block text-xs font-semibold text-[#2C221E]/70 mb-1">
                   Your Name (optional)
                 </label>
                 <input
+                  id="prayer-name"
                   type="text"
                   placeholder="e.g. Sarah"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#FAF6F0] border border-[#2C221E]/15 rounded-xl text-[#2C221E] text-sm focus:outline-none focus:border-[#D99B26] transition-colors"
+                  className="w-full px-4 py-3 bg-[#FAF6F0] border border-[#2C221E]/15 rounded-xl text-[#2C221E] text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A83226] transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#2C221E]/70 mb-1">
+                <label htmlFor="prayer-email" className="block text-xs font-semibold text-[#2C221E]/70 mb-1">
                   Email Address (optional)
                 </label>
                 <input
+                  id="prayer-email"
                   type="email"
                   placeholder="For a personal note back"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#FAF6F0] border border-[#2C221E]/15 rounded-xl text-[#2C221E] text-sm focus:outline-none focus:border-[#D99B26] transition-colors"
+                  className="w-full px-4 py-3 bg-[#FAF6F0] border border-[#2C221E]/15 rounded-xl text-[#2C221E] text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A83226] transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-[#2C221E]/70 mb-1">
+              <label htmlFor="prayer-details" className="block text-xs font-semibold text-[#2C221E]/70 mb-1">
                 Prayer Request / Reflection *
               </label>
               <textarea
+                id="prayer-details"
                 required
+                aria-required="true"
                 rows={4}
                 placeholder="Share what is on your heart..."
                 value={requestText}
                 onChange={(e) => setRequestText(e.target.value)}
-                className="w-full px-4 py-3 bg-[#FAF6F0] border border-[#2C221E]/15 rounded-xl text-[#2C221E] text-sm focus:outline-none focus:border-[#D99B26] transition-colors resize-none"
+                className="w-full px-4 py-3 bg-[#FAF6F0] border border-[#2C221E]/15 rounded-xl text-[#2C221E] text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#A83226] transition-colors resize-none"
               />
             </div>
 
@@ -131,7 +135,7 @@ export default function PrayerRequestForm() {
                 id="privateCheck"
                 checked={isPrivate}
                 onChange={(e) => setIsPrivate(e.target.checked)}
-                className="w-4 h-4 accent-[#A83226] rounded cursor-pointer"
+                className="w-4 h-4 accent-[#A83226] rounded cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
               />
               <label htmlFor="privateCheck" className="text-xs text-[#2C221E]/70 cursor-pointer select-none">
                 Keep this request private (shared only with Jeanna’)
@@ -141,13 +145,13 @@ export default function PrayerRequestForm() {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full py-4 bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] font-semibold text-sm rounded-xl transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer disabled:opacity-50 mt-4"
+              className="w-full py-4 bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] font-semibold text-sm rounded-xl transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer disabled:opacity-50 mt-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
             >
               {status === 'loading' ? 'Submitting Prayer Request...' : 'Send Prayer Request 🙏'}
             </button>
 
             {status === 'error' && (
-              <p className="text-xs text-[#A83226] font-semibold text-center mt-2">
+              <p className="text-xs text-[#A83226] font-semibold text-center mt-2" role="alert">
                 {errorMessage}
               </p>
             )}
