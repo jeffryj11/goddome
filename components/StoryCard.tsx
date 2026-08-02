@@ -7,10 +7,7 @@ interface StoryCardProps {
 
 export default function StoryCard({ story }: StoryCardProps) {
   return (
-    <Link
-      href={`/stories/${story.id}`}
-      className="group relative flex flex-col justify-between h-full w-full bg-white border border-[#2C221E]/10 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 cursor-pointer"
-    >
+    <div className="group relative flex flex-col justify-between h-full w-full overflow-hidden rounded-2xl border border-[#2C221E]/10 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl cursor-pointer">
       <div>
         {/* Story Cover Image */}
         {story.image && (
@@ -39,8 +36,12 @@ export default function StoryCard({ story }: StoryCardProps) {
             )}
           </div>
 
+          {/* Title with stretch overlay link covering entire card area */}
           <h3 className="font-serif text-xl font-bold text-[#2C221E] group-hover:text-[#A83226] transition-colors mb-3 leading-snug">
-            {story.title}
+            <Link href={`/stories/${story.id}`}>
+              <span className="absolute inset-0 z-0" aria-hidden="true" />
+              {story.title}
+            </Link>
           </h3>
 
           <p className="text-[#2C221E]/75 text-sm leading-relaxed line-clamp-3 font-light">
@@ -49,12 +50,13 @@ export default function StoryCard({ story }: StoryCardProps) {
         </div>
       </div>
 
+      {/* Footer / Read More Indicator */}
       <div className="p-6 pt-0 mt-auto">
         <span className="inline-flex items-center text-sm font-semibold text-[#A83226] group-hover:text-[#8f2a20] transition-colors">
-          Read Devotional
+          Read Devotional 
           <span className="ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-200">→</span>
         </span>
       </div>
-    </Link>
+    </div>
   );
 }
