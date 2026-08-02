@@ -1,47 +1,139 @@
 ---
-title: Sweet Tea — Embracing Everybody
-author: Jeanna’ Mead
-date: '2024-07-21'
+title: "Sweet Tea — Embracing Everybody"
+author: "Jeanna’ Mead"
+date: "2024-07-21"
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
+  - Hospitality
+  - Love
+  - Community
   - Faith
-  - Devotional
 summary: >-
-  Jeanna’ reflects on the devotional 'Embracing Everyone' and the way her Mema
-  lived out radical hospitality over glasses of sweet iced tea.
+  Jeanna’ reflects on a devotional about embracing everyone over sweet tea, memory of Mema's open porch, and showing Christ's love to those who feel left out.
 draft: false
 ---
-It’s Sunday morning and, as I eat my oatmeal at my kitchen table, I’m thinking about this devotional I read yesterday morning. When something stays on my mind, I have to write about it in order to make sense of it, somehow. The devotional is called **“Embracing Everyone”**, and I’m going to paste it here and add my thoughts, like I always do. > “Across the world, the tradition of sharing a cup of tea is important.
 
-These occasions give us time to relax, engage and get to know each other. Taking the time to enjoy tea together also creates an opportunity to share sacred space... > Theologian John Swinton reminds us that ‘Jesus sat with those folks that society did not want to sit with.’” 🧋🧋☕️☕️🩷🩷 Well, here it goes — Jesus and Mema talkin’, and I’m just writing as fast as I can.
+It’s Sunday morning and, as I eat my oatmeal at my kitchen table, I’m thinking about this devotional I read yesterday morning.
 
-Thoughts tumbling into words and memories making me laugh to myself because there’s nobody at the table with me right now. Try as I might, I’ve never developed a taste for hot tea but, Lord knows, I was raised on sweet iced tea — so sweet you could see the sugar granules collected in the bottom of the glass.
+When something stays on my mind, I have to write about it in order to make sense of it, somehow.
+The devotional is called “Embracing Everyone” and I’m going to paste it here and add my thoughts, like I always do.
 
-My Mema would make a big pitcher of sweet tea every morning and often another one in the evening. We didn’t drink much water, but we sure did drink sweet tea. Here’s the thing, though, that makes me grateful I was raised that way and aggravated that I don’t still live that way.
+> **Embracing Everyone**
+>
+> Across the world, the tradition of sharing a cup of tea is important. These occasions give us time to relax, engage and get to know each other. Taking the time to enjoy tea together also creates an opportunity to share sacred space. Later in this biblical passage, Jesus asks to sit down at the table with Zacchaeus. People in the wider story questioned why Jesus would make such a request. Zacchaeus was not everyone’s favourite ‘tea’ partner.
+>
+> People living with disabilities sometimes find themselves left to take tea on their own. A friend of mine noticed that after services at church, people did not choose to sit down at the morning tea table with her sister. Her precious sister lived with a disability and was not always easy to understand. While this sister was not excluded from the morning tea, her presence was not really appreciated. Theologian John Swinton reminds us that *“Jesus sat with those folks that society did not want to sit with.”*
+>
+> Choosing who we sit with communicates to the person and the wider world that we appreciate their company and their experience of the world. Faithful hospitality accepts that both sets of people sitting around the teapot reflect the image of God and have gifts to share with each other. Choosing to sit with someone who appears different to ourselves is a key marker of Christ’s pattern of hospitality.
+>
+> **For reflection:**  
+> As you think about your own context, who are the people that Jesus might ask to have tea with today?  
+> How might you pursue faithful hospitality with disabled people in your community?  
+>
+> **A prayer for today:**  
+> *Father, help us to see the image of God reflected in every face we encounter. Guide us to move beyond welcome statements and towards hospitality that seeks to build relationships. AMEN*
 
-My Mema was always calling people over to have a glass of sweet tea and “visit”… do you even remember those words being spoken? **“Come on over and visit awhile.”** She had a big round patio table with chairs underneath the carport and country music playing on the radio in the garage, and when neighbors walked by, she’d call out a greeting and invite them to sit and visit awhile.
+🧋🧋☕️☕️🩷🩷  
+Well, here it goes—Jesus and Mema talkin’ and I’m just writing as fast as I can.
 
-They usually did, and she’d go in the house and come out with big glasses filled with iced sweet tea. That’s how she built community in our neighborhood, but it went further than that. Extended family members would drop in — all the time. ALL. THE. TIME.
+Thoughts tumbling into words and memories making me laugh to myself because there’s nobody at the table with me right now.
 
-I used to wake up and walk into the kitchen only to have her holler at me: **“Jeanna’ Lynn, go get some clothes on!”** Because somebody had stopped by early in the morning and she was making them breakfast. I got used to walking up the street to see cars in the driveway that I didn’t recognize, only to find out it was a niece, a sister, an aunt, a cousin twice removed, or an old friend from way back when.
+Try as I might, I’ve never developed a taste for hot tea but, Lord knows, I was raised on sweet iced tea—so sweet you could see the sugar granules collected in the bottom of the glass.
+My Mema would make a big pitcher of sweet tea every morning and often another one in the evening.
+We didn’t drink much water but we sure did drink sweet tea.
 
-It didn’t matter — she was happy people came. She poured sweet tea, made stew, cooked pots of beans. I can’t remember the last time I made sweet tea. I tend to drink water. I rarely cook big pots of anything — it goes to waste. People are so busy that stopping by to “visit” is just about unheard of… and that’s a sad thing.
+Here’s the thing, though, that makes me grateful I was raised that way and aggravated that I don’t still live that way.
 
-But I’m trying not to tiptoe around something, so I’m going to shoot straight. Mema invited **everybody** — the blind, the deaf, the disabled, the ones who didn’t fit in, the ones struggling with mental illness. She used to tell me: **You just need to love on people a little more, a little differently.** She was right — and that’s exactly what Jesus said, too.
+My Mema was always calling people over to have a glass of sweet tea and “visit”… do you even remember those words being spoken?
 
-Mema had a niece, Dorothy, who was blind. What riled Mema up was how people treated Dorothy. Dorothy’s church would pick her up, take her to service, and leave her sitting alone. When service ended, they rushed her out — chattering the whole way about meeting “everybody else” for lunch.
+*“Come on over and visit awhile.”*
 
-Dorothy was never invited. Eventually she stopped going. She didn’t want to feel like a **bother**. Mema would drive her, pick her up, visit with her, take her to the Mesquite Opry on Saturday nights. She was **included** — and it mattered. We tend to ignore people we can’t neatly categorize.
+She had a big round patio table with chairs underneath the carport and country music playing on the radio in the garage and when neighbors walked by, she’ll call out a greeting and invite them to sit and visit awhile.
 
-My son is hard of hearing and wears a cochlear implant. He’s kind, hardworking. For a long time he went to church early to talk to people. Folks would shake his hand… then walk away. Week after week, he sat alone unless we came too. One Sunday, after the potluck, we filled our plates and looked for a place to sit.
+They usually did and she’ll go in the house and come out with big glasses filled with iced sweet tea.
 
-Nobody invited us to their table. Nobody scooted over. Two hard-of-hearing people must have felt like too much of a bother. But I don’t get it. I don’t get it when people avoid others who are different. I don’t get it when someone online asks for a church buddy and gets mocked.
+That’s how she built community in our neighborhood but it went further than that.
 
-I don’t get it when friends say they stay home because they feel in the way. I don’t get it when a client hugs me tight because I made her feel worth listening to. I don’t get how hard it is to make a pitcher of sweet tea and sit down with someone a little different.
+Extended family members would drop in all the time and I mean, ALL the time.
 
-And I don’t want to get it. I want to be more like Mema — and more like Jesus. I want to pull up a chair with the Ethiopian man speaking broken English who tells me he loves Texas. I want to hear the stories of the old veteran who can’t see or hear well but knows when he’s being heard.
+I used to wake up and walk into the kitchen only to have her holler at me, *“Jeanna’ Lynn, go get some clothes on”* because somebody had stopped by early in the morning and she was making them breakfast.
 
-I want to laugh with the amputee who jokes, “It’ll be like the blind leading the blind!” I want to include the uninvited, the unwanted, the unnecessary — the ones who feel like a bother instead of a treasure. I think one purpose of me not being able to drive while my optic nerve heals is to help me **see** what matters.
+I got used to walking up the street to see cars in the driveway that I didn’t recognize only to find out it was one of her nieces, a sister or aunt, or a cousin twice removed or an old neighbor from way back when.
 
-To become more like Jesus — and a little more like Mema. To open up my heart and pour out love like sweet tea — pitchers and pitchers — for **everybody**. To love people and let them love me — the way Jesus does, especially when they don’t fit in.
+It didn’t matter to her—she was so happy that people were coming to visit and so she poured sweet tea into glasses and she made stew and pots of beans.
+
+I can’t even remember the last time I made sweet tea… I tend to just drink water all day long.
+
+I rarely cook big pots of anything because it goes to waste.
+
+People are so busy that stopping by to “visit” is just about unheard of… and that’s a sad thing.
+
+But there’s something I’m trying not to tiptoe around so I’m going to shoot straight.
+
+Mema invited everybody over—the blind, the deaf, the disabled, the ones that didn’t fit in, the ones that struggled with mental illness and other problems.
+
+She used to tell me that I just needed to love on some people a little more, a little differently.
+
+She’s right and that’s exactly what Jesus said, too.
+
+Mema had a niece, Dorothy, that was blind and one thing that would get Mema so riled up was how people treated Dorothy.
+
+The members of the church Dorothy attended would pick her up, take her to church and leave her at the pew to sit by herself.
+
+When it was over, they would rush her to leave and chat all the way as they dropped her off about how they needed to hurry to meet “everybody else” at the restaurant for lunch.
+
+Dorothy was never invited to come along to lunch so eventually she gave up going to church because she felt like she was a “bother.”
+
+She once remarked that they acted like she was also deaf and dumb as they talked within earshot of whose turn it was to drive “the blind lady” this time.
+
+I don’t blame her one bit for not wanting to keep going.
+
+Mema would drive her and pick Dorothy up and bring her home to visit and on Saturday nights, Dorothy would go to the Mesquite Opry with Mema, my mom, and the other ladies.
+
+She was included and it matters.
+
+So often we tend to ignore people that we can’t place into proper places…
+
+My son is hard of hearing… and wears a cochlear implant. He’s also one of the kindest, hardest working guys I know.
+For a long time, he would drive to church, arriving early to talk to people before service and people would greet him, shake his hand, and then walk away.
+Week after week, he would sit alone unless my husband and I came.
+
+One Sunday we all stayed after for the potluck… filled our plates and looked for a place to sit.
+
+Nobody invited us to join their table—nobody scooted over to make room.
+
+Two hard of hearing people makes it a little different, I reckon. People would need to talk a little slower, they might have to repeat themselves, and it’ll just be too much of a bother so, yeah, I get it. I think, I get it.
+
+But I really don’t.
+
+I don’t get it when I notice people go out of their way to avoid talking to someone that’s different.
+
+I don’t get it when a guy posts on Facebook asking for someone to sit with him at church and it seems like he’s being mocked.
+
+I don’t get it when one of my friends tells me that she just stays home because she’s made to feel like she’s in the way.
+
+I don't get it when one of my clients hugs me tight the very first time she’s ever met me and thanks me for making her feel worth listening to.
+
+I don’t get how hard it is to make a pitcher of sweet tea and sit down at a table with someone that’s a little bit different.
+
+I don’t get it and I don’t want to get it.
+
+I want to be more like Mema and a whole lot more like Jesus.
+
+I want to pull up a chair and sit with the man from Ethiopia that speaks broken English and tells me that he loves living in Texas.
+I want to listen to the stories of the old veteran that can’t see or hear so well, but can feel when he’s being heard.
+
+I want to laugh with the amputee that jokes about helping me walk into my studio—“It’ll be like the blind leading the blind!”
+
+I want to include the ones that feel uninvited, unwanted, and unnecessary.
+
+The people that feel like they are a “bother” instead of a treasure.
+
+I think this is one of the plans and purposes for me not being able to drive while my optic nerve is healing—it’s to make me see and feel and know what really matters.
+
+It’s to become more like Jesus and a little more like Mema.
+
+It’s to open up my heart and pour out love—pitchers and pitchers—like sweet tea for everybody.
+
+I’m supposed to love on people and let them love on me—kinda like Jesus does—even when—especially when—they don’t fit in.
