@@ -14,29 +14,35 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     const resolvedParams = await Promise.resolve(params);
     const story = await getStoryData(resolvedParams.id);
     
-    const title = story.metaTitle || `${story.title} | GodDome`;
-    const description = story.metaDescription || story.excerpt || story.summary || `Read ${story.title} by Jeanna’ Mead on GodDome.`;
-    const image = story.ogImage || story.image || '/images/logo.png';
+    const title = story.seoTitle || story.metaTitle || story.title;
+    const fullTitle = `${title} | GodDome`;
+    const description = story.seoDescription || story.metaDescription || story.excerpt || story.summary || "A spiritual journey and devotional reflection on GodDome.";
+    const image = story.featuredImage || story.ogImage || story.image || '/images/logo.png';
+    const url = `https://goddome.org/stories/${resolvedParams.id}`;
 
     return {
-      title,
+      title: fullTitle,
       description,
       openGraph: {
-        title,
+        title: fullTitle,
         description,
+        url,
+        siteName: 'GodDome',
         type: 'article',
         publishedTime: story.date,
         authors: [story.author || 'Jeanna’ Mead'],
         images: [
           {
             url: image,
-            alt: story.title,
+            width: 1200,
+            height: 630,
+            alt: title,
           },
         ],
       },
       twitter: {
         card: 'summary_large_image',
-        title,
+        title: fullTitle,
         description,
         images: [image],
       },

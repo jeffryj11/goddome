@@ -31,14 +31,35 @@ var config_default = defineConfig({
           },
           {
             type: "string",
+            name: "seoTitle",
+            label: "SEO Title",
+            required: false
+          },
+          {
+            type: "string",
+            name: "seoDescription",
+            label: "SEO Description (150 chars)",
+            required: false,
+            ui: {
+              component: "textarea"
+            }
+          },
+          {
+            type: "image",
+            name: "featuredImage",
+            label: "Featured Image / Social Thumbnail",
+            required: false
+          },
+          {
+            type: "string",
             name: "metaTitle",
-            label: "SEO Meta Title",
+            label: "Meta Title",
             required: false
           },
           {
             type: "string",
             name: "metaDescription",
-            label: "SEO Meta Description (150 chars)",
+            label: "Meta Description",
             required: false,
             ui: {
               component: "textarea"
@@ -47,7 +68,7 @@ var config_default = defineConfig({
           {
             type: "image",
             name: "ogImage",
-            label: "OG Image / Social Thumbnail",
+            label: "OG Image",
             required: false
           },
           {

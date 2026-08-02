@@ -168,6 +168,9 @@ export type DocumentNode = Stories | Folder;
 export type Stories = Node & Document & {
   __typename?: 'Stories';
   title: Scalars['String']['output'];
+  seoTitle?: Maybe<Scalars['String']['output']>;
+  seoDescription?: Maybe<Scalars['String']['output']>;
+  featuredImage?: Maybe<Scalars['String']['output']>;
   metaTitle?: Maybe<Scalars['String']['output']>;
   metaDescription?: Maybe<Scalars['String']['output']>;
   ogImage?: Maybe<Scalars['String']['output']>;
@@ -205,6 +208,9 @@ export type RichTextFilter = {
 
 export type StoriesFilter = {
   title?: InputMaybe<StringFilter>;
+  seoTitle?: InputMaybe<StringFilter>;
+  seoDescription?: InputMaybe<StringFilter>;
+  featuredImage?: InputMaybe<ImageFilter>;
   metaTitle?: InputMaybe<StringFilter>;
   metaDescription?: InputMaybe<StringFilter>;
   ogImage?: InputMaybe<ImageFilter>;
@@ -297,6 +303,9 @@ export type DocumentMutation = {
 
 export type StoriesMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
+  seoTitle?: InputMaybe<Scalars['String']['input']>;
+  seoDescription?: InputMaybe<Scalars['String']['input']>;
+  featuredImage?: InputMaybe<Scalars['String']['input']>;
   metaTitle?: InputMaybe<Scalars['String']['input']>;
   metaDescription?: InputMaybe<Scalars['String']['input']>;
   ogImage?: InputMaybe<Scalars['String']['input']>;
@@ -309,14 +318,14 @@ export type StoriesMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type StoriesPartsFragment = { __typename: 'Stories', title: string, metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, author?: string | null, date?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, body?: any | null };
+export type StoriesPartsFragment = { __typename: 'Stories', title: string, seoTitle?: string | null, seoDescription?: string | null, featuredImage?: string | null, metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, author?: string | null, date?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, body?: any | null };
 
 export type StoriesQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type StoriesQuery = { __typename?: 'Query', stories: { __typename: 'Stories', id: string, title: string, metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, author?: string | null, date?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type StoriesQuery = { __typename?: 'Query', stories: { __typename: 'Stories', id: string, title: string, seoTitle?: string | null, seoDescription?: string | null, featuredImage?: string | null, metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, author?: string | null, date?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type StoriesConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -328,12 +337,15 @@ export type StoriesConnectionQueryVariables = Exact<{
 }>;
 
 
-export type StoriesConnectionQuery = { __typename?: 'Query', storiesConnection: { __typename?: 'StoriesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'StoriesConnectionEdges', cursor: string, node?: { __typename: 'Stories', id: string, title: string, metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, author?: string | null, date?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type StoriesConnectionQuery = { __typename?: 'Query', storiesConnection: { __typename?: 'StoriesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'StoriesConnectionEdges', cursor: string, node?: { __typename: 'Stories', id: string, title: string, seoTitle?: string | null, seoDescription?: string | null, featuredImage?: string | null, metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, author?: string | null, date?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const StoriesPartsFragmentDoc = gql`
     fragment StoriesParts on Stories {
   __typename
   title
+  seoTitle
+  seoDescription
+  featuredImage
   metaTitle
   metaDescription
   ogImage
