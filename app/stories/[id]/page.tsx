@@ -77,9 +77,9 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
         <div className="flex items-center justify-between gap-4 mb-10">
           <Link 
             href="/" 
-            className="inline-flex items-center text-sm font-semibold text-[#A83226] hover:text-[#8f2a20] transition-colors group"
+            className="inline-flex items-center text-sm font-semibold text-[#A83226] hover:text-[#8f2a20] transition-colors group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
           >
-            <span className="transform group-hover:-translate-x-1 transition-transform mr-2">←</span> 
+            <span className="transform group-hover:-translate-x-1 transition-transform mr-2" aria-hidden="true">←</span> 
             Back to Stories
           </Link>
 
@@ -139,14 +139,14 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
           )}
         </header>
 
-        {/* Audio Devotional Player (Conditionally Rendered when audioUrl is present) */}
-        {story.audioUrl && (
-          <AudioPlayer 
-            src={story.audioUrl} 
-            title={story.title} 
-            author={story.author || 'Jeanna’ Mead'} 
-          />
-        )}
+        {/* ElevenLabs AI Audio Devotional Player */}
+        <AudioPlayer 
+          src={story.audioUrl} 
+          storyId={story.id}
+          storyText={story.excerpt || story.title}
+          title={story.title} 
+          author={story.author || 'Jeanna’ Mead'} 
+        />
 
         {/* Featured Pull-Quote Component if present in frontmatter */}
         {story.featuredQuote && (
@@ -191,7 +191,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/"
-                className="px-6 py-3 bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] text-sm font-semibold rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 w-full sm:w-auto"
+                className="px-6 py-3 bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] text-sm font-semibold rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 w-full sm:w-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
               >
                 Read More Devotionals
               </Link>
@@ -199,9 +199,9 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
                 href={paypalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-[#D99B26] hover:bg-[#c28a21] text-[#2C221E] text-sm font-semibold rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+                className="px-6 py-3 bg-[#D99B26] hover:bg-[#c28a21] text-[#2C221E] text-sm font-semibold rounded-full shadow-sm transition-all transform hover:-translate-y-0.5 inline-flex items-center justify-center gap-2 w-full sm:w-auto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
               >
-                <svg className="w-4 h-4 fill-current text-[#2C221E]" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 fill-current text-[#2C221E]" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                 </svg>
                 Donate via PayPal
