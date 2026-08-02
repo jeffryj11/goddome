@@ -36,23 +36,29 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "seoTitle",
-            label: "SEO Title",
+            name: "date",
+            label: "Date (YYYY-MM-DD)",
             required: false,
           },
           {
             type: "string",
-            name: "seoDescription",
-            label: "SEO Description (150 chars)",
+            name: "excerpt",
+            label: "Excerpt / Short Summary",
             required: false,
             ui: {
               component: "textarea",
             },
           },
           {
+            type: "string",
+            name: "author",
+            label: "Author",
+            required: false,
+          },
+          {
             type: "image",
-            name: "featuredImage",
-            label: "Featured Image / Social Thumbnail",
+            name: "heroImage",
+            label: "Hero Image / Cover Image",
             required: false,
           },
           {
@@ -68,6 +74,27 @@ export default defineConfig({
               "Scripture Reflection",
               "Poetry",
             ],
+          },
+          {
+            type: "string",
+            name: "seoTitle",
+            label: "SEO Title",
+            required: false,
+          },
+          {
+            type: "string",
+            name: "seoDescription",
+            label: "SEO Description",
+            required: false,
+            ui: {
+              component: "textarea",
+            },
+          },
+          {
+            type: "image",
+            name: "featuredImage",
+            label: "Featured Image",
+            required: false,
           },
           {
             type: "string",
@@ -88,18 +115,6 @@ export default defineConfig({
             type: "image",
             name: "ogImage",
             label: "OG Image",
-            required: false,
-          },
-          {
-            type: "string",
-            name: "author",
-            label: "Author",
-            required: false,
-          },
-          {
-            type: "string",
-            name: "date",
-            label: "Date",
             required: false,
           },
           {

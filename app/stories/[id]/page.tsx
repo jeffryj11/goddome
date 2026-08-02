@@ -16,8 +16,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     
     const title = story.seoTitle || story.metaTitle || story.title;
     const fullTitle = `${title} | GodDome`;
-    const description = story.seoDescription || story.metaDescription || story.excerpt || story.summary || "A spiritual journey and devotional reflection on GodDome.";
-    const image = story.featuredImage || story.ogImage || story.image || '/images/image_ef9498.jpg';
+    const defaultDesc = "Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.";
+    const description = story.excerpt || story.seoDescription || story.metaDescription || story.summary || defaultDesc;
+    const image = story.heroImage || story.featuredImage || story.ogImage || story.image || '/images/image_ef9498.jpg';
     const url = `https://goddome.org/stories/${resolvedParams.id}`;
 
     return {
@@ -95,7 +96,7 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
             By Jeanna’ Mead
           </p>
 
-          {/* Topic Tags Badges if available */}
+          {/* Topic Tags Badges */}
           {story.tags && story.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-4">
               {story.tags.map((tag: string, index: number) => (
@@ -115,7 +116,8 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
           className="prose prose-lg max-w-none text-[#2C221E]/90 leading-relaxed font-serif
                      prose-headings:font-sans prose-headings:text-[#2C221E]
                      prose-p:mb-6 prose-p:text-lg sm:prose-p:text-xl sm:prose-p:leading-8
-                     prose-blockquote:border-l-4 prose-blockquote:border-[#D99B26] prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-[#2C221E]/80
+                     prose-blockquote:border-l-4 prose-blockquote:border-[#D99B26] prose-blockquote:pl-5 prose-blockquote:py-1 prose-blockquote:italic prose-blockquote:text-[#2C221E]/85 prose-blockquote:bg-[#2C221E]/[0.02] prose-blockquote:rounded-r-lg
+                     prose-hr:border-[#2C221E]/20 prose-hr:my-10
                      prose-a:text-[#A83226] prose-a:underline hover:prose-a:text-[#8f2a20]"
           dangerouslySetInnerHTML={{ __html: story.contentHtml }}
         />

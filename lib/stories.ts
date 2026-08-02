@@ -14,7 +14,12 @@ export interface StoryMeta {
   readTime?: string;
   author?: string;
   excerpt?: string;
+  summary?: string;
   image?: string;
+  heroImage?: string;
+  featuredImage?: string;
+  ogImage?: string;
+  tags?: string[];
   [key: string]: any;
 }
 
@@ -36,15 +41,20 @@ export function getSortedStoriesData(): StoryMeta[] {
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const matterResult = matter(fileContents);
 
+      const excerpt = matterResult.data.excerpt || matterResult.data.summary || '';
+      const image = matterResult.data.heroImage || matterResult.data.featuredImage || matterResult.data.ogImage || matterResult.data.image || '/images/image_ef9498.jpg';
+
       return {
         id,
         title: matterResult.data.title || id,
-        category: matterResult.data.category || 'Devotional',
+        category: matterResult.data.category || (matterResult.data.tags && matterResult.data.tags[0]) || 'Devotional',
         date: matterResult.data.date || '',
         readTime: matterResult.data.readTime || '8 min read',
         author: matterResult.data.author || 'Jeanna’ Mead',
-        excerpt: matterResult.data.excerpt || '',
-        image: matterResult.data.image || '/images/lighthouse_storm.jpg',
+        excerpt,
+        summary: excerpt,
+        image,
+        tags: matterResult.data.tags || matterResult.data.themes || [],
         ...matterResult.data,
       };
     });
@@ -72,17 +82,21 @@ export async function getStoryData(id: string): Promise<StoryData> {
     .process(matterResult.content);
 
   const contentHtml = processedContent.toString();
+  const excerpt = matterResult.data.excerpt || matterResult.data.summary || '';
+  const image = matterResult.data.heroImage || matterResult.data.featuredImage || matterResult.data.ogImage || matterResult.data.image || '/images/image_ef9498.jpg';
 
   return {
     id,
     contentHtml,
     title: matterResult.data.title || id,
-    category: matterResult.data.category || 'Devotional',
+    category: matterResult.data.category || (matterResult.data.tags && matterResult.data.tags[0]) || 'Devotional',
     date: matterResult.data.date || '',
     readTime: matterResult.data.readTime || '8 min read',
     author: matterResult.data.author || 'Jeanna’ Mead',
-    excerpt: matterResult.data.excerpt || '',
-    image: matterResult.data.image || '/images/lighthouse_storm.jpg',
+    excerpt,
+    summary: excerpt,
+    image,
+    tags: matterResult.data.tags || matterResult.data.themes || [],
     ...matterResult.data,
   };
 }

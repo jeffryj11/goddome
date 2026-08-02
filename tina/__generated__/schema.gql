@@ -89,15 +89,17 @@ union DocumentNode = Stories | Folder
 
 type Stories implements Node & Document {
   title: String!
+  date: String
+  excerpt: String
+  author: String
+  heroImage: String
+  tags: [String]
   seoTitle: String
   seoDescription: String
   featuredImage: String
-  tags: [String]
   metaTitle: String
   metaDescription: String
   ogImage: String
-  author: String
-  date: String
   hebrew_scripture: String
   christian_scripture: String
   themes: [String]
@@ -130,15 +132,17 @@ input RichTextFilter {
 
 input StoriesFilter {
   title: StringFilter
+  date: StringFilter
+  excerpt: StringFilter
+  author: StringFilter
+  heroImage: ImageFilter
+  tags: StringFilter
   seoTitle: StringFilter
   seoDescription: StringFilter
   featuredImage: ImageFilter
-  tags: StringFilter
   metaTitle: StringFilter
   metaDescription: StringFilter
   ogImage: ImageFilter
-  author: StringFilter
-  date: StringFilter
   hebrew_scripture: StringFilter
   christian_scripture: StringFilter
   themes: StringFilter
@@ -178,15 +182,17 @@ input DocumentMutation {
 
 input StoriesMutation {
   title: String
+  date: String
+  excerpt: String
+  author: String
+  heroImage: String
+  tags: [String]
   seoTitle: String
   seoDescription: String
   featuredImage: String
-  tags: [String]
   metaTitle: String
   metaDescription: String
   ogImage: String
-  author: String
-  date: String
   hebrew_scripture: String
   christian_scripture: String
   themes: [String]
