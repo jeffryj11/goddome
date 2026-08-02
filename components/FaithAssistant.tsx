@@ -32,15 +32,14 @@ export default function FaithAssistant() {
       });
 
       const data = await res.json();
-      console.log('Faith Assistant API Response Status:', res.status, data);
 
       if (!res.ok || data.error) {
-        throw new Error(data.error || `HTTP ${res.status}: Failed to generate reflection`);
+        throw new Error(data.error || 'Failed to generate reflection');
       }
 
       setReflection(data.text);
     } catch (err: any) {
-      console.error('Faith Assistant Client Error:', err);
+      console.error(err);
       setError(
         err.message || 'Unable to connect to Faith Assistant right now. Please try again in a few moments.'
       );
@@ -99,7 +98,7 @@ export default function FaithAssistant() {
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Type your reflection prompt or spiritual question here..."
-            className="w-full rounded-2xl bg-[#FAF6F0] border border-[#2C221E]/15 focus:border-[#A83226] focus:ring-2 focus:ring-[#A83226]/20 text-[#2C221E] p-4 text-sm placeholder:text-[#2C221E]/40 focus:outline-none transition-all resize-none shadow-inner"
+            className="w-full rounded-2xl bg-[#FAF6F0] border border-[#2C221E]/15 focus:border-[#A83226] focus:ring-2 focus:ring-[#A83226]/20 text-[#2C221E] p-4 text-sm placeholder:text-[#2C221E]/40 focus:outline-none transition-all resize-none shadow-inner font-serif"
             required
             aria-required="true"
           />
@@ -162,14 +161,11 @@ export default function FaithAssistant() {
         </div>
       </form>
 
-      {/* Exposed Error Banner */}
+      {/* Styled Amber Error Banner */}
       {error && (
-        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-start gap-2.5" role="alert">
-          <span aria-hidden="true" className="text-base">🙏</span>
-          <div className="flex-1">
-            <p className="font-semibold mb-0.5">Faith Assistant Diagnostic Notice</p>
-            <p className="font-mono text-[11px] break-words">{error}</p>
-          </div>
+        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-center gap-2" role="alert">
+          <span aria-hidden="true">🙏</span>
+          <span>{error}</span>
         </div>
       )}
 
