@@ -75,7 +75,7 @@ export default function FaithAssistantModal({
     } catch (err: any) {
       console.error(err);
       setError(
-        err.message || 'An unexpected error occurred while generating reflection.'
+        err.message || 'Unable to connect to Faith Assistant right now. Please try again in a few moments.'
       );
     } finally {
       setLoading(false);
@@ -99,7 +99,7 @@ export default function FaithAssistantModal({
         <div className="p-6 sm:p-8 bg-[#2C221E] text-[#FAF6F0] flex items-center justify-between border-b border-[#D99B26]/20">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-xl bg-[#D99B26]/20 text-[#D99B26] flex items-center justify-center">
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
               </svg>
             </div>
@@ -115,7 +115,7 @@ export default function FaithAssistantModal({
 
           <button
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-[#FAF6F0] flex items-center justify-center transition-colors cursor-pointer"
+            className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-[#FAF6F0] flex items-center justify-center transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
             aria-label="Close modal"
           >
             ✕
@@ -135,7 +135,7 @@ export default function FaithAssistantModal({
                   key={idx}
                   type="button"
                   onClick={() => setPrompt(chip)}
-                  className="px-3 py-1.5 rounded-xl text-xs bg-white hover:bg-[#A83226]/10 text-[#2C221E] hover:text-[#A83226] border border-[#2C221E]/10 transition-all text-left font-medium cursor-pointer"
+                  className="px-3 py-1.5 rounded-xl text-xs bg-white hover:bg-[#A83226]/10 text-[#2C221E] hover:text-[#A83226] border border-[#2C221E]/10 transition-all text-left font-medium cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
                 >
                   ✨ {chip}
                 </button>
@@ -145,13 +145,16 @@ export default function FaithAssistantModal({
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
+            <label htmlFor="modal-prompt" className="sr-only">Reflection Prompt</label>
             <textarea
+              id="modal-prompt"
               rows={4}
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="Share a topic, prayer, or scripture verse..."
               className="w-full rounded-2xl bg-white border border-[#2C221E]/15 focus:border-[#A83226] focus:ring-2 focus:ring-[#A83226]/20 text-[#2C221E] p-4 text-sm focus:outline-none transition-all resize-none font-serif"
               required
+              aria-required="true"
             />
 
             <div className="flex items-center justify-between">
@@ -162,23 +165,24 @@ export default function FaithAssistantModal({
               <button
                 type="submit"
                 disabled={loading || !prompt.trim()}
-                className="px-6 py-3 rounded-xl font-bold text-sm bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-md disabled:opacity-50 transition-all cursor-pointer flex items-center gap-2"
+                className="px-6 py-3 rounded-xl font-bold text-sm bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-md disabled:opacity-50 transition-all cursor-pointer flex items-center gap-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
               >
                 {loading ? 'Reflecting...' : 'Generate Reflection ✨'}
               </button>
             </div>
           </form>
 
-          {/* Error */}
+          {/* Styled Helper Error Banner */}
           {error && (
-            <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs">
-              {error}
+            <div className="p-4 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-center gap-2" role="alert">
+              <span aria-hidden="true">🙏</span>
+              <span>{error}</span>
             </div>
           )}
 
           {/* Reflection */}
           {reflection && (
-            <div className="p-6 rounded-2xl bg-white border border-[#D99B26]/30">
+            <div className="p-6 rounded-2xl bg-white border border-[#D99B26]/30 animate-fade-in">
               <div className="flex items-center justify-between mb-3 border-b border-[#2C221E]/10 pb-2">
                 <span className="text-xs font-bold text-[#D99B26] uppercase">
                   Spiritual Meditation

@@ -41,7 +41,7 @@ export default function FaithAssistant() {
     } catch (err: any) {
       console.error(err);
       setError(
-        err.message || 'An unexpected error occurred while generating reflection.'
+        err.message || 'Unable to connect to Faith Assistant right now. Please try again in a few moments.'
       );
     } finally {
       setLoading(false);
@@ -80,7 +80,7 @@ export default function FaithAssistant() {
               key={idx}
               type="button"
               onClick={() => setPrompt(chip)}
-              className="px-3.5 py-1.5 rounded-xl text-xs bg-[#FAF6F0] hover:bg-[#A83226]/10 text-[#2C221E] hover:text-[#A83226] border border-[#2C221E]/10 transition-all text-left font-medium"
+              className="px-3.5 py-1.5 rounded-xl text-xs bg-[#FAF6F0] hover:bg-[#A83226]/10 text-[#2C221E] hover:text-[#A83226] border border-[#2C221E]/10 transition-all text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
             >
               ✨ {chip}
             </button>
@@ -91,13 +91,16 @@ export default function FaithAssistant() {
       {/* Input Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
+          <label htmlFor="faith-prompt" className="sr-only">Reflection Prompt</label>
           <textarea
+            id="faith-prompt"
             rows={4}
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Type your reflection prompt or spiritual question here..."
             className="w-full rounded-2xl bg-[#FAF6F0] border border-[#2C221E]/15 focus:border-[#A83226] focus:ring-2 focus:ring-[#A83226]/20 text-[#2C221E] p-4 text-sm placeholder:text-[#2C221E]/40 focus:outline-none transition-all resize-none shadow-inner"
             required
+            aria-required="true"
           />
         </div>
 
@@ -109,7 +112,7 @@ export default function FaithAssistant() {
           <button
             type="submit"
             disabled={loading || !prompt.trim()}
-            className="px-6 py-3 rounded-xl font-bold text-sm bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2"
+            className="px-6 py-3 rounded-xl font-bold text-sm bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
           >
             {loading ? (
               <>
@@ -117,6 +120,7 @@ export default function FaithAssistant() {
                   className="animate-spin h-4 w-4 text-[#FAF6F0]"
                   fill="none"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <circle
                     className="opacity-25"
@@ -142,6 +146,7 @@ export default function FaithAssistant() {
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  aria-hidden="true"
                 >
                   <path
                     strokeLinecap="round"
@@ -156,17 +161,17 @@ export default function FaithAssistant() {
         </div>
       </form>
 
-      {/* Error Message */}
+      {/* Styled Helper Error Banner */}
       {error && (
-        <div className="mt-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
-          <p className="font-semibold mb-1">Error Generating Reflection</p>
-          <p className="text-xs font-light">{error}</p>
+        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-center gap-2" role="alert">
+          <span aria-hidden="true">🙏</span>
+          <span>{error}</span>
         </div>
       )}
 
       {/* Generated Reflection Output */}
       {reflection && (
-        <div className="mt-8 p-6 rounded-2xl bg-[#FAF6F0] border border-[#D99B26]/30 relative">
+        <div className="mt-8 p-6 rounded-2xl bg-[#FAF6F0] border border-[#D99B26]/30 relative animate-fade-in">
           <div className="flex items-center justify-between mb-4 border-b border-[#2C221E]/10 pb-3">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#D99B26]" />
@@ -177,7 +182,7 @@ export default function FaithAssistant() {
 
             <button
               onClick={handleCopy}
-              className="text-xs font-medium text-[#2C221E]/70 hover:text-[#A83226] transition-colors flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-[#2C221E]/10"
+              className="text-xs font-medium text-[#2C221E]/70 hover:text-[#A83226] transition-colors flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-[#2C221E]/10 cursor-pointer"
             >
               {copied ? (
                 <span className="text-emerald-600 font-semibold">Copied!</span>
