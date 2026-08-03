@@ -3,7 +3,7 @@ import { ChristianCrossIcon, MenorahIcon } from './FaithIcons';
 
 export default function Hero() {
   return (
-    <section className="relative w-full star-twinkle-bg text-[#FAF6F0] pt-24 pb-8 px-6 sm:px-12 text-center overflow-hidden flex flex-col items-center">
+    <section className="relative w-full star-twinkle-bg text-[#FAF6F0] pt-4 pb-8 px-6 sm:px-12 text-center overflow-hidden flex flex-col items-center">
       {/* Background Hero Image with Dark Midnight Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
@@ -17,11 +17,11 @@ export default function Hero() {
       </div>
 
       {/* Ambient Starlight Glow */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-[#D99B26]/15 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute top-2 left-1/2 -translate-x-1/2 w-[700px] h-[250px] bg-[#D99B26]/15 rounded-full blur-3xl pointer-events-none z-0" />
 
       {/* Overlay Content */}
       <div className="max-w-4xl mx-auto relative z-10">
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B132B]/90 border border-[#D99B26]/40 text-[#D99B26] text-xs font-semibold uppercase tracking-widest mb-4 backdrop-blur-md shadow-lg">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B132B]/90 border border-[#D99B26]/40 text-[#D99B26] text-xs font-semibold uppercase tracking-widest mb-3 backdrop-blur-md shadow-lg">
           <ChristianCrossIcon className="w-3.5 h-3.5 text-[#D99B26]" />
           <span>+ WORDS FOR YOUR SOUL +</span>
           <MenorahIcon className="w-3.5 h-3.5 text-[#D99B26]" />
@@ -32,7 +32,7 @@ export default function Hero() {
         </h1>
 
         {/* Featured Starry Night Quote */}
-        <blockquote className="my-5 p-5 rounded-2xl bg-[#0B132B]/60 border border-[#D99B26]/30 backdrop-blur-md max-w-2xl mx-auto shadow-xl">
+        <blockquote className="my-4 p-5 rounded-2xl bg-[#0B132B]/60 border border-[#D99B26]/30 backdrop-blur-md max-w-2xl mx-auto shadow-xl">
           <p className="font-serif italic text-lg sm:text-xl text-[#F3E5AB] leading-relaxed">
             “God&apos;s love is like starry nights. Too vast and beautiful... comforting and magnified into infinity.”
           </p>
