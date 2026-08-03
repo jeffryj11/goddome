@@ -4,8 +4,8 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 const MODELS_TO_TRY = [
   'gemini-2.0-flash',
-  'gemini-2.5-flash',
-  'gemini-1.5-flash-latest'
+  'gemini-1.5-flash',
+  'gemini-1.5-pro'
 ];
 
 export async function POST(req: Request) {
@@ -28,22 +28,23 @@ export async function POST(req: Request) {
 
     for (const modelName of MODELS_TO_TRY) {
       try {
+        // Use v1 or default request options
         const model = genAI.getGenerativeModel({ model: modelName });
         const result = await model.generateContent(fullPrompt);
         responseText = result.response.text();
         if (responseText) {
-          console.log(`Successfully generated content using ${modelName}`);
+          console.log(`[Gemini API] Successfully generated using model: ${modelName}`);
           break;
         }
       } catch (err: any) {
         lastError = err;
-        console.warn(`Model ${modelName} failed: ${err.message}`);
+        console.warn(`[Gemini API] Model ${modelName} failed: ${err.message}`);
       }
     }
 
     if (!responseText) {
       return Response.json(
-        { error: lastError?.message || 'All configured Gemini models failed.' },
+        { error: `Gemini API Error: ${lastError?.message || 'All fallback models failed.'}` },
         { status: 500 }
       );
     }
