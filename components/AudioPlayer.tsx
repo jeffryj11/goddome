@@ -48,22 +48,48 @@ export default function AudioPlayer({
     if (!audio) return;
 
     const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration || 0);
+    const updateDuration = () => {
+      if (audio.duration && isFinite(audio.duration)) {
+        setDuration(audio.duration);
+      }
+    };
     const handleEnded = () => setIsPlaying(false);
+
+    // Immediate Play Trigger: trigger audio.play() on canplay event
+    const handleCanPlay = () => {
+      setLoading(false);
+      audio.play().then(() => {
+        setIsPlaying(true);
+      }).catch((err) => {
+        console.warn('Auto-play error on stream canplay:', err);
+      });
+    };
+
+    const handleError = () => {
+      setLoading(false);
+      setIsPlaying(false);
+      setError('Could not load audio. Please try again.');
+    };
 
     audio.addEventListener('timeupdate', updateTime);
     audio.addEventListener('loadedmetadata', updateDuration);
+    audio.addEventListener('durationchange', updateDuration);
+    audio.addEventListener('canplay', handleCanPlay);
     audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('error', handleError);
 
     return () => {
       audio.removeEventListener('timeupdate', updateTime);
       audio.removeEventListener('loadedmetadata', updateDuration);
+      audio.removeEventListener('durationchange', updateDuration);
+      audio.removeEventListener('canplay', handleCanPlay);
       audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('error', handleError);
     };
   }, [audioSrc]);
 
   const handleGenerateAudio = async () => {
-    if (!storyText) return;
+    if (!storyText && !storyId) return;
 
     // Use cached audio if available
     if (cacheKey && typeof window !== 'undefined') {
@@ -75,7 +101,7 @@ export default function AudioPlayer({
             audioRef.current.play();
             setIsPlaying(true);
           }
-        }, 150);
+        }, 100);
         return;
       }
     }
@@ -83,54 +109,19 @@ export default function AudioPlayer({
     setLoading(true);
     setError(null);
 
-    try {
-      const res = await fetch('/api/audio', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: storyText, text: storyText, storyId }),
-      });
+    // Direct HTTP Stream URL allows instant streaming on first chunk
+    const streamUrl = storyId 
+      ? `/api/audio?id=${encodeURIComponent(storyId)}`
+      : `/api/audio?text=${encodeURIComponent(storyText || '')}`;
 
-      if (!res.ok) {
-        throw new Error('Could not load audio. Please try again.');
-      }
-
-      const blob = await res.blob();
-      const objectUrl = URL.createObjectURL(blob);
-      setAudioSrc(objectUrl);
-
-      // Save to sessionStorage cache if under limit
-      if (cacheKey && typeof window !== 'undefined') {
-        try {
-          const reader = new FileReader();
-          reader.readAsDataURL(blob);
-          reader.onloadend = () => {
-            const base64data = reader.result as string;
-            sessionStorage.setItem(cacheKey, base64data);
-          };
-        } catch {
-          // Ignore cache quota errors silently
-        }
-      }
-
-      setTimeout(() => {
-        if (audioRef.current) {
-          audioRef.current.play();
-          setIsPlaying(true);
-        }
-      }, 300);
-    } catch (err: any) {
-      console.error(err);
-      setError('Could not load audio. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+    setAudioSrc(streamUrl);
   };
 
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    if (!audioSrc && storyText) {
+    if (!audioSrc && (storyText || storyId)) {
       handleGenerateAudio();
       return;
     }
@@ -139,8 +130,11 @@ export default function AudioPlayer({
       audio.pause();
       setIsPlaying(false);
     } else {
-      audio.play();
-      setIsPlaying(true);
+      audio.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        handleGenerateAudio();
+      });
     }
   };
 
@@ -163,17 +157,18 @@ export default function AudioPlayer({
   };
 
   const formatTime = (seconds: number) => {
-    if (isNaN(seconds) || seconds === 0) return '0:00';
+    if (isNaN(seconds) || seconds === 0 || !isFinite(seconds)) return '0:00';
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-  const timeRemaining = duration > currentTime ? duration - currentTime : 0;
+  const hasValidDuration = duration > 0 && isFinite(duration);
+  const timeRemaining = hasValidDuration && duration > currentTime ? duration - currentTime : 0;
 
   return (
     <div className="my-8 bg-gradient-to-r from-[#2C221E] via-[#3D2F2A] to-[#2C221E] text-[#FAF6F0] rounded-2xl p-6 shadow-md border border-[#D99B26]/30 relative overflow-hidden">
-      {audioSrc && <audio ref={audioRef} src={audioSrc} preload="metadata" />}
+      {audioSrc && <audio ref={audioRef} src={audioSrc} preload="auto" />}
 
       {/* Header Info */}
       <div className="flex items-center justify-between gap-4 mb-4">
@@ -190,7 +185,7 @@ export default function AudioPlayer({
               </span>
               {isPlaying && (
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 animate-pulse">
-                  Playing
+                  Streaming Live
                 </span>
               )}
             </div>
@@ -223,7 +218,12 @@ export default function AudioPlayer({
             className="w-12 h-12 rounded-full bg-[#D99B26] hover:bg-[#c28a21] text-[#2C221E] flex items-center justify-center shadow-md transition-transform transform active:scale-95 cursor-pointer flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
             aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
           >
-            {isPlaying ? (
+            {loading ? (
+              <svg className="animate-spin h-5 w-5 text-[#2C221E]" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+              </svg>
+            ) : isPlaying ? (
               <svg className="w-5 h-5 fill-current text-[#2C221E]" viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
               </svg>
@@ -238,7 +238,7 @@ export default function AudioPlayer({
             <input
               type="range"
               min={0}
-              max={duration || 100}
+              max={hasValidDuration ? duration : Math.max(currentTime + 10, 100)}
               value={currentTime}
               onChange={handleSeek}
               aria-label="Audio seeker progress"
@@ -246,7 +246,7 @@ export default function AudioPlayer({
             />
             <div className="flex justify-between text-[11px] text-[#FAF6F0]/70 font-mono">
               <span>{formatTime(currentTime)}</span>
-              <span>-{formatTime(timeRemaining)}</span>
+              <span>{hasValidDuration ? `-${formatTime(timeRemaining)}` : 'Live Stream'}</span>
             </div>
           </div>
         </div>
