@@ -19,7 +19,7 @@ export default function Navbar() {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#030712]/95 backdrop-blur-md border-b border-[#D99B26]/20 shadow-lg text-[#FAF6F0]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0B0F19]/80 backdrop-blur-md border-b border-white/10 text-[#FAF6F0] shadow-lg">
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* 1. Brand Logo & Title with Praying Hands Emblem */}
         <Link href="/" onClick={closeMobileMenu} className="flex items-center space-x-3 group">

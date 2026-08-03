@@ -3,7 +3,7 @@ import { ChristianCrossIcon, MenorahIcon } from './FaithIcons';
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[620px] star-twinkle-bg text-[#FAF6F0] pt-24 pb-20 px-6 sm:px-12 text-center overflow-hidden flex flex-col justify-center items-center">
+    <section className="relative w-full star-twinkle-bg text-[#FAF6F0] pt-28 pb-16 px-6 sm:px-12 text-center overflow-hidden flex flex-col justify-center items-center">
       {/* Background Hero Image with Dark Midnight Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
