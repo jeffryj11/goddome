@@ -19,7 +19,7 @@ export default function Navbar() {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <nav className="sticky top-0 z-40 bg-[#030712]/90 backdrop-blur-md border-b border-[#D99B26]/20 shadow-lg text-[#FAF6F0]">
+    <header className="sticky top-0 z-50 bg-[#030712]/95 backdrop-blur-md border-b border-[#D99B26]/20 shadow-lg text-[#FAF6F0]">
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* 1. Brand Logo & Title with Praying Hands Emblem */}
         <Link href="/" onClick={closeMobileMenu} className="flex items-center space-x-3 group">
@@ -45,7 +45,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center space-x-8 text-sm font-semibold text-[#FAF6F0]/80">
+        <nav className="hidden md:flex items-center space-x-8 text-sm font-semibold text-[#FAF6F0]/80">
           {/* 1. Home */}
           <Link 
             href="/" 
@@ -92,7 +92,7 @@ export default function Navbar() {
           <Link href="/admin" className="hover:text-[#A83226] transition-colors text-xs font-bold uppercase tracking-wider text-[#D99B26]">
             CMS Admin
           </Link>
-        </div>
+        </nav>
 
         {/* Desktop & Mobile Action Buttons */}
         <div className="flex items-center space-x-3">
@@ -188,6 +188,6 @@ export default function Navbar() {
           </Link>
         </div>
       )}
-    </nav>
+    </header>
   );
 }
