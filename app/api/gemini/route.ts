@@ -1,4 +1,4 @@
-import { GoogleGenAI } from '@google/genai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
@@ -20,53 +20,47 @@ export async function POST(req: Request) {
       );
     }
 
-    const ai = new GoogleGenAI({
-      apiKey: process.env.GEMINI_API_KEY,
-    });
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-    const MODELS_TO_TRY = ['gemini-2.0-flash', 'gemini-1.5-flash'];
+    const MODELS_TO_TRY = [
+      'gemini-1.5-flash',
+      'gemini-1.5-pro',
+      'gemini-2.0-flash'
+    ];
+
     const SYSTEM_PROMPT = `You are the GodDome Faith & Reflection Assistant, a warm, compassionate, and biblically grounded spiritual companion for readers of GodDome (authored by Jeanna’ Mead). Your mission is to provide gentle encouragement, relevant scripture references, and thoughtful reflection points to help individuals find peace and grace. Keep your tone quiet, uplifting, and formatted in clean, readable Markdown with clear headings or bullet points where helpful.`;
 
     const fullPrompt = `${SYSTEM_PROMPT}\n\nUser Question/Reflection Topic: ${prompt}`;
+
+    let responseText: string | null = null;
     let lastError: any = null;
 
     for (const modelName of MODELS_TO_TRY) {
       try {
-        console.log(`Attempting Gemini API call with model: ${modelName}`);
-        const response = await ai.models.generateContent({
-          model: modelName,
-          contents: fullPrompt,
-        });
-
-        if (response?.text) {
-          console.log(`Gemini API call SUCCEEDED with model: ${modelName}`);
-          return NextResponse.json({ text: response.text });
+        console.log(`Attempting model: ${modelName}`);
+        const model = genAI.getGenerativeModel({ model: modelName });
+        const result = await model.generateContent(fullPrompt);
+        responseText = result.response.text();
+        if (responseText) {
+          console.log(`Model ${modelName} SUCCEEDED`);
+          break;
         }
-      } catch (modelError: any) {
-        console.error(`Failed with model ${modelName}:`, modelError?.message || modelError);
-        lastError = modelError;
-        const errString = String(modelError?.message || modelError);
-        
-        if (
-          modelError?.status === 429 ||
-          errString.includes('429') ||
-          errString.includes('RESOURCE_EXHAUSTED') ||
-          errString.includes('Quota') ||
-          modelError?.status === 404 ||
-          errString.includes('not found')
-        ) {
-          continue;
-        }
+      } catch (err: any) {
+        lastError = err;
+        console.warn(`Model ${modelName} failed:`, err?.message || err);
       }
     }
 
-    const lastErrMessage = lastError?.message || String(lastError || 'Unknown Gemini API error');
-    console.error('CRITICAL: All Gemini models failed. Last error:', lastErrMessage);
+    if (!responseText) {
+      const errMsg = lastError?.message || String(lastError || 'All models failed to generate content');
+      console.error('All Gemini models failed:', errMsg);
+      return NextResponse.json(
+        { error: `Gemini API Error: ${errMsg}` },
+        { status: lastError?.status || 500 }
+      );
+    }
 
-    return NextResponse.json(
-      { error: `Gemini API Error: ${lastErrMessage}` },
-      { status: lastError?.status || 500 }
-    );
+    return NextResponse.json({ text: responseText });
   } catch (error: any) {
     console.error('CRITICAL Error in Gemini API Route handler:', error);
     return NextResponse.json(
