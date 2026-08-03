@@ -200,11 +200,11 @@ export default async function StoryPage({ params }: { params: Promise<{ id: stri
           )}
         </header>
 
-        {/* ElevenLabs AI Audio Devotional Player */}
+        {/* ElevenLabs AI Audio Devotional Player - Passes full devotional body text */}
         <AudioPlayer 
           src={story.audioUrl} 
           storyId={story.id}
-          storyText={story.excerpt || story.title}
+          storyText={story.content || story.contentHtml || story.excerpt || story.title}
           title={story.title} 
           author={story.author || 'Jeanna’ Mead'} 
         />

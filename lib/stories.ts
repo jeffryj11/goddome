@@ -29,6 +29,7 @@ export interface StoryMeta {
 
 export interface StoryData extends StoryMeta {
   contentHtml: string;
+  content: string;
 }
 
 export function calculateReadTime(text: string): string {
@@ -111,6 +112,7 @@ export async function getStoryData(id: string): Promise<StoryData> {
   return {
     id,
     contentHtml,
+    content: matterResult.content || '',
     title: matterResult.data.title || id,
     category: matterResult.data.category || (topics[0] ? topics[0] : 'Devotional'),
     date: matterResult.data.date || '',
