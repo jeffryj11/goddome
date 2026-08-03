@@ -35,8 +35,9 @@ export async function POST(request: Request) {
       .trim()
       .slice(0, 4500);
 
+    // Call ElevenLabs HTTP streaming endpoint (/v1/text-to-speech/{voice_id}/stream)
     const response = await fetch(
-      `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
+      `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}/stream`,
       {
         method: 'POST',
         headers: {
@@ -64,13 +65,13 @@ export async function POST(request: Request) {
       );
     }
 
-    const audioBuffer = await response.arrayBuffer();
-
-    return new Response(audioBuffer, {
+    // Stream chunked audio response directly back to the client
+    return new Response(response.body, {
       status: 200,
       headers: {
         'Content-Type': 'audio/mpeg',
-        'Cache-Control': 'public, max-age=31536000, immutable',
+        'Transfer-Encoding': 'chunked',
+        'Cache-Control': 'no-cache, no-transform',
       },
     });
   } catch (error: any) {
