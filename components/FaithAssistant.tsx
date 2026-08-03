@@ -34,12 +34,13 @@ export default function FaithAssistant() {
       const data = await res.json();
 
       if (!res.ok || data.error) {
-        throw new Error(data.error || 'Failed to generate reflection');
+        console.error('Faith Assistant Error Details:', res.status, data);
+        throw new Error(data.error || `HTTP ${res.status}: Failed to generate reflection`);
       }
 
       setReflection(data.text);
     } catch (err: any) {
-      console.error(err);
+      console.error('Faith Assistant Client Catch:', err);
       setError(
         err.message || 'Unable to connect to Faith Assistant right now. Please try again in a few moments.'
       );
@@ -161,11 +162,14 @@ export default function FaithAssistant() {
         </div>
       </form>
 
-      {/* Styled Amber Error Banner */}
+      {/* Exposed Error Banner */}
       {error && (
-        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-center gap-2" role="alert">
-          <span aria-hidden="true">🙏</span>
-          <span>{error}</span>
+        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-start gap-2.5" role="alert">
+          <span aria-hidden="true" className="text-base">🙏</span>
+          <div className="flex-1">
+            <p className="font-semibold mb-0.5">Faith Assistant Diagnostic Notice</p>
+            <p className="font-mono text-[11px] break-words">{error}</p>
+          </div>
         </div>
       )}
 

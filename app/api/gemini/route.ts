@@ -2,6 +2,18 @@ import { GoogleGenAI } from '@google/genai';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
+  console.log("Attempting Gemini model call...");
+  
+  if (!process.env.GEMINI_API_KEY) {
+    console.error("CRITICAL: GEMINI_API_KEY environment variable is missing in Vercel!");
+    return NextResponse.json(
+      { error: "Missing GEMINI_API_KEY environment variable in Vercel settings." },
+      { status: 500 }
+    );
+  }
+
+  console.log("GEMINI_API_KEY is present. Key length:", process.env.GEMINI_API_KEY.length);
+
   try {
     const { prompt } = await req.json();
 
@@ -9,13 +21,6 @@ export async function POST(req: Request) {
       return NextResponse.json(
         { error: 'Please provide a valid prompt or spiritual question.' },
         { status: 400 }
-      );
-    }
-
-    if (!process.env.GEMINI_API_KEY) {
-      return NextResponse.json(
-        { error: 'Faith Assistant is warming up. Please set GEMINI_API_KEY in Vercel environment variables.' },
-        { status: 503 }
       );
     }
 
@@ -29,27 +34,29 @@ export async function POST(req: Request) {
     const fullPrompt = `${SYSTEM_PROMPT}\n\nUser Question/Reflection Topic: ${prompt}`;
     let lastError: any = null;
 
-    for (const model of MODELS_TO_TRY) {
+    for (const modelName of MODELS_TO_TRY) {
       try {
+        console.log(`Attempting Gemini API call with model: ${modelName}`);
         const response = await ai.models.generateContent({
-          model,
+          model: modelName,
           contents: fullPrompt,
         });
 
         if (response?.text) {
+          console.log(`Gemini API call SUCCEEDED with model: ${modelName}`);
           return NextResponse.json({ text: response.text });
         }
-      } catch (err: any) {
-        console.error(`Gemini API error with model ${model}:`, err?.message || err);
-        lastError = err;
-        const errString = String(err?.message || err);
+      } catch (modelError: any) {
+        console.error(`Failed with model ${modelName}:`, modelError?.message || modelError);
+        lastError = modelError;
+        const errString = String(modelError?.message || modelError);
         
         if (
-          err?.status === 429 ||
+          modelError?.status === 429 ||
           errString.includes('429') ||
           errString.includes('RESOURCE_EXHAUSTED') ||
           errString.includes('Quota') ||
-          err?.status === 404 ||
+          modelError?.status === 404 ||
           errString.includes('not found')
         ) {
           continue;
@@ -57,27 +64,17 @@ export async function POST(req: Request) {
       }
     }
 
-    const lastErrString = String(lastError?.message || lastError);
-    if (
-      lastError?.status === 429 ||
-      lastErrString.includes('429') ||
-      lastErrString.includes('RESOURCE_EXHAUSTED') ||
-      lastErrString.includes('Quota')
-    ) {
-      return NextResponse.json(
-        { error: 'Our Faith Assistant is currently receiving high volume. Please wait a moment and try again.' },
-        { status: 429 }
-      );
-    }
+    const lastErrMessage = lastError?.message || String(lastError || 'Unknown Gemini API error');
+    console.error('CRITICAL: All Gemini models failed. Last error:', lastErrMessage);
 
     return NextResponse.json(
-      { error: 'Unable to connect to Faith Assistant right now. Please try again in a few moments.' },
-      { status: 500 }
+      { error: `Gemini API Error: ${lastErrMessage}` },
+      { status: lastError?.status || 500 }
     );
   } catch (error: any) {
-    console.error('Error generating reflection with Gemini API:', error);
+    console.error('CRITICAL Error in Gemini API Route handler:', error);
     return NextResponse.json(
-      { error: 'Unable to connect to Faith Assistant right now. Please try again in a few moments.' },
+      { error: `Server Exception: ${error?.message || String(error)}` },
       { status: 500 }
     );
   }
