@@ -19,13 +19,10 @@ export default function Navbar() {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header
-      style={{ position: 'fixed', top: 0, left: 0, right: 0, width: '100%', zIndex: 9999 }}
-      className="fixed top-0 left-0 right-0 w-full z-[9999] bg-[#030712]/90 backdrop-blur-md border-b border-white/10 text-[#FAF6F0] shadow-lg"
-    >
-      <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#030712]/90 backdrop-blur-md border-b border-white/10 text-[#FAF6F0]">
+      <div className="w-full max-w-7xl mx-auto px-4 h-20 flex items-center justify-between">
         {/* 1. Brand Logo & Title with Praying Hands Emblem */}
-        <Link href="/" onClick={closeMobileMenu} className="flex items-center space-x-3 group">
+        <Link href="/" onClick={closeMobileMenu} className="flex items-center space-x-3 group shrink-0">
           <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#D99B26]/40 bg-[#0B132B] p-1 shadow-sm transition-transform group-hover:scale-105 flex items-center justify-center">
             <img
               src="/praying-hands.svg"
@@ -34,21 +31,21 @@ export default function Navbar() {
             />
           </div>
           <div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 whitespace-nowrap">
               <ChristianCrossIcon className="w-3.5 h-3.5 text-[#D99B26]" />
               <span className="font-serif text-xl font-bold tracking-tight text-[#FAF6F0] group-hover:text-[#D99B26] transition-colors">
                 GodDome
               </span>
               <MenorahIcon className="w-3.5 h-3.5 text-[#D99B26]" />
             </div>
-            <p className="text-[11px] text-[#D99B26] font-medium tracking-wide">
+            <p className="text-[11px] text-[#D99B26] font-medium tracking-wide whitespace-nowrap">
               Words For Your Soul by Jeanna’ Mead
             </p>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center space-x-8 text-sm font-semibold text-[#FAF6F0]/80">
+        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-semibold text-[#FAF6F0]/80 whitespace-nowrap">
           {/* 1. Home */}
           <Link 
             href="/" 
@@ -98,7 +95,7 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop & Mobile Action Buttons */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 shrink-0">
           {/* DONATE (PayPal Link) */}
           <a
             href={paypalUrl}
@@ -147,7 +144,7 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={closeMobileMenu}
-            className={`block text-base font-[#D99B26] font-bold ${isHome ? 'text-[#D99B26]' : 'text-[#FAF6F0]'}`}
+            className={`block text-base font-serif font-bold ${isHome ? 'text-[#D99B26]' : 'text-[#FAF6F0]'}`}
           >
             Home
           </Link>
