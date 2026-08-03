@@ -2,10 +2,10 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
-// Use active Gemini 2.x model identifiers
+// Active Gemini 2.5 model strings
 const MODELS_TO_TRY = [
   'gemini-2.5-flash',
-  'gemini-2.0-flash'
+  'gemini-2.5-flash-lite'
 ];
 
 export async function POST(req: Request) {
