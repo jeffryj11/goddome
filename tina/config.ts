@@ -42,15 +42,18 @@ export default defineConfig({
           },
           {
             type: "string",
-            name: "audioUrl",
-            label: "Audio Devotional URL (MP3 file link)",
+            name: "scripture",
+            label: "Scripture Reference (e.g. 1 Peter 3:4)",
             required: false,
           },
           {
             type: "string",
-            name: "scripture",
-            label: "Scripture Reference (e.g. 1 Peter 3:4)",
+            name: "scriptureText",
+            label: "Scripture Verse Text",
             required: false,
+            ui: {
+              component: "textarea",
+            },
           },
           {
             type: "string",
@@ -60,6 +63,19 @@ export default defineConfig({
             ui: {
               component: "textarea",
             },
+          },
+          {
+            type: "string",
+            name: "hashtags",
+            label: "Hashtags (e.g. #writingmyheartout #wordsforthesoul)",
+            list: true,
+            required: false,
+          },
+          {
+            type: "string",
+            name: "audioUrl",
+            label: "Audio Devotional URL (MP3 file link)",
+            required: false,
           },
           {
             type: "string",

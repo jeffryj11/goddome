@@ -1,13 +1,28 @@
+'use client';
+
 import Link from 'next/link';
 import { StoryMeta } from '@/lib/stories';
 import { ChristianCrossIcon, MenorahIcon } from './FaithIcons';
+import { useAudio } from '@/context/AudioContext';
 
 interface StoryCardProps {
   story: StoryMeta;
 }
 
 export default function StoryCard({ story }: StoryCardProps) {
+  const { playTrack, currentTrack, isPlaying } = useAudio();
   const altText = story.title ? `${story.title} devotional cover` : 'GodDome devotional cover image';
+  const isThisTrackPlaying = currentTrack?.id === story.id && isPlaying;
+
+  const handleListenClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    playTrack({
+      id: story.id,
+      title: story.title,
+      author: story.author || 'Jeanna’ Mead',
+      src: `/api/audio?id=${encodeURIComponent(story.id)}`,
+    });
+  };
 
   return (
     <div className="group relative flex flex-col justify-between h-full w-full overflow-hidden rounded-2xl border border-[#D99B26]/30 bg-[#0B132B]/90 text-[#FAF6F0] shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:border-[#D99B26]/60 cursor-pointer focus-within:ring-2 focus-within:ring-[#D99B26]">
@@ -38,7 +53,7 @@ export default function StoryCard({ story }: StoryCardProps) {
             )}
           </div>
 
-          {/* Title with stretch overlay link covering entire card area */}
+          {/* Title with stretch overlay link covering card area */}
           <h3 className="font-serif text-xl font-bold text-white group-hover:text-[#D99B26] transition-colors mb-2 leading-snug">
             <Link href={`/stories/${story.id}`} className="focus:outline-none">
               <span className="absolute inset-0 z-0" aria-hidden="true" />
@@ -64,12 +79,33 @@ export default function StoryCard({ story }: StoryCardProps) {
         </div>
       </div>
 
-      {/* Footer / Read More Indicator */}
-      <div className="p-6 pt-0 mt-auto">
-        <span className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#D99B26] group-hover:text-[#F3E5AB] transition-colors">
+      {/* Footer Actions: Read Devotional & Listen Audio Button */}
+      <div className="p-6 pt-0 mt-auto flex items-center justify-between gap-2 relative z-10">
+        <Link
+          href={`/stories/${story.id}`}
+          className="inline-flex items-center text-xs font-bold uppercase tracking-wider text-[#D99B26] hover:text-[#F3E5AB] transition-colors"
+        >
           Read Devotional 
           <span className="ml-1.5 transform group-hover:translate-x-1.5 transition-transform duration-200" aria-hidden="true">→</span>
-        </span>
+        </Link>
+
+        {/* Global Listen Trigger Button */}
+        <button
+          onClick={handleListenClick}
+          className="px-3 py-1.5 rounded-full text-xs font-bold bg-[#D99B26]/20 hover:bg-[#D99B26] text-[#D99B26] hover:text-[#030712] border border-[#D99B26]/40 transition-all cursor-pointer flex items-center gap-1.5"
+          title={`Listen to ${story.title} audio narration`}
+        >
+          {isThisTrackPlaying ? (
+            <>
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              <span>Playing</span>
+            </>
+          ) : (
+            <>
+              <span>🎙️ Listen</span>
+            </>
+          )}
+        </button>
       </div>
     </div>
   );

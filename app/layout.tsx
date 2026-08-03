@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FaithAssistantProvider } from "@/components/FaithAssistantContext";
+import { AudioProvider } from "@/context/AudioContext";
+import StickyAudioPlayer from "@/components/StickyAudioPlayer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,12 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#A83226",
+  themeColor: "#030712",
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://goddome.org'),
-  title: "GodDome — Faithful Words: Christian Stories by Jeanna’ Mead",
+  title: "GodDome — Words For Your Soul: Christian Stories by Jeanna’ Mead",
   description: "Discover inspiring Christian stories, spiritual reflections, and faith guidance authored by Jeanna’ Mead.",
   manifest: "/manifest.json",
   icons: {
@@ -39,16 +41,19 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#FAF6F0] text-[#2C221E]">
+      <body className="min-h-full flex flex-col bg-[#030712] text-[#FAF6F0]">
         <a 
           href="#main-content" 
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-[#A83226] focus:text-[#FAF6F0] focus:font-bold focus:rounded-lg focus:shadow-lg focus:top-4 focus:left-4"
         >
           Skip to main content
         </a>
-        <FaithAssistantProvider>
-          {children}
-        </FaithAssistantProvider>
+        <AudioProvider>
+          <FaithAssistantProvider>
+            {children}
+            <StickyAudioPlayer />
+          </FaithAssistantProvider>
+        </AudioProvider>
       </body>
     </html>
   );

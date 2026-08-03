@@ -10,9 +10,11 @@ export const StoriesPartsFragmentDoc = gql`
   __typename
   title
   date
-  audioUrl
   scripture
+  scriptureText
   featuredQuote
+  hashtags
+  audioUrl
   topics
   excerpt
   author
