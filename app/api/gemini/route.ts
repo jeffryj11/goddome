@@ -3,8 +3,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 const MODELS_TO_TRY = [
-  'gemini-2.5-flash',
-  'gemini-2.0-flash',
+  'gemini-pro',
   'gemini-1.5-flash'
 ];
 
@@ -28,8 +27,7 @@ export async function POST(req: Request) {
 
     for (const modelName of MODELS_TO_TRY) {
       try {
-        // Enforce stable v1 API version to prevent 404 errors from deprecated v1beta routes
-        const model = genAI.getGenerativeModel({ model: modelName }, { apiVersion: 'v1' });
+        const model = genAI.getGenerativeModel({ model: modelName });
         const result = await model.generateContent(fullPrompt);
         responseText = result.response.text();
         if (responseText) {
