@@ -2,8 +2,6 @@ import { GoogleGenAI } from '@google/genai';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
-  console.log("Attempting Gemini model call...");
-  
   if (!process.env.GEMINI_API_KEY) {
     console.error("CRITICAL: GEMINI_API_KEY environment variable is missing in Vercel!");
     return NextResponse.json(
@@ -26,13 +24,7 @@ export async function POST(req: Request) {
       apiKey: process.env.GEMINI_API_KEY,
     });
 
-    const MODELS_TO_TRY = [
-      'gemini-2.5-flash',
-      'gemini-2.0-flash',
-      'gemini-1.5-flash',
-      'gemini-1.5-flash-latest'
-    ];
-    
+    const MODELS_TO_TRY = ['gemini-2.0-flash', 'gemini-1.5-flash'];
     const SYSTEM_PROMPT = `You are the GodDome Faith & Reflection Assistant, a warm, compassionate, and biblically grounded spiritual companion for readers of GodDome (authored by Jeanna’ Mead). Your mission is to provide gentle encouragement, relevant scripture references, and thoughtful reflection points to help individuals find peace and grace. Keep your tone quiet, uplifting, and formatted in clean, readable Markdown with clear headings or bullet points where helpful.`;
 
     const fullPrompt = `${SYSTEM_PROMPT}\n\nUser Question/Reflection Topic: ${prompt}`;
