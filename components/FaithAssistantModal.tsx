@@ -65,14 +65,27 @@ export default function FaithAssistantModal({
         body: JSON.stringify({ prompt }),
       });
 
-      const data = await res.json();
-      console.log('Faith Assistant Modal API Status:', res.status, data);
-
-      if (!res.ok || data.error) {
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({ error: `HTTP ${res.status} Error` }));
         throw new Error(data.error || `HTTP ${res.status}: Failed to generate reflection`);
       }
 
-      setReflection(data.text);
+      if (!res.body) {
+        throw new Error('Response body is empty.');
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+        if (value) {
+          const chunk = decoder.decode(value, { stream: true });
+          setReflection((prev) => prev + chunk);
+        }
+      }
     } catch (err: any) {
       console.error('Faith Assistant Modal Client Error:', err);
       setError(
@@ -178,7 +191,7 @@ export default function FaithAssistantModal({
             <div className="p-4 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-start gap-2.5" role="alert">
               <span aria-hidden="true" className="text-base">🙏</span>
               <div className="flex-1">
-                <p className="font-semibold mb-0.5">Faith Assistant Diagnostic Notice</p>
+                <p className="font-semibold mb-0.5">Faith Assistant Notice</p>
                 <p className="font-mono text-[11px] break-words">{error}</p>
               </div>
             </div>

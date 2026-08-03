@@ -31,14 +31,27 @@ export default function FaithAssistant() {
         body: JSON.stringify({ prompt }),
       });
 
-      const data = await res.json();
-
-      if (!res.ok || data.error) {
-        console.error('Faith Assistant Error Details:', res.status, data);
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({ error: `HTTP ${res.status} Error` }));
         throw new Error(data.error || `HTTP ${res.status}: Failed to generate reflection`);
       }
 
-      setReflection(data.text);
+      if (!res.body) {
+        throw new Error('Response body is empty.');
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let done = false;
+
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+        if (value) {
+          const chunk = decoder.decode(value, { stream: true });
+          setReflection((prev) => prev + chunk);
+        }
+      }
     } catch (err: any) {
       console.error('Faith Assistant Client Catch:', err);
       setError(
@@ -167,7 +180,7 @@ export default function FaithAssistant() {
         <div className="mt-6 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-start gap-2.5" role="alert">
           <span aria-hidden="true" className="text-base">🙏</span>
           <div className="flex-1">
-            <p className="font-semibold mb-0.5">Faith Assistant Diagnostic Notice</p>
+            <p className="font-semibold mb-0.5">Faith Assistant Notice</p>
             <p className="font-mono text-[11px] break-words">{error}</p>
           </div>
         </div>
@@ -189,7 +202,7 @@ export default function FaithAssistant() {
               className="text-xs font-medium text-[#2C221E]/70 hover:text-[#A83226] transition-colors flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-[#2C221E]/10 cursor-pointer"
             >
               {copied ? (
-                <span className="text-emerald-600 font-semibold">Copied!</span>
+                <span className="text-emerald-600 font-semibold">✓ Copied!</span>
               ) : (
                 <span>Copy Text</span>
               )}
