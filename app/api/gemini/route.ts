@@ -2,9 +2,10 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
+// Use active Gemini 2.x model identifiers
 const MODELS_TO_TRY = [
-  'gemini-pro',
-  'gemini-1.5-flash'
+  'gemini-2.5-flash',
+  'gemini-2.0-flash'
 ];
 
 export async function POST(req: Request) {
