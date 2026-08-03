@@ -60,7 +60,7 @@ export default function Home() {
   };
 
   return (
-    <main id="main-content" className="min-h-screen star-twinkle-bg text-[#FAF6F0] flex flex-col font-sans pt-[80px]">
+    <main id="main-content" className="star-twinkle-bg text-[#FAF6F0] flex flex-col font-sans">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
