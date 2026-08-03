@@ -108,14 +108,18 @@ export default function FaithAssistantModal({
 
   const handleListen = () => {
     if (!reflection) return;
-    // Strip ### Markdown headers before sending payload
-    const sanitizedText = reflection.replace(/#+\s*/g, '').trim();
+
+    const sanitizedText = reflection
+      .replace(/^#{1,6}\s*/gm, '')
+      .replace(/^\s*[-*]\s+/gm, '')
+      .replace(/\s+/g, ' ')
+      .trim();
 
     playTrack({
       id: `reflection_${prompt.slice(0, 20)}`,
       title: prompt.length > 35 ? `${prompt.slice(0, 35)}...` : prompt || 'Spiritual Reflection',
       author: "Jeanna’ Mead",
-      src: `/api/audio?text=${encodeURIComponent(sanitizedText)}`,
+      src: `/api/audio?text=${encodeURIComponent(sanitizedText)}&voiceId=${encodeURIComponent('AZnzlk1XvdvUeBnXmlld')}`,
     });
   };
 

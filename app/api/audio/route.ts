@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 
-async function synthesizeStream(rawText: string) {
+async function synthesizeStream(rawText: string, requestedVoiceId?: string) {
   const apiKey = process.env.ELEVENLABS_API_KEY;
   // Soft, warm Southern accent voice ID (with fallback)
-  const voiceId = process.env.ELEVENLABS_VOICE_ID || process.env.JEANNA_VOICE_ID || 'AZnzlk1XvdvUeBnXmlld';
+  const voiceId = requestedVoiceId || process.env.ELEVENLABS_VOICE_ID || process.env.JEANNA_VOICE_ID || 'AZnzlk1XvdvUeBnXmlld';
 
   if (!apiKey) {
     return NextResponse.json(
@@ -70,6 +70,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const storyId = searchParams.get('id') || searchParams.get('storyId');
+    const requestedVoiceId = searchParams.get('voiceId') || undefined;
     let rawText = searchParams.get('text') || searchParams.get('content') || '';
 
     if (!rawText && storyId) {
@@ -89,7 +90,7 @@ export async function GET(request: Request) {
       );
     }
 
-    return synthesizeStream(rawText);
+    return synthesizeStream(rawText, requestedVoiceId);
   } catch (error: any) {
     console.error('[ElevenLabs Route GET Error]:', error);
     return NextResponse.json(
@@ -103,6 +104,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const rawText = body.content || body.text || '';
+    const requestedVoiceId = body.voiceId || undefined;
 
     if (!rawText || typeof rawText !== 'string' || rawText.trim().length === 0) {
       return NextResponse.json(
@@ -111,7 +113,7 @@ export async function POST(request: Request) {
       );
     }
 
-    return synthesizeStream(rawText);
+    return synthesizeStream(rawText, requestedVoiceId);
   } catch (error: any) {
     console.error('[ElevenLabs Route POST Error]:', error);
     return NextResponse.json(
