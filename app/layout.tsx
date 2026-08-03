@@ -39,9 +39,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#030712] text-[#FAF6F0]">
+      <body className="bg-[#030712] text-[#FAF6F0] antialiased">
         <a 
           href="#main-content" 
           className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-[#A83226] focus:text-[#FAF6F0] focus:font-bold focus:rounded-lg focus:shadow-lg focus:top-4 focus:left-4"
