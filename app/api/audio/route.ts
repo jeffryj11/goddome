@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 
 async function synthesizeStream(rawText: string) {
   const apiKey = process.env.ELEVENLABS_API_KEY;
-  const voiceId = process.env.ELEVENLABS_VOICE_ID || process.env.JEANNA_VOICE_ID || '21m00Tcm4TlvDq8ikWAM';
+  // Soft, warm Southern accent voice ID (with fallback)
+  const voiceId = process.env.ELEVENLABS_VOICE_ID || process.env.JEANNA_VOICE_ID || 'AZnzlk1XvdvUeBnXmlld';
 
   if (!apiKey) {
     return NextResponse.json(
@@ -38,8 +39,8 @@ async function synthesizeStream(rawText: string) {
         text: cleanText,
         model_id: 'eleven_multilingual_v2',
         voice_settings: {
-          stability: 0.5,
-          similarity_boost: 0.75,
+          stability: 0.55,
+          similarity_boost: 0.8,
         },
       }),
     }

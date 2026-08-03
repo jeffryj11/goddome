@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useFaithAssistant } from './FaithAssistantContext';
+import { ChristianCrossIcon, MenorahIcon } from './FaithIcons';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,11 +19,11 @@ export default function Navbar() {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <nav className="sticky top-0 z-40 bg-[#FAF6F0]/95 backdrop-blur-md border-b border-[#2C221E]/10 shadow-sm">
+    <nav className="sticky top-0 z-40 bg-[#030712]/90 backdrop-blur-md border-b border-[#D99B26]/20 shadow-lg text-[#FAF6F0]">
       <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* 1. Brand Logo & Title with Praying Hands Emblem */}
         <Link href="/" onClick={closeMobileMenu} className="flex items-center space-x-3 group">
-          <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#D99B26]/40 bg-[#2C221E] p-1 shadow-sm transition-transform group-hover:scale-105 flex items-center justify-center">
+          <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#D99B26]/40 bg-[#0B132B] p-1 shadow-sm transition-transform group-hover:scale-105 flex items-center justify-center">
             <img
               src="/praying-hands.svg"
               alt="GodDome Praying Hands Logo"
@@ -30,21 +31,25 @@ export default function Navbar() {
             />
           </div>
           <div>
-            <span className="font-serif text-xl font-bold tracking-tight text-[#2C221E] flex items-center gap-1.5 group-hover:text-[#A83226] transition-colors">
-              GodDome
-            </span>
-            <p className="text-[11px] text-[#2C221E]/60 font-light tracking-wide">
-              Faithful Words by Jeanna’ Mead
+            <div className="flex items-center gap-1.5">
+              <ChristianCrossIcon className="w-3.5 h-3.5 text-[#D99B26]" />
+              <span className="font-serif text-xl font-bold tracking-tight text-[#FAF6F0] group-hover:text-[#D99B26] transition-colors">
+                GodDome
+              </span>
+              <MenorahIcon className="w-3.5 h-3.5 text-[#D99B26]" />
+            </div>
+            <p className="text-[11px] text-[#D99B26] font-medium tracking-wide">
+              Words For Your Soul by Jeanna’ Mead
             </p>
           </div>
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center space-x-8 text-sm font-semibold text-[#2C221E]/80">
+        <div className="hidden md:flex items-center space-x-8 text-sm font-semibold text-[#FAF6F0]/80">
           {/* 1. Home */}
           <Link 
             href="/" 
-            className={`transition-colors hover:text-[#A83226] ${isHome ? 'text-[#A83226] border-b-2 border-[#A83226] pb-1' : ''}`}
+            className={`transition-colors hover:text-[#D99B26] ${isHome ? 'text-[#D99B26] border-b-2 border-[#D99B26] pb-1' : ''}`}
           >
             Home
           </Link>
@@ -52,7 +57,7 @@ export default function Navbar() {
           {/* 2. Devotionals */}
           <Link 
             href="/#stories" 
-            className="transition-colors hover:text-[#A83226]"
+            className="transition-colors hover:text-[#D99B26]"
           >
             Devotionals
           </Link>
@@ -60,7 +65,7 @@ export default function Navbar() {
           {/* 3. Topics */}
           <Link 
             href="/topics" 
-            className={`transition-colors hover:text-[#A83226] ${isTopics ? 'text-[#A83226] border-b-2 border-[#A83226] pb-1' : ''}`}
+            className={`transition-colors hover:text-[#D99B26] ${isTopics ? 'text-[#D99B26] border-b-2 border-[#D99B26] pb-1' : ''}`}
           >
             Topics
           </Link>
@@ -68,19 +73,19 @@ export default function Navbar() {
           {/* 4. Prayer Requests */}
           <Link 
             href="/prayer" 
-            className={`transition-colors hover:text-[#A83226] ${isPrayer ? 'text-[#A83226] border-b-2 border-[#A83226] pb-1' : ''}`}
+            className={`transition-colors hover:text-[#D99B26] ${isPrayer ? 'text-[#D99B26] border-b-2 border-[#D99B26] pb-1' : ''}`}
           >
             Prayer Requests
           </Link>
 
-          {/* 5. Faith Assistant (Triggers Global Modal Drawer) */}
+          {/* 5. Faith Assistant */}
           <button 
             onClick={() => openAssistant()} 
-            className="hover:text-[#A83226] transition-colors cursor-pointer inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
+            className="hover:text-[#D99B26] transition-colors cursor-pointer inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
             title="Open AI Faith & Reflection Assistant"
           >
             <span>Faith Assistant</span>
-            <span className="text-xs" aria-hidden="true">✨</span>
+            <span className="text-xs text-[#D99B26]" aria-hidden="true">✨</span>
           </button>
 
           {/* 6. CMS Admin */}
@@ -89,14 +94,14 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop & Mobile Action Buttons + Hamburger Toggle */}
+        {/* Desktop & Mobile Action Buttons */}
         <div className="flex items-center space-x-3">
-          {/* 7. DONATE (PayPal Link) */}
+          {/* DONATE (PayPal Link) */}
           <a
             href={paypalUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D99B26] hover:bg-[#c28a21] text-[#2C221E] shadow-sm transition-all transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D99B26] hover:bg-[#c28a21] text-[#030712] shadow-sm transition-all transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
             title="Donate to GodDome Non-Profit"
           >
             <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -105,7 +110,7 @@ export default function Navbar() {
             Donate
           </a>
 
-          {/* 8. REQUEST PRAYER (CTA Button: /prayer) */}
+          {/* REQUEST PRAYER */}
           <Link
             href="/prayer"
             className="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-sm transition-all transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
@@ -116,7 +121,7 @@ export default function Navbar() {
           {/* Mobile Hamburger Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl text-[#2C221E] hover:bg-[#2C221E]/5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
+            className="md:hidden p-2 rounded-xl text-[#FAF6F0] hover:bg-white/10 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -135,32 +140,32 @@ export default function Navbar() {
 
       {/* Mobile Navigation Drawer Sync */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FAF6F0] border-b border-[#2C221E]/15 px-6 py-6 space-y-4 animate-fade-in shadow-xl">
+        <div className="md:hidden bg-[#0B132B] border-b border-[#D99B26]/20 px-6 py-6 space-y-4 animate-fade-in shadow-xl text-[#FAF6F0]">
           <Link
             href="/"
             onClick={closeMobileMenu}
-            className={`block text-base font-serif font-bold ${isHome ? 'text-[#A83226]' : 'text-[#2C221E]'}`}
+            className={`block text-base font-serif font-bold ${isHome ? 'text-[#D99B26]' : 'text-[#FAF6F0]'}`}
           >
             Home
           </Link>
           <Link
             href="/#stories"
             onClick={closeMobileMenu}
-            className="block text-base font-serif font-bold text-[#2C221E] hover:text-[#A83226]"
+            className="block text-base font-serif font-bold text-[#FAF6F0] hover:text-[#D99B26]"
           >
             Devotionals
           </Link>
           <Link
             href="/topics"
             onClick={closeMobileMenu}
-            className={`block text-base font-serif font-bold ${isTopics ? 'text-[#A83226]' : 'text-[#2C221E]'}`}
+            className={`block text-base font-serif font-bold ${isTopics ? 'text-[#D99B26]' : 'text-[#FAF6F0]'}`}
           >
             Topics Index
           </Link>
           <Link
             href="/prayer"
             onClick={closeMobileMenu}
-            className={`block text-base font-serif font-bold ${isPrayer ? 'text-[#A83226]' : 'text-[#2C221E]'}`}
+            className={`block text-base font-serif font-bold ${isPrayer ? 'text-[#D99B26]' : 'text-[#FAF6F0]'}`}
           >
             Prayer Requests
           </Link>
@@ -169,10 +174,10 @@ export default function Navbar() {
               closeMobileMenu();
               openAssistant();
             }}
-            className="w-full text-left font-serif font-bold text-base text-[#2C221E] hover:text-[#A83226] flex items-center justify-between py-1"
+            className="w-full text-left font-serif font-bold text-base text-[#FAF6F0] hover:text-[#D99B26] flex items-center justify-between py-1"
           >
             <span>Faith Assistant</span>
-            <span className="text-xs">✨ AI Assistant</span>
+            <span className="text-xs text-[#D99B26]">✨ AI Assistant</span>
           </button>
           <Link
             href="/admin"
@@ -181,16 +186,6 @@ export default function Navbar() {
           >
             CMS Admin
           </Link>
-
-          <div className="pt-4 border-t border-[#2C221E]/10 flex flex-col gap-3">
-            <Link
-              href="/prayer"
-              onClick={closeMobileMenu}
-              className="w-full text-center py-3 rounded-xl bg-[#A83226] text-[#FAF6F0] font-bold text-xs uppercase tracking-wider"
-            >
-              Request Prayer
-            </Link>
-          </div>
         </div>
       )}
     </nav>

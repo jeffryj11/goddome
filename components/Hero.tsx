@@ -1,36 +1,48 @@
 import Image from 'next/image';
+import { ChristianCrossIcon, MenorahIcon } from './FaithIcons';
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-[600px] bg-gradient-to-b from-[#1E1715] via-[#2C221E] to-[#FAF6F0] text-[#FAF6F0] pt-24 pb-20 px-6 sm:px-12 text-center overflow-hidden flex flex-col justify-center items-center">
-      {/* Background Hero Image with Soft Overlay */}
+    <section className="relative w-full min-h-[620px] star-twinkle-bg text-[#FAF6F0] pt-24 pb-20 px-6 sm:px-12 text-center overflow-hidden flex flex-col justify-center items-center">
+      {/* Background Hero Image with Dark Midnight Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
           src="/images/hero-boots-fire.jpg"
           alt="Campfire view with warm coffee mug"
           fill
           priority
-          className="object-cover"
+          className="object-cover opacity-35"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-[#FAF6F0]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#030712]/80 via-[#0B132B]/80 to-[#030712]" />
       </div>
 
-      {/* Soft glowing ambient lighting */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#D99B26]/20 rounded-full blur-3xl pointer-events-none z-0" />
+      {/* Ambient Starlight Glow */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#D99B26]/15 rounded-full blur-3xl pointer-events-none z-0" />
 
       {/* Overlay Content */}
       <div className="max-w-4xl mx-auto relative z-10">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D99B26]/20 border border-[#D99B26]/40 text-[#D99B26] text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md">
-          <span className="w-2 h-2 rounded-full bg-[#D99B26] animate-pulse" />
-          Faithful Words • GodDome Sanctuary
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B132B]/90 border border-[#D99B26]/40 text-[#D99B26] text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md shadow-lg">
+          <ChristianCrossIcon className="w-3.5 h-3.5 text-[#D99B26]" />
+          <span>Words For Your Soul • GodDome Sanctuary</span>
+          <MenorahIcon className="w-3.5 h-3.5 text-[#D99B26]" />
         </div>
 
-        <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-md">
+        <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-lg">
           Fireside Devotionals & Stories
         </h1>
 
-        <p className="text-lg sm:text-xl text-[#FAF6F0]/95 max-w-2xl mx-auto font-light leading-relaxed mb-8 drop-shadow">
-          Take a moment to pause and pull up a chair with warm, encouraging writings authored by <strong className="text-[#D99B26] font-semibold">Jeanna’ Mead</strong>.
+        {/* Featured Starry Night Quote */}
+        <blockquote className="my-6 p-6 rounded-2xl bg-[#0B132B]/60 border border-[#D99B26]/30 backdrop-blur-md max-w-2xl mx-auto shadow-xl">
+          <p className="font-serif italic text-lg sm:text-xl text-[#F3E5AB] leading-relaxed">
+            “God&apos;s love is like starry nights. Too vast and beautiful... comforting and magnified into infinity.”
+          </p>
+          <cite className="block mt-3 text-xs uppercase tracking-widest text-[#D99B26] font-sans font-bold not-italic">
+            — Jeanna’ Mead
+          </cite>
+        </blockquote>
+
+        <p className="text-base sm:text-lg text-[#FAF6F0]/90 max-w-xl mx-auto font-light leading-relaxed mb-8">
+          Take a quiet moment to pause, rest, and pull up a chair with uplifting Christian stories and meditations.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -42,9 +54,9 @@ export default function Hero() {
           </a>
           <a
             href="#assistant"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm transition-all backdrop-blur-md"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#D99B26]/20 hover:bg-[#D99B26]/30 border border-[#D99B26]/40 text-[#D99B26] font-semibold text-sm transition-all backdrop-blur-md"
           >
-            Faith & Reflection Assistant
+            Faith & Reflection Assistant ✨
           </a>
         </div>
       </div>
