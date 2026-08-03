@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useAudio } from '@/context/AudioContext';
 
 const SUGGESTED_PROMPTS = [
   'How do I find peace when life feels overwhelming?',
@@ -15,6 +16,8 @@ export default function FaithAssistant() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+
+  const { playTrack, currentTrack, isPlaying } = useAudio();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,23 +72,33 @@ export default function FaithAssistant() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleListen = () => {
+    if (!reflection) return;
+    playTrack({
+      id: `reflection_${prompt.slice(0, 20)}`,
+      title: prompt.length > 35 ? `${prompt.slice(0, 35)}...` : prompt || 'Spiritual Reflection',
+      author: "Jeanna’ Mead",
+      src: `/api/audio?text=${encodeURIComponent(reflection)}`,
+    });
+  };
+
   return (
-    <div className="bg-white p-8 sm:p-12 rounded-3xl border border-[#2C221E]/10 shadow-sm relative overflow-hidden">
+    <div className="bg-[#0B132B]/90 text-[#FAF6F0] p-8 sm:p-12 rounded-3xl border border-[#D99B26]/30 shadow-xl relative overflow-hidden">
       <div className="text-center max-w-2xl mx-auto mb-8">
         <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-[#D99B26]/15 text-[#D99B26] border border-[#D99B26]/30">
           AI Reflection Companion
         </span>
-        <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#2C221E] mt-3 mb-2">
+        <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white mt-3 mb-2">
           Faith & Reflection Assistant
         </h2>
-        <p className="text-[#2C221E]/70 text-sm font-light leading-relaxed">
+        <p className="text-[#FAF6F0]/80 text-sm font-light leading-relaxed">
           Share a prayer topic, scripture verse, or question to receive a biblically grounded meditation.
         </p>
       </div>
 
       {/* Suggested Prompts */}
       <div className="mb-6">
-        <label className="block text-xs font-semibold text-[#2C221E]/60 uppercase tracking-wider mb-2 text-center">
+        <label className="block text-xs font-semibold text-[#D99B26] uppercase tracking-wider mb-2 text-center">
           Suggested Reflection Topics
         </label>
         <div className="flex flex-wrap items-center justify-center gap-2">
@@ -94,7 +107,7 @@ export default function FaithAssistant() {
               key={idx}
               type="button"
               onClick={() => setPrompt(chip)}
-              className="px-3.5 py-1.5 rounded-xl text-xs bg-[#FAF6F0] hover:bg-[#A83226]/10 text-[#2C221E] hover:text-[#A83226] border border-[#2C221E]/10 transition-all text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
+              className="px-3.5 py-1.5 rounded-xl text-xs bg-[#030712] hover:bg-[#D99B26]/20 text-[#FAF6F0] hover:text-[#D99B26] border border-[#D99B26]/20 transition-all text-left font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
             >
               ✨ {chip}
             </button>
@@ -112,26 +125,26 @@ export default function FaithAssistant() {
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="Type your reflection prompt or spiritual question here..."
-            className="w-full rounded-2xl bg-[#FAF6F0] border border-[#2C221E]/15 focus:border-[#A83226] focus:ring-2 focus:ring-[#A83226]/20 text-[#2C221E] p-4 text-sm placeholder:text-[#2C221E]/40 focus:outline-none transition-all resize-none shadow-inner font-serif"
+            className="w-full rounded-2xl bg-[#030712] border border-[#D99B26]/30 focus:border-[#D99B26] focus:ring-2 focus:ring-[#D99B26]/20 text-white p-4 text-sm placeholder:text-[#FAF6F0]/40 focus:outline-none transition-all resize-none shadow-inner font-serif"
             required
             aria-required="true"
           />
         </div>
 
         <div className="flex items-center justify-between">
-          <span className="text-xs text-[#2C221E]/50">
+          <span className="text-xs text-[#FAF6F0]/50">
             GodDome AI Engine
           </span>
 
           <button
             type="submit"
             disabled={loading || !prompt.trim()}
-            className="px-6 py-3 rounded-xl font-bold text-sm bg-[#A83226] hover:bg-[#8f2a20] text-[#FAF6F0] shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A83226]"
+            className="px-6 py-3 rounded-xl font-bold text-sm bg-[#D99B26] hover:bg-[#c28a21] text-[#030712] shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center gap-2 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D99B26]"
           >
             {loading ? (
               <>
                 <svg
-                  className="animate-spin h-4 w-4 text-[#FAF6F0]"
+                  className="animate-spin h-4 w-4 text-[#030712]"
                   fill="none"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -177,7 +190,7 @@ export default function FaithAssistant() {
 
       {/* Exposed Error Banner */}
       {error && (
-        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-xs rounded-xl flex items-start gap-2.5" role="alert">
+        <div className="mt-6 p-4 bg-amber-950/80 border border-amber-500/40 text-amber-200 text-xs rounded-xl flex items-start gap-2.5" role="alert">
           <span aria-hidden="true" className="text-base">🙏</span>
           <div className="flex-1">
             <p className="font-semibold mb-0.5">Faith Assistant Notice</p>
@@ -186,30 +199,41 @@ export default function FaithAssistant() {
         </div>
       )}
 
-      {/* Generated Reflection Output */}
+      {/* Generated Reflection Output Card */}
       {reflection && (
-        <div className="mt-8 p-6 rounded-2xl bg-[#FAF6F0] border border-[#D99B26]/30 relative animate-fade-in">
-          <div className="flex items-center justify-between mb-4 border-b border-[#2C221E]/10 pb-3">
+        <div className="mt-8 p-6 rounded-2xl bg-[#030712] border border-[#D99B26]/40 relative animate-fade-in">
+          <div className="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#D99B26]" />
               <span className="text-xs font-bold text-[#D99B26] uppercase tracking-wider">
-                Spiritual Reflection
+                Spiritual Meditation
               </span>
             </div>
 
-            <button
-              onClick={handleCopy}
-              className="text-xs font-medium text-[#2C221E]/70 hover:text-[#A83226] transition-colors flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-lg border border-[#2C221E]/10 cursor-pointer"
-            >
-              {copied ? (
-                <span className="text-emerald-600 font-semibold">✓ Copied!</span>
-              ) : (
-                <span>Copy Text</span>
-              )}
-            </button>
+            <div className="flex items-center gap-2">
+              {/* Listen (Audio Icon) Button right beside Copy Text */}
+              <button
+                onClick={handleListen}
+                className="text-xs font-bold text-[#D99B26] hover:text-[#F3E5AB] transition-colors flex items-center gap-1.5 bg-[#0B132B] px-3 py-1.5 rounded-lg border border-[#D99B26]/30 cursor-pointer"
+                title="Listen to Southern voice narration"
+              >
+                <span>🎙️ Listen</span>
+              </button>
+
+              <button
+                onClick={handleCopy}
+                className="text-xs font-medium text-[#FAF6F0]/80 hover:text-[#D99B26] transition-colors flex items-center gap-1.5 bg-[#0B132B] px-3 py-1.5 rounded-lg border border-[#D99B26]/20 cursor-pointer"
+              >
+                {copied ? (
+                  <span className="text-emerald-400 font-semibold">✓ Copied!</span>
+                ) : (
+                  <span>Copy Text</span>
+                )}
+              </button>
+            </div>
           </div>
 
-          <div className="prose max-w-none text-[#2C221E] text-sm sm:text-base leading-relaxed font-serif whitespace-pre-wrap">
+          <div className="prose prose-invert max-w-none text-[#FAF6F0] text-sm sm:text-base leading-relaxed font-serif whitespace-pre-wrap">
             {reflection}
           </div>
         </div>
