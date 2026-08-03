@@ -1,12 +1,6 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenAI } from '@google/genai';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
-
-// Active Gemini 2.5 model strings
-const MODELS_TO_TRY = [
-  'gemini-2.5-flash',
-  'gemini-2.5-flash-lite'
-];
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export async function POST(req: Request) {
   try {
@@ -19,37 +13,36 @@ export async function POST(req: Request) {
       );
     }
 
-    const SYSTEM_PROMPT = `You are the GodDome Faith & Reflection Assistant, a warm, compassionate, and biblically grounded spiritual companion for readers of GodDome (authored by Jeanna’ Mead). Your mission is to provide gentle encouragement, relevant scripture references, and thoughtful reflection points to help individuals find peace and grace. Keep your tone quiet, uplifting, and formatted in clean, readable Markdown with clear headings or bullet points where helpful.`;
-
-    const fullPrompt = `${SYSTEM_PROMPT}\n\nUser Question/Reflection Topic: ${prompt}`;
-
-    let responseText = null;
-    let lastError: any = null;
-
-    for (const modelName of MODELS_TO_TRY) {
-      try {
-        const model = genAI.getGenerativeModel({ model: modelName });
-        const result = await model.generateContent(fullPrompt);
-        responseText = result.response.text();
-        if (responseText) {
-          console.log(`[Gemini API] Successfully generated using model: ${modelName}`);
-          break;
-        }
-      } catch (err: any) {
-        lastError = err;
-        console.warn(`[Gemini API] Model ${modelName} failed: ${err.message}`);
-      }
+    if (!process.env.GEMINI_API_KEY) {
+      return Response.json(
+        { error: 'Server configuration error: GEMINI_API_KEY environment variable is missing.' },
+        { status: 500 }
+      );
     }
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+      config: {
+        systemInstruction: `You are the GodDome Faith & Reflection Assistant, a warm, compassionate, and biblically grounded spiritual companion for readers of GodDome (authored by Jeanna’ Mead). Your mission is to provide gentle encouragement, relevant scripture references, and thoughtful reflection points to help individuals find peace and grace. Keep your tone quiet, uplifting, and formatted in clean, readable Markdown with clear headings or bullet points where helpful.`,
+      },
+    });
+
+    const responseText = response.text;
 
     if (!responseText) {
       return Response.json(
-        { error: `Gemini API Error: ${lastError?.message || 'All fallback models failed.'}` },
+        { error: 'Gemini returned an empty response.' },
         { status: 500 }
       );
     }
 
     return Response.json({ text: responseText });
   } catch (err: any) {
-    return Response.json({ error: err.message }, { status: 500 });
+    console.error('[Gemini API Error]:', err);
+    return Response.json(
+      { error: `Gemini Error: ${err.message || 'An unexpected error occurred.'}` },
+      { status: 500 }
+    );
   }
 }
