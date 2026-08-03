@@ -70,7 +70,7 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
       />
 
-      {/* Navigation Header */}
+      {/* Fixed Navigation Header */}
       <Navbar />
 
       {/* Hero Visual with Starry Night Quote */}

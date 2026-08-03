@@ -3,7 +3,7 @@ import { ChristianCrossIcon, MenorahIcon } from './FaithIcons';
 
 export default function Hero() {
   return (
-    <section className="relative w-full star-twinkle-bg text-[#FAF6F0] pt-28 pb-16 px-6 sm:px-12 text-center overflow-hidden flex flex-col justify-center items-center">
+    <section className="relative w-full star-twinkle-bg text-[#FAF6F0] pt-24 pb-8 px-6 sm:px-12 text-center overflow-hidden flex flex-col items-center">
       {/* Background Hero Image with Dark Midnight Overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
@@ -17,31 +17,31 @@ export default function Hero() {
       </div>
 
       {/* Ambient Starlight Glow */}
-      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-[#D99B26]/15 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-[#D99B26]/15 rounded-full blur-3xl pointer-events-none z-0" />
 
       {/* Overlay Content */}
       <div className="max-w-4xl mx-auto relative z-10">
-        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B132B]/90 border border-[#D99B26]/40 text-[#D99B26] text-xs font-semibold uppercase tracking-widest mb-6 backdrop-blur-md shadow-lg">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#0B132B]/90 border border-[#D99B26]/40 text-[#D99B26] text-xs font-semibold uppercase tracking-widest mb-4 backdrop-blur-md shadow-lg">
           <ChristianCrossIcon className="w-3.5 h-3.5 text-[#D99B26]" />
-          <span>Words For Your Soul • GodDome Sanctuary</span>
+          <span>+ WORDS FOR YOUR SOUL +</span>
           <MenorahIcon className="w-3.5 h-3.5 text-[#D99B26]" />
         </div>
 
-        <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-lg">
+        <h1 className="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-white mb-4 leading-tight drop-shadow-lg">
           Fireside Devotionals & Stories
         </h1>
 
         {/* Featured Starry Night Quote */}
-        <blockquote className="my-6 p-6 rounded-2xl bg-[#0B132B]/60 border border-[#D99B26]/30 backdrop-blur-md max-w-2xl mx-auto shadow-xl">
+        <blockquote className="my-5 p-5 rounded-2xl bg-[#0B132B]/60 border border-[#D99B26]/30 backdrop-blur-md max-w-2xl mx-auto shadow-xl">
           <p className="font-serif italic text-lg sm:text-xl text-[#F3E5AB] leading-relaxed">
             “God&apos;s love is like starry nights. Too vast and beautiful... comforting and magnified into infinity.”
           </p>
-          <cite className="block mt-3 text-xs uppercase tracking-widest text-[#D99B26] font-sans font-bold not-italic">
+          <cite className="block mt-2 text-xs uppercase tracking-widest text-[#D99B26] font-sans font-bold not-italic">
             — Jeanna’ Mead
           </cite>
         </blockquote>
 
-        <p className="text-base sm:text-lg text-[#FAF6F0]/90 max-w-xl mx-auto font-light leading-relaxed mb-8">
+        <p className="text-base sm:text-lg text-[#FAF6F0]/90 max-w-xl mx-auto font-light leading-relaxed mb-6">
           Take a quiet moment to pause, rest, and pull up a chair with uplifting Christian stories and meditations.
         </p>
 
