@@ -15,11 +15,11 @@ async function synthesizeStream(rawText: string) {
     );
   }
 
-  // Mandatory Text Sanitization: strip raw HTML tags, Markdown elements, and excess whitespace
+  // Mandatory Text Sanitization: strip raw HTML tags, Markdown elements (including ### headers), and excess whitespace
   const cleanText = rawText
     .replace(/<[^>]*>?/gm, '')
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .replace(/#+\s/g, '')
+    .replace(/#+\s*/g, '')
     .replace(/[*_~`]/g, '')
     .replace(/\s+/g, ' ')
     .trim()

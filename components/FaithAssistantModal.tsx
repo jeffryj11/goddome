@@ -108,11 +108,14 @@ export default function FaithAssistantModal({
 
   const handleListen = () => {
     if (!reflection) return;
+    // Strip ### Markdown headers before sending payload
+    const sanitizedText = reflection.replace(/#+\s*/g, '').trim();
+
     playTrack({
       id: `reflection_${prompt.slice(0, 20)}`,
       title: prompt.length > 35 ? `${prompt.slice(0, 35)}...` : prompt || 'Spiritual Reflection',
       author: "Jeanna’ Mead",
-      src: `/api/audio?text=${encodeURIComponent(reflection)}`,
+      src: `/api/audio?text=${encodeURIComponent(sanitizedText)}`,
     });
   };
 
@@ -219,13 +222,16 @@ export default function FaithAssistantModal({
                 </span>
 
                 <div className="flex items-center gap-2">
-                  {/* Listen (Audio Icon) Button right beside Copy Text */}
+                  {/* Listen (Volume / Play Icon) Button beside Copy Text */}
                   <button
                     onClick={handleListen}
                     className="text-xs font-bold text-[#D99B26] hover:text-[#F3E5AB] transition-colors flex items-center gap-1.5 bg-[#0B132B] px-3 py-1.5 rounded-lg border border-[#D99B26]/30 cursor-pointer"
-                    title="Listen to Southern voice narration"
+                    title="Listen to Jeanna's Southern narration"
                   >
-                    <span>🎙️ Listen</span>
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                    </svg>
+                    <span>Listen</span>
                   </button>
 
                   <button

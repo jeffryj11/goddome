@@ -13,7 +13,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Enhanced Starry Night Effects */
+/* Enhanced Starry Night Effects - Pure Opacity Twinkle (No transform scale layout shifts) */
 .star-twinkle-bg {
   background-color: #030712;
   background-image: 
@@ -29,8 +29,8 @@ body {
 }
 
 @keyframes twinkle {
-  0% { opacity: 0.6; transform: scale(0.98); }
-  100% { opacity: 1; transform: scale(1.02); }
+  0% { opacity: 0.5; }
+  100% { opacity: 1.0; }
 }
 
 /* Custom glowing & warm utilities */
