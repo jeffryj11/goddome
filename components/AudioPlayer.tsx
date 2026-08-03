@@ -87,7 +87,7 @@ export default function AudioPlayer({
       const res = await fetch('/api/audio', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: storyText, storyId }),
+        body: JSON.stringify({ content: storyText, text: storyText, storyId }),
       });
 
       if (!res.ok) {
