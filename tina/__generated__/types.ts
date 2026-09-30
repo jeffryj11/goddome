@@ -7,13 +7,12 @@
     })
     return str
   }
-  export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+  /** Internal type. DO NOT USE DIRECTLY. */
+type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+/** Internal type. DO NOT USE DIRECTLY. */
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -345,26 +344,72 @@ export type StoriesMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type StoriesPartsFragment = { __typename: 'Stories', title: string, date?: string | null, scripture?: string | null, scriptureText?: string | null, featuredQuote?: string | null, hashtags?: Array<string | null> | null, audioUrl?: string | null, topics?: Array<string | null> | null, excerpt?: string | null, author?: string | null, heroImage?: string | null, tags?: Array<string | null> | null, seoTitle?: string | null, seoDescription?: string | null, featuredImage?: string | null, metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, body?: any | null };
+export type StringFilter = {
+  startsWith?: string | null | undefined;
+  eq?: string | null | undefined;
+  exists?: boolean | null | undefined;
+  in?: Array<string | null | undefined> | null | undefined;
+};
+
+export type ImageFilter = {
+  startsWith?: string | null | undefined;
+  eq?: string | null | undefined;
+  exists?: boolean | null | undefined;
+  in?: Array<string | null | undefined> | null | undefined;
+};
+
+export type RichTextFilter = {
+  startsWith?: string | null | undefined;
+  eq?: string | null | undefined;
+  exists?: boolean | null | undefined;
+};
+
+export type StoriesFilter = {
+  title?: StringFilter | null | undefined;
+  date?: StringFilter | null | undefined;
+  scripture?: StringFilter | null | undefined;
+  scriptureText?: StringFilter | null | undefined;
+  featuredQuote?: StringFilter | null | undefined;
+  hashtags?: StringFilter | null | undefined;
+  audioUrl?: StringFilter | null | undefined;
+  topics?: StringFilter | null | undefined;
+  excerpt?: StringFilter | null | undefined;
+  author?: StringFilter | null | undefined;
+  heroImage?: ImageFilter | null | undefined;
+  tags?: StringFilter | null | undefined;
+  seoTitle?: StringFilter | null | undefined;
+  seoDescription?: StringFilter | null | undefined;
+  featuredImage?: ImageFilter | null | undefined;
+  metaTitle?: StringFilter | null | undefined;
+  metaDescription?: StringFilter | null | undefined;
+  ogImage?: ImageFilter | null | undefined;
+  hebrew_scripture?: StringFilter | null | undefined;
+  christian_scripture?: StringFilter | null | undefined;
+  themes?: StringFilter | null | undefined;
+  summary?: StringFilter | null | undefined;
+  body?: RichTextFilter | null | undefined;
+};
+
+export type StoriesPartsFragment = { __typename: 'Stories', title: string, date: string | null, scripture: string | null, scriptureText: string | null, featuredQuote: string | null, hashtags: Array<string | null> | null, audioUrl: string | null, topics: Array<string | null> | null, excerpt: string | null, author: string | null, heroImage: string | null, tags: Array<string | null> | null, seoTitle: string | null, seoDescription: string | null, featuredImage: string | null, metaTitle: string | null, metaDescription: string | null, ogImage: string | null, hebrew_scripture: string | null, christian_scripture: string | null, themes: Array<string | null> | null, summary: string | null, body: any };
 
 export type StoriesQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
+  relativePath: string;
 }>;
 
 
-export type StoriesQuery = { __typename?: 'Query', stories: { __typename: 'Stories', id: string, title: string, date?: string | null, scripture?: string | null, scriptureText?: string | null, featuredQuote?: string | null, hashtags?: Array<string | null> | null, audioUrl?: string | null, topics?: Array<string | null> | null, excerpt?: string | null, author?: string | null, heroImage?: string | null, tags?: Array<string | null> | null, seoTitle?: string | null, seoDescription?: string | null, featuredImage?: string | null, metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type StoriesQuery = { stories: { __typename: 'Stories', id: string, title: string, date: string | null, scripture: string | null, scriptureText: string | null, featuredQuote: string | null, hashtags: Array<string | null> | null, audioUrl: string | null, topics: Array<string | null> | null, excerpt: string | null, author: string | null, heroImage: string | null, tags: Array<string | null> | null, seoTitle: string | null, seoDescription: string | null, featuredImage: string | null, metaTitle: string | null, metaDescription: string | null, ogImage: string | null, hebrew_scripture: string | null, christian_scripture: string | null, themes: Array<string | null> | null, summary: string | null, body: any, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type StoriesConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<StoriesFilter>;
+  before?: string | null | undefined;
+  after?: string | null | undefined;
+  first?: number | null | undefined;
+  last?: number | null | undefined;
+  sort?: string | null | undefined;
+  filter?: StoriesFilter | null | undefined;
 }>;
 
 
-export type StoriesConnectionQuery = { __typename?: 'Query', storiesConnection: { __typename?: 'StoriesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'StoriesConnectionEdges', cursor: string, node?: { __typename: 'Stories', id: string, title: string, date?: string | null, scripture?: string | null, scriptureText?: string | null, featuredQuote?: string | null, hashtags?: Array<string | null> | null, audioUrl?: string | null, topics?: Array<string | null> | null, excerpt?: string | null, author?: string | null, heroImage?: string | null, tags?: Array<string | null> | null, seoTitle?: string | null, seoDescription?: string | null, featuredImage?: string | null, metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null, hebrew_scripture?: string | null, christian_scripture?: string | null, themes?: Array<string | null> | null, summary?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type StoriesConnectionQuery = { storiesConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Stories', id: string, title: string, date: string | null, scripture: string | null, scriptureText: string | null, featuredQuote: string | null, hashtags: Array<string | null> | null, audioUrl: string | null, topics: Array<string | null> | null, excerpt: string | null, author: string | null, heroImage: string | null, tags: Array<string | null> | null, seoTitle: string | null, seoDescription: string | null, featuredImage: string | null, metaTitle: string | null, metaDescription: string | null, ogImage: string | null, hebrew_scripture: string | null, christian_scripture: string | null, themes: Array<string | null> | null, summary: string | null, body: any, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const StoriesPartsFragmentDoc = gql`
     fragment StoriesParts on Stories {
@@ -519,5 +564,7 @@ export const queries = (
   const requester = generateRequester(client)
   return getSdk(requester)
 }
+
+export type { Exact };
 
   
