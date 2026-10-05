@@ -1,17 +1,17 @@
 ---
+draft: false
 title: A Beautiful Gate
-author: Jeanna’ Mead
 date: '2025-03-01'
+author: Jeanna’ Mead
+featuredImage: /images/stories/2026-10-05.jpg
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
   - Faith
   - Devotional
-summary: >-
-  Jeanna’ reflects on Acts 3, the healing at the Beautiful Gate, and her own
-  journey of weakness, wilderness, healing, and faith.
-draft: false
+summary: 'Jeanna’ reflects on Acts 3, the healing at the Beautiful Gate, and her own journey of weakness, wilderness, healing, and faith.'
 ---
+
 A Beautiful Gate *Writing my heart out — Jeanna’ Mead* > “Now a man who was lame from birth was being carried to the temple gate called Beautiful, where he was put every day to beg from those going into the temple courts.” > *(Acts 3:2)* I had never noticed this verse before — I had skimmed past it in my Bible readings and morning devotionals.
 
 But this time, the words jumped out at me. Tears filled my eyes as I thought about what the word **“beautiful”** means to me — and how different it feels these days. **“Look at us!”** Here, Peter tells the lame man to look up at him and John — and suddenly, it made perfect sense to me.
