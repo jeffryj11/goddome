@@ -1,7 +1,9 @@
 ---
-title: "Sweet Tea — Embracing Everybody"
-author: "Jeanna’ Mead"
-date: "2024-07-21"
+draft: false
+title: Sweet Tea — Embracing Everybody
+date: '2024-07-21'
+author: Jeanna’ Mead
+heroImage: /images/stories/LG_1920X-LT-Pitcher-of-regular-iced-tea-1600x1200.jpg
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
@@ -9,9 +11,7 @@ themes:
   - Love
   - Community
   - Faith
-summary: >-
-  Jeanna’ reflects on a devotional about embracing everyone over sweet tea, memory of Mema's open porch, and showing Christ's love to those who feel left out.
-draft: false
+summary: 'Jeanna’ reflects on a devotional about embracing everyone over sweet tea, memory of Mema''s open porch, and showing Christ''s love to those who feel left out.'
 ---
 
 It’s Sunday morning and, as I eat my oatmeal at my kitchen table, I’m thinking about this devotional I read yesterday morning.
@@ -19,22 +19,12 @@ It’s Sunday morning and, as I eat my oatmeal at my kitchen table, I’m thinki
 When something stays on my mind, I have to write about it in order to make sense of it, somehow.
 The devotional is called “Embracing Everyone” and I’m going to paste it here and add my thoughts, like I always do.
 
-> **Embracing Everyone**
->
-> Across the world, the tradition of sharing a cup of tea is important. These occasions give us time to relax, engage and get to know each other. Taking the time to enjoy tea together also creates an opportunity to share sacred space. Later in this biblical passage, Jesus asks to sit down at the table with Zacchaeus. People in the wider story questioned why Jesus would make such a request. Zacchaeus was not everyone’s favourite ‘tea’ partner.
->
-> People living with disabilities sometimes find themselves left to take tea on their own. A friend of mine noticed that after services at church, people did not choose to sit down at the morning tea table with her sister. Her precious sister lived with a disability and was not always easy to understand. While this sister was not excluded from the morning tea, her presence was not really appreciated. Theologian John Swinton reminds us that *“Jesus sat with those folks that society did not want to sit with.”*
->
-> Choosing who we sit with communicates to the person and the wider world that we appreciate their company and their experience of the world. Faithful hospitality accepts that both sets of people sitting around the teapot reflect the image of God and have gifts to share with each other. Choosing to sit with someone who appears different to ourselves is a key marker of Christ’s pattern of hospitality.
->
-> **For reflection:**  
-> As you think about your own context, who are the people that Jesus might ask to have tea with today?  
-> How might you pursue faithful hospitality with disabled people in your community?  
->
-> **A prayer for today:**  
+> **Embracing Everyone**Across the world, the tradition of sharing a cup of tea is important. These occasions give us time to relax, engage and get to know each other. Taking the time to enjoy tea together also creates an opportunity to share sacred space. Later in this biblical passage, Jesus asks to sit down at the table with Zacchaeus. People in the wider story questioned why Jesus would make such a request. Zacchaeus was not everyone’s favourite ‘tea’ partner.People living with disabilities sometimes find themselves left to take tea on their own. A friend of mine noticed that after services at church, people did not choose to sit down at the morning tea table with her sister. Her precious sister lived with a disability and was not always easy to understand. While this sister was not excluded from the morning tea, her presence was not really appreciated. Theologian John Swinton reminds us that *“Jesus sat with those folks that society did not want to sit with.”*Choosing who we sit with communicates to the person and the wider world that we appreciate their company and their experience of the world. Faithful hospitality accepts that both sets of people sitting around the teapot reflect the image of God and have gifts to share with each other. Choosing to sit with someone who appears different to ourselves is a key marker of Christ’s pattern of hospitality.**For reflection:**\
+> As you think about your own context, who are the people that Jesus might ask to have tea with today?\
+> How might you pursue faithful hospitality with disabled people in your community?**A prayer for today:**\
 > *Father, help us to see the image of God reflected in every face we encounter. Guide us to move beyond welcome statements and towards hospitality that seeks to build relationships. AMEN*
 
-🧋🧋☕️☕️🩷🩷  
+🧋🧋☕️☕️🩷🩷\
 Well, here it goes—Jesus and Mema talkin’ and I’m just writing as fast as I can.
 
 Thoughts tumbling into words and memories making me laugh to myself because there’s nobody at the table with me right now.
