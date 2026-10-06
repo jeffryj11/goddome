@@ -1,17 +1,17 @@
 ---
+draft: false
 title: This Time It Is Different
-author: Jeanna’ Mead
 date: '2025-03-02'
+author: Jeanna’ Mead
+ogImage: /images/stories/images.jpg
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
   - Faith
   - Devotional
-summary: >-
-  Jeanna’ examines the fear of speaking truth, the calling to be different, and
-  the urgency of stepping into God’s purpose with courage.
-draft: false
+summary: 'Jeanna’ examines the fear of speaking truth, the calling to be different, and the urgency of stepping into God’s purpose with courage.'
 ---
+
 **By Jeanna’ Mead** When I sit down to write, it becomes a kind of ritual — an act of preparation that places me exactly where I need to be, both inside and out. I set down my journal and my Bible. I fill a large bottle with iced water. I gather a collection of reading glasses.
 
 Then I open my hands, let go, and let the words flow from my heart through my fingertips. Sometimes I pause to read what I’ve written, fixing pieces along the way. Other times, I just keep going until everything inside me spills out. This time isn’t different — but **what I’m about to get into is.** --- ## **Are we afraid to be different?** Do we avoid stepping on toes?
