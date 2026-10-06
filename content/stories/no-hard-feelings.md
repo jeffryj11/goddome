@@ -1,7 +1,9 @@
 ---
+draft: false
 title: No Hard Feelings
-author: Jeanna’ Mead
 date: '2025-07-15'
+author: Jeanna’ Mead
+heroImage: /images/stories/3c8f26f8-f452-4a46-9bbf-fdc35478f6c4.png
 hebrew_scripture: ''
 christian_scripture: 'Romans 12:10'
 themes:
@@ -9,11 +11,9 @@ themes:
   - Love
   - Mercy
   - Faith
-summary: >-
-  Jeanna’ reflects on mercy, forgiveness, and living in such a way that we leave
-  this world with no hard feelings — only love.
-draft: false
+summary: 'Jeanna’ reflects on mercy, forgiveness, and living in such a way that we leave this world with no hard feelings — only love.'
 ---
+
 There’s lyrics to this song that hit the soul in a way that makes you stop and think about what *really* matters at the end: **love**.
 
 > *“When my body won’t hold me anymore*
@@ -34,15 +34,18 @@ Think about it for a hot minute… None of us know when we’ll take our last br
 So much of what causes hard feelings is plain and simple **jealousy** that grows ugliness — unnecessary ugliness and pointless bitterness. Lord knows jealousy hasn’t done much good for anyone. That’s the honest-to-God truth. And at the end of our lives, we don’t want jealousy, grudges, gossip, or resentment to be what people remember.
 
 We want to **live and leave with no hard feelings** — only love in our:
-- thoughts
-- words
-- actions
+
+* thoughts
+* words
+* actions
 
 Scripture says:
+
 > **“Love each other with genuine affection, and take delight in honoring each other.”**
 > *Romans 12:10 (NLT)*
 
 And:
+
 > **“Make allowance for each other’s faults, and forgive anyone who offends you. Remember, the Lord forgave you, so you must forgive others.”**
 > *Colossians 3:13 (NLT)*
 
