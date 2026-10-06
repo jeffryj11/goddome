@@ -3,6 +3,7 @@ draft: false
 title: A Beautiful Gate
 date: '2025-03-01'
 author: Jeanna’ Mead
+heroImage: /images/stories/2026-10-05.jpg
 featuredImage: ''
 ogImage: /images/stories/2026-10-05.jpg
 hebrew_scripture: ''
