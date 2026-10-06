@@ -1,18 +1,17 @@
 ---
+draft: false
 title: Dear Loved One
-author: Jeanna’ Mead
 date: '2025-03-05'
+author: Jeanna’ Mead
+heroImage: /images/stories/db4c78d9-b96d-4a94-b69c-a53a1e9df087.png
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
   - Faith
   - Devotional
-summary: >-
-  A heartfelt letter of regret, longing, healing, and Jesus-centered love to
-  someone who is now in heaven — a reminder of the conversations and
-  reconciliation we wish we’d had while they were still here.
-draft: false
+summary: 'A heartfelt letter of regret, longing, healing, and Jesus-centered love to someone who is now in heaven — a reminder of the conversations and reconciliation we wish we’d had while they were still here.'
 ---
+
 Dear Loved One, There is so much I wish I had said to you when I had the chance, and so many things I would do differently if I had known I would never get to look you in the eyes again. I would tell you that **I love you** — more deeply than you ever realized — and that I wish saying “I love you” had been as easy as all the other things we said without thinking twice.
 
 I wish I had written letters to you — real letters — cursive handwriting on beautiful stationery, tucked into envelopes, stamped and mailed with care. I wish your mailbox had held my words instead of bills and junk mail you sighed over. I like to imagine you would have read those letters and smiled, maybe tucked them away somewhere.
