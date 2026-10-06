@@ -1,18 +1,17 @@
 ---
+draft: false
 title: The Whispering Spot
-author: Jeanna’ Mead
 date: '2025-03-06'
+author: Jeanna’ Mead
+heroImage: /images/stories/a9951bc7-f424-450e-b86e-d20cb215afd0.png
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
   - Faith
   - Devotional
-summary: >-
-  Jeanna’ reflects on a devotional about finding a 'whispering spot'—a sacred
-  place where God gets close enough for us to hear His still, small voice—and
-  shares her own personal, generational moment of hearing Him whisper.
-draft: false
+summary: 'Jeanna’ reflects on a devotional about finding a ''whispering spot''—a sacred place where God gets close enough for us to hear His still, small voice—and shares her own personal, generational moment of hearing Him whisper.'
 ---
+
 **By Jeanna’ Mead** *A continuation of words written by another…* Sometimes something I read hits me so deeply that I have to write too. This is what I read in a YouVersion devotional: --- ## **The Whispering Spot** *(excerpt from devotional)* When I first toured the Capitol more than two decades ago, our guide revealed a secret that wasn’t really a secret: the whispering spot.
 
 He stood on one side of Statuary Hall while our tour group stood on the other side. Then he spoke in a whisper, and sure enough, we could hear the echo of his voice all the way across the room as if he were mere inches away. When I look through the Bible, I see whispering spots everywhere. - For Jacob, it was Bethel. - For Moses, it was a burning bush. - For Samuel, it was the tabernacle at Shiloh. - For David, it was the cave of Adullam. - For Elijah, it was Mount Carmel. - For Daniel, it was an upstairs window facing Jerusalem. - For Jonah, it was the belly of a whale.
@@ -61,4 +60,4 @@ T;hat is why it is so important to show our real beauty to others, to show who w
 Without all the extra fluff, without the mirror making up our minds for us, without the voices of the world shouting in our ears, we hear the words of our Creator say to each of us- You are beautiful for Me
 
 > “You Are Beautiful for Me”
-By Jeanna’ Mead
+> By Jeanna’ Mead
