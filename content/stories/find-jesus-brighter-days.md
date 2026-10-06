@@ -1,20 +1,20 @@
 ---
+draft: false
 title: Find Jesus — Brighter Days
-author: Jeanna’ Mead
 date: '2025-03-07'
+author: Jeanna’ Mead
+heroImage: /images/stories/b807b1c4-e151-48cb-8b55-b13f7f1becd1.png
 hebrew_scripture: ''
 christian_scripture: ''
 themes:
   - Faith
   - Devotional
-summary: >-
-  Jeanna’ writes about songs, hurt, healing, faith, and the gentle ways God uses
-  lyrics, night skies, and everyday moments to whisper hope.
-draft: false
+summary: 'Jeanna’ writes about songs, hurt, healing, faith, and the gentle ways God uses lyrics, night skies, and everyday moments to whisper hope.'
 ---
-**By Jeanna’ Mead** Here I go again, finding stories in the lyrics of songs in such a way that I *know* God meant for me to hear them, sit with them, and then write what He puts in my heart. > **“Find Jesus, He’s leading you straight to brighter days.
 
-So keep your head up, keep your hopes high —in the best and the bad times.”** Jesus. That’s the pure and simple truth of it all. Only through knowing God, knowing Jesus, and having the Holy Spirit in my life can I keep my head up and my hopes high. He is the way, the truth, and the life.
+**By Jeanna’ Mead** Here I go again, finding stories in the lyrics of songs in such a way that I *know* God meant for me to hear them, sit with them, and then write what He puts in my heart. > \*\*“Find Jesus, He’s leading you straight to brighter days.
+
+So keep your head up, keep your hopes high —in the best and the bad times.”\*\* Jesus. That’s the pure and simple truth of it all. Only through knowing God, knowing Jesus, and having the Holy Spirit in my life can I keep my head up and my hopes high. He is the way, the truth, and the life.
 
 That is the simplest thing I know and also the most extraordinary, extravagant, mind-blowing thing I will ever know. This love… **this love**… **this God…** amazes me. --- ## **Cause the night has to happen for the sun to rise** I never really gave that much thought, but then the truth soaked deeper into my soul— We **need** the night.
 
