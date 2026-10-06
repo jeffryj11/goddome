@@ -3,6 +3,7 @@ draft: false
 title: This Time It Is Different
 date: '2025-03-02'
 author: Jeanna’ Mead
+featuredImage: /images/stories/images.jpg
 ogImage: /images/stories/images.jpg
 hebrew_scripture: ''
 christian_scripture: ''
